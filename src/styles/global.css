@@ -266,6 +266,76 @@ p {
   margin: 0.25rem 0;
 }
 
+/* Lien vers le formulaire de retours */
+.pied-retour {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--bord);
+}
+
+.pied .pied-retour p {
+  margin: 0;
+  color: var(--texte);
+  font-size: 0.95rem;
+}
+
+.lien-retour {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--jaune-500);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bleu-900);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.lien-retour:hover {
+  background: var(--jaune-100);
+  color: var(--bleu-900);
+}
+
+.lien-retour svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
+  color: var(--bleu-700);
+}
+
+.exo-retour {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+}
+
+.exo-retour a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--texte-doux);
+  text-decoration: underline;
+  text-decoration-color: var(--jaune-500);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.exo-retour a:hover {
+  color: var(--bleu-800);
+}
+
+.exo-retour svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: none;
+}
+
 /* --------------------------------------------------------------------------
    Fil d'Ariane
    -------------------------------------------------------------------------- */

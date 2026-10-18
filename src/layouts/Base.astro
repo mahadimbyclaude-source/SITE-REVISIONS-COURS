@@ -2,6 +2,7 @@
 import 'katex/dist/katex.min.css';
 import '../styles/global.css';
 import Icone from '../components/Icone.astro';
+import LienRetour from '../components/LienRetour.astro';
 import Recherche from '../components/Recherche.astro';
 import { SITE } from '../lib/catalogue';
 
@@ -50,6 +51,12 @@ const surAnnales = Astro.url.pathname.startsWith('/annales');
 
     <footer class="pied">
       <div class="conteneur">
+        <div class="pied-retour">
+          <p>Une erreur, une idée pour améliorer le site ?</p>
+          <LienRetour class="lien-retour" icone="message">
+            Signaler une erreur ou faire une suggestion
+          </LienRetour>
+        </div>
         <p><strong>{SITE.nom}</strong> — cours, fiches et exercices corrigés de spécialité.</p>
         <p>Les annales renvoient vers les sources officielles (Éduscol, APMEP).</p>
       </div>

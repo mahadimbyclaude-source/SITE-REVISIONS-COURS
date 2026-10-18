@@ -6,6 +6,7 @@
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
+import { FORMULAIRE_RETOURS } from '../src/lib/catalogue';
 
 const DIST = path.resolve('dist');
 
@@ -62,6 +63,28 @@ for (const url of liste) {
     // 4. Les formules larges défilent dans leur cadre : la page ne déborde pas.
     const debordement = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(debordement, 'La page déborde horizontalement').toBeLessThanOrEqual(0);
+
+    // 5. Lien vers le formulaire de retours : dans le pied de page, et sous chaque exercice,
+    //    nouvel onglet sécurisé, « Page concernée » préremplie avec l'URL complète.
+    const urlPage = new URL(page.url());
+    const pageCourante = urlPage.origin + urlPage.pathname;
+    const verifierLien = async (lien: ReturnType<Page['locator']>, attendu: string) => {
+      await expect(lien).toHaveAttribute('target', '_blank');
+      await expect(lien).toHaveAttribute('rel', 'noopener noreferrer');
+      const href = new URL((await lien.getAttribute('href'))!);
+      expect(href.origin + href.pathname).toBe(FORMULAIRE_RETOURS.url);
+      expect(href.searchParams.get(FORMULAIRE_RETOURS.champs.page)).toBe(attendu);
+    };
+    const pied = page.locator('footer a[data-retour]');
+    await expect(pied).toHaveCount(1);
+    await expect(pied).toHaveText(/Signaler une erreur ou faire une suggestion/);
+    await verifierLien(pied, pageCourante);
+    for (const exo of await page.locator('article.exo').all()) {
+      const lien = exo.locator('a[data-retour]');
+      await expect(lien).toHaveCount(1);
+      await expect(lien).toHaveText(/Une erreur dans cet exercice\s?\?\s?Signale-la/);
+      await verifierLien(lien, `${pageCourante}#${await exo.getAttribute('id')}`);
+    }
 
     const nom = url === '/' ? 'accueil' : url.replace(/^\/|\/$/g, '').replace(/\//g, '__');
     await page.screenshot({ path: `test-results/captures/${info.project.name}/${nom}.png`, fullPage: true });

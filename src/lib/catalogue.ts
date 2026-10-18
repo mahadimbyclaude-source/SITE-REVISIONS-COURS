@@ -8,6 +8,31 @@ export const SITE = {
     'Cours, fiches de révision et exercices corrigés de spécialité, de la Première à la Terminale.',
 };
 
+/**
+ * Formulaire Google Forms des retours (erreurs, suggestions) : seul endroit à modifier
+ * si le formulaire change. Les identifiants « entry.… » se lisent dans le lien obtenu
+ * avec « Obtenir le lien prérempli » dans Google Forms.
+ */
+export const FORMULAIRE_RETOURS = {
+  url: 'https://docs.google.com/forms/d/e/1FAIpQLSd7geBET-iemZMgvvz0GgEIUE_S8GBp-hFfcmFjrF_TB9hTIA/viewform',
+  champs: {
+    page: 'entry.338519344', // « Page concernée »
+    type: 'entry.1769937456', // « Type »
+  },
+  typeErreurExercice: 'Erreur dans un exercice', // option exacte du champ « Type »
+};
+
+/** Lien vers le formulaire, prérempli avec la page concernée (et le type pour un exercice). */
+export function lienRetour(page: string, { erreurExercice = false } = {}) {
+  const url = new URL(FORMULAIRE_RETOURS.url);
+  url.searchParams.set('usp', 'pp_url');
+  if (erreurExercice) {
+    url.searchParams.set(FORMULAIRE_RETOURS.champs.type, FORMULAIRE_RETOURS.typeErreurExercice);
+  }
+  url.searchParams.set(FORMULAIRE_RETOURS.champs.page, page);
+  return url.toString();
+}
+
 export interface Classe {
   slug: string;
   nom: string;

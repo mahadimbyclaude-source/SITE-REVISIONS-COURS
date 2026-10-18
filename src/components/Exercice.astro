@@ -3,6 +3,7 @@
 // Les indices et la correction sont exclus de l'index de recherche.
 import Badge from './Badge.astro';
 import Icone from './Icone.astro';
+import LienRetour from './LienRetour.astro';
 import { formaterDuree, urlChapitre } from '../lib/catalogue';
 import {
   ancreExercice,
@@ -105,6 +106,10 @@ const nbIndices = indices.length;
       </summary>
       <div class="correction-contenu prose" set:html={correction} />
     </details>
+
+    <p class="exo-retour" data-pagefind-ignore="all">
+      <LienRetour ancre={ancre} icone="drapeau">Une erreur dans cet exercice ? Signale-la</LienRetour>
+    </p>
   </div>
 </article>
 

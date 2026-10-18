@@ -1,0 +1,40 @@
+---
+// Lien vers le formulaire de retours (Google Forms), ouvert dans un nouvel onglet.
+// Le champ « Page concernée » est prérempli : avec le chemin de la page au build,
+// puis avec l'URL complète (domaine compris) dès que la page est chargée.
+// Avec une ancre (exercice), l'URL pointe sur l'exercice et le type « Erreur dans
+// un exercice » est présélectionné.
+import Icone from './Icone.astro';
+import { lienRetour } from '../lib/catalogue';
+
+interface Props {
+  ancre?: string;
+  icone: 'message' | 'drapeau';
+  class?: string;
+}
+const { ancre, icone, class: classe } = Astro.props;
+const page = Astro.url.pathname + (ancre ? `#${ancre}` : '');
+---
+
+<a
+  class={classe}
+  href={lienRetour(page, { erreurExercice: Boolean(ancre) })}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-retour
+  data-ancre={ancre}
+>
+  <Icone nom={icone} />
+  <span><slot /></span>
+  <span class="sr-only"> (s’ouvre dans un nouvel onglet)</span>
+</a>
+
+<script>
+  import { lienRetour } from '../lib/catalogue';
+
+  for (const lien of document.querySelectorAll<HTMLAnchorElement>('a[data-retour]')) {
+    const ancre = lien.dataset.ancre;
+    const page = location.origin + location.pathname + (ancre ? `#${ancre}` : '');
+    lien.href = lienRetour(page, { erreurExercice: Boolean(ancre) });
+  }
+</script>
