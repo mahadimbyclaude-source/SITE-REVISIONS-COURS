@@ -72,7 +72,7 @@ export const ONGLETS: Onglet[] = [
 ];
 
 /**
- * Chapitres mis en avant sur l'accueil et dans la liste des chapitres.
+ * Chapitres mis en avant sur la page de leur classe (ex. /premiere/) et dans la liste des chapitres.
  * Clé : « classe/matière/chapitre ».
  */
 export const CHAPITRES_EN_AVANT: Record<

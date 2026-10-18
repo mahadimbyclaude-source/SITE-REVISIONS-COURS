@@ -27,7 +27,7 @@ src/content/chapitres/premiere/maths/second-degre/
     └── ctl-01-equation-parametre.md → type: controle  → onglet « Exos type contrôle »
 ```
 
-Pour mettre un chapitre en avant sur l’accueil (comme les Automatismes, pour l’épreuve anticipée), ajoute-le à `CHAPITRES_EN_AVANT` dans `src/lib/catalogue.ts`.
+Pour mettre un chapitre en avant sur la page de sa classe (comme les Automatismes sur `/premiere/`, pour l’épreuve anticipée), ajoute-le à `CHAPITRES_EN_AVANT` dans `src/lib/catalogue.ts`.
 
 **Ajouter un chapitre = créer un dossier avec ces fichiers.** Aucune autre modification : la liste des chapitres, les onglets, la navigation et la recherche se mettent à jour seuls. Les classes possibles sont `premiere` et `terminale`, les matières `maths` et `physique-chimie` (voir `src/lib/catalogue.ts`).
 

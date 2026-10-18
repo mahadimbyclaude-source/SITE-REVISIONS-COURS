@@ -118,6 +118,77 @@ for (const url of liste) {
   });
 }
 
+test.describe('parcours : accueil, puis page de la classe', () => {
+  test('accueil : le choix de la classe vient d’abord, sans bandeau ni liste de chapitres', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('.encart-en-avant')).toHaveCount(0);
+    await expect(page.locator('.chapitres-compacts')).toHaveCount(0);
+    const titres = (await page.locator('main h2').allInnerTexts()).map((t) => t.trim());
+    expect(titres).toEqual(['Choisis ta classe', 'Comment travailler un chapitre', 'S’entraîner sur de vrais sujets']);
+
+    // Terminale : carte inactive, « Bientôt disponible », sans lien.
+    const terminale = page.locator('main .carte', { hasText: 'Terminale' });
+    await expect(terminale).toContainText('Bientôt disponible');
+    expect(await terminale.evaluate((el) => el.tagName)).not.toBe('A');
+    await expect(page.locator('main a[href="/terminale/"]')).toHaveCount(0);
+
+    // Menu du haut inchangé.
+    await expect(page.locator('header a[href="/annales/"]')).toBeVisible();
+    await expect(page.locator('header [data-ouvrir-recherche]')).toBeVisible();
+  });
+
+  test('clic sur Première : titre, bandeau, puis liste numérotée des chapitres', async ({ page }) => {
+    await page.goto('/');
+    const carte = page.locator('main a.carte', { hasText: 'Première' });
+    const nbChapitres = Number((await carte.innerText()).match(/(\d+) chapitres? en ligne/)![1]);
+    await carte.click();
+
+    await expect(page).toHaveURL(/\/premiere\/$/);
+    await expect(page.locator('h1')).toHaveText('Première · Spécialité');
+    const encart = page.locator('.encart-en-avant');
+    await expect(encart).toContainText('Prépare l’épreuve anticipée de maths');
+    await expect(encart.getByRole('link', { name: 'Réviser les automatismes' })).toBeVisible();
+    await expect(encart.getByRole('link', { name: 'Voir les sujets zéro' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Chapitres de Première · Maths' })).toBeVisible();
+
+    // Ordre : titre, bandeau, liste.
+    const dansLOrdre = await page.evaluate(() => {
+      const els = ['h1', '.encart-en-avant', '.chapitres-compacts'].map((s) => document.querySelector(s)!);
+      return els.every((el, i) => i === 0 || Boolean(els[i - 1].compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING));
+    });
+    expect(dansLOrdre).toBe(true);
+
+    // Autant de chapitres que sur la carte de l'accueil, numérotés 1, 2, 3…
+    await expect(page.locator('.chapitres-compacts > li')).toHaveCount(nbChapitres);
+    const numeros = (await page.locator('.chapitres-compacts .chapitre-numero').allInnerTexts()).map(Number);
+    expect(numeros).toEqual(Array.from({ length: nbChapitres }, (_, i) => i + 1));
+    const automatismes = page.locator('.chapitre-compact', { hasText: 'Automatismes' });
+    await expect(automatismes).toHaveClass(/chapitre-compact--en-avant/);
+    await expect(automatismes).toContainText('Sans calculatrice');
+
+    // Le bouton « retour » du navigateur ramène à l'accueil.
+    await page.goBack();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('heading', { name: 'Choisis ta classe' })).toBeVisible();
+  });
+
+  test('téléphone 390 px : rien ne déborde sur l’accueil et la page Première', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const url of ['/', '/premiere/']) {
+      await page.goto(url);
+      const debordement = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(debordement, url).toBeLessThanOrEqual(0);
+    }
+  });
+
+  test('page de chapitre : le fil d’Ariane ramène à la page Première', async ({ page }) => {
+    await page.goto('/premiere/maths/derivation/');
+    await page.locator('.fil a', { hasText: 'Première' }).click();
+    await expect(page).toHaveURL(/\/premiere\/$/);
+    await expect(page.locator('h1')).toHaveText('Première · Spécialité');
+  });
+});
+
 test.describe('recherche', () => {
   async function chercher(page: Page, requete: string) {
     await page.goto('/premiere/maths/derivation/');

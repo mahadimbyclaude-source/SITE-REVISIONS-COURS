@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import EncartEnAvant from '../components/EncartEnAvant.astro';
-import { CLASSES, MATIERES, SITE, miseEnAvant, urlChapitre, urlClasse } from '../lib/catalogue';
+import { CLASSES, SITE, urlClasse } from '../lib/catalogue';
 import { tousLesChapitres } from '../lib/contenu';
 
 const chapitres = await tousLesChapitres();
@@ -9,17 +8,6 @@ const classes = CLASSES.map((c) => {
   const liste = chapitres.filter((ch) => ch.classe === c.slug);
   return { ...c, nbChapitres: liste.length, disponible: liste.length > 0 };
 });
-
-// Listes de chapitres par classe et matière disponibles, dans l'ordre.
-const listes = CLASSES.flatMap((classe) =>
-  MATIERES.map((matiere) => ({
-    classe,
-    matiere,
-    chapitres: chapitres.filter((c) => c.classe === classe.slug && c.matiere === matiere.slug),
-  })),
-).filter((l) => l.chapitres.length > 0);
-
-const enAvant = chapitres.filter((c) => miseEnAvant(c));
 ---
 
 <Base titre={SITE.nom}>
@@ -32,62 +20,34 @@ const enAvant = chapitres.filter((c) => miseEnAvant(c));
     </p>
   </section>
 
-  {enAvant.map((c) => <EncartEnAvant chapitre={c} />)}
-
   <h2 class="section-titre">Choisis ta classe</h2>
   <ul class="grille-cartes">
     {
       classes.map((c) => (
         <li>
-          <a class:list={['carte', { 'carte--bientot': !c.disponible }]} href={urlClasse(c.slug)}>
-            <span class="carte-titre">{c.nom}</span>
-            <span class="carte-texte">{c.accroche}</span>
-            <span class="carte-pied">
-              {c.disponible ? (
+          {c.disponible ? (
+            <a class="carte" href={urlClasse(c.slug)}>
+              <span class="carte-titre">{c.nom}</span>
+              <span class="carte-texte">{c.accroche}</span>
+              <span class="carte-pied">
                 <span class="etiquette etiquette--dispo">
                   {c.nbChapitres} chapitre{c.nbChapitres > 1 ? 's' : ''} en ligne
                 </span>
-              ) : (
+              </span>
+            </a>
+          ) : (
+            <div class="carte carte--bientot">
+              <span class="carte-titre">{c.nom}</span>
+              <span class="carte-texte">{c.accroche}</span>
+              <span class="carte-pied">
                 <span class="etiquette etiquette--bientot">Bientôt disponible</span>
-              )}
-            </span>
-          </a>
+              </span>
+            </div>
+          )}
         </li>
       ))
     }
   </ul>
-
-  {
-    listes.map((l) => (
-      <>
-        <h2 class="section-titre">
-          Chapitres de {l.classe.nom} · {l.matiere.court}
-        </h2>
-        <ol class="chapitres-compacts">
-          {l.chapitres.map((c) => {
-            const info = miseEnAvant(c);
-            return (
-              <li>
-                <a
-                  class:list={['chapitre-compact', { 'chapitre-compact--en-avant': info }]}
-                  href={urlChapitre(c.classe, c.matiere, c.slug)}
-                >
-                  <span class="chapitre-numero" aria-hidden="true">
-                    {c.numero}
-                  </span>
-                  <span class="chapitre-compact-titre">
-                    <span class="sr-only">Chapitre {c.numero} : </span>
-                    {c.titre}
-                  </span>
-                  {info && <span class="etiquette etiquette--epreuve">Sans calculatrice</span>}
-                </a>
-              </li>
-            );
-          })}
-        </ol>
-      </>
-    ))
-  }
 
   <h2 class="section-titre">Comment travailler un chapitre</h2>
   <ol class="etapes">

@@ -1,9 +1,12 @@
 ---
+// Page d'une classe (ex. /premiere/) : chapitre mis en avant, puis la liste des chapitres
+// de chaque matière, générée depuis la collection et triée par `ordre`.
 import type { GetStaticPaths } from 'astro';
 import Base from '../../layouts/Base.astro';
 import BientotDisponible from '../../components/BientotDisponible.astro';
+import EncartEnAvant from '../../components/EncartEnAvant.astro';
 import Fil from '../../components/Fil.astro';
-import { CLASSES, MATIERES, urlMatiere, type Classe } from '../../lib/catalogue';
+import { CLASSES, MATIERES, miseEnAvant, urlChapitre, type Classe } from '../../lib/catalogue';
 import { chapitresDe } from '../../lib/contenu';
 
 export const getStaticPaths = (() =>
@@ -11,44 +14,81 @@ export const getStaticPaths = (() =>
 
 const { classe } = Astro.props as { classe: Classe };
 const chapitres = await chapitresDe(classe.slug);
-const matieres = MATIERES.map((m) => {
-  const n = chapitres.filter((c) => c.matiere === m.slug).length;
-  return { ...m, nbChapitres: n, disponible: n > 0 };
-});
+const parMatiere = MATIERES.map((matiere) => ({
+  matiere,
+  chapitres: chapitres.filter((c) => c.matiere === matiere.slug),
+}));
+const listes = parMatiere.filter((m) => m.chapitres.length > 0);
+const bientot = parMatiere.filter((m) => m.chapitres.length === 0);
+const enAvant = chapitres.filter((c) => miseEnAvant(c));
 const disponible = chapitres.length > 0;
+const titre = `${classe.nom} · Spécialité`;
 ---
 
-<Base titre={classe.nom}>
+<Base titre={disponible ? titre : classe.nom}>
   <Fil elements={[{ nom: classe.nom }]} />
   {
     disponible ? (
       <>
         <section class="intro">
-          <p class="surtitre">{classe.accroche}</p>
-          <h1>{classe.nom}</h1>
-          <p class="chapeau">Choisis ta matière.</p>
+          <h1>{titre}</h1>
+          <p class="chapeau">
+            Choisis un chapitre : cours, fiche de révision, exercices d’application et exos type
+            contrôle corrigés.
+          </p>
         </section>
-        <ul class="grille-cartes">
-          {matieres.map((m) => (
-            <li>
-              <a
-                class:list={['carte', { 'carte--bientot': !m.disponible }]}
-                href={urlMatiere(classe.slug, m.slug)}
-              >
-                <span class="carte-titre">{m.nom}</span>
-                <span class="carte-pied">
-                  {m.disponible ? (
-                    <span class="etiquette etiquette--dispo">
-                      {m.nbChapitres} chapitre{m.nbChapitres > 1 ? 's' : ''}
+
+        {enAvant.map((c) => (
+          <EncartEnAvant chapitre={c} />
+        ))}
+
+        {listes.map(({ matiere, chapitres }) => (
+          <>
+            <h2 class="section-titre">
+              Chapitres de {classe.nom} · {matiere.court}
+            </h2>
+            <ol class="chapitres-compacts">
+              {chapitres.map((c) => {
+                const info = miseEnAvant(c);
+                return (
+                  <li>
+                    <a
+                      class:list={['chapitre-compact', { 'chapitre-compact--en-avant': info }]}
+                      href={urlChapitre(c.classe, c.matiere, c.slug)}
+                    >
+                      <span class="chapitre-numero" aria-hidden="true">
+                        {c.numero}
+                      </span>
+                      <span class="chapitre-compact-titre">
+                        <span class="sr-only">Chapitre {c.numero} : </span>
+                        {c.titre}
+                      </span>
+                      {info && <span class="etiquette etiquette--epreuve">Sans calculatrice</span>}
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+          </>
+        ))}
+
+        {bientot.length > 0 && (
+          <>
+            <h2 class="section-titre">Autres matières</h2>
+            <ul class="grille-cartes">
+              {bientot.map(({ matiere }) => (
+                <li>
+                  <div class="carte carte--bientot">
+                    <span class="carte-titre">{matiere.nom}</span>
+                    <span class="carte-pied">
+                      <span class="etiquette etiquette--bientot">Bientôt disponible</span>
                     </span>
-                  ) : (
-                    <span class="etiquette etiquette--bientot">Bientôt disponible</span>
-                  )}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </>
     ) : (
       <BientotDisponible titre={classe.nom} retour={{ nom: 'Retour à l’accueil', url: '/' }} annales />
