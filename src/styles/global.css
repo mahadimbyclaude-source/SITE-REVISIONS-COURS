@@ -747,6 +747,37 @@ a.carte:hover {
   margin: 1rem 0;
 }
 
+/* Code (algorithmes en Python) */
+.prose code {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+  /* Afficher « <= » tel qu'on le tape en Python, pas fusionné en « ≤ ». */
+  font-variant-ligatures: none;
+  font-feature-settings: 'calt' 0, 'liga' 0;
+  font-size: 0.9em;
+  background: var(--bleu-50);
+  border: 1px solid var(--bleu-100);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+}
+
+.prose pre {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  background: var(--bleu-900);
+  color: #e8eef8;
+  border-radius: var(--rayon-petit);
+  line-height: 1.5;
+}
+
+.prose pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: 0.88rem;
+}
+
 .prose table {
   border-collapse: collapse;
   min-width: 100%;

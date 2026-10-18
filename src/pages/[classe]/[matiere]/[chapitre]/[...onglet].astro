@@ -66,7 +66,8 @@ for (const exo of chapitre.application) {
   notions.set(notion, [...(notions.get(notion) ?? []), exo]);
 }
 const groupes = [...notions].map(([nom, exos]) => ({ nom, ancre: `notion-${slugifier(nom)}`, exos }));
-const numeros = new Map(chapitre.application.map((e, i) => [e.id, i + 1]));
+// Numérotation dans l'ordre d'affichage (notion par notion).
+const numeros = new Map(groupes.flatMap((g) => g.exos).map((e, i) => [e.id, i + 1]));
 
 const titrePage = onglet.id === 'cours' ? chapitre.titre : `${chapitre.titre} — ${onglet.nom}`;
 const description =

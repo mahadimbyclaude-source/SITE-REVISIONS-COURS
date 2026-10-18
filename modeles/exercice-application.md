@@ -29,10 +29,12 @@ enonce: |
 
 indices:
   # Au moins deux indices, du plus général au plus précis.
+  # Le site affiche déjà « Indice 1 · piste générale », « Indice 2 · plus précis » :
+  # inutile de l’écrire dans le texte de l’indice.
   - |
-    Piste générale : identifie $a$, $b$ et $c$, puis calcule le discriminant.
+    Identifie $a$, $b$ et $c$, puis calcule le discriminant.
   - |
-    Plus précis : $\Delta = b^2 - 4ac$. Si $\Delta > 0$, les solutions sont $\dfrac{-b - \sqrt{\Delta}}{2a}$ et $\dfrac{-b + \sqrt{\Delta}}{2a}$.
+    $\Delta = b^2 - 4ac$. Si $\Delta > 0$, les solutions sont $\dfrac{-b - \sqrt{\Delta}}{2a}$ et $\dfrac{-b + \sqrt{\Delta}}{2a}$.
 
 correction: |
   **1.** $a = 2$, $b = -3$, $c = -2$. $\Delta = 9 + 16 = 25 > 0$ et $\sqrt{25} = 5$.

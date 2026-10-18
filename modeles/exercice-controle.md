@@ -36,10 +36,12 @@ enonce: |
 
 indices:
   # Au moins deux indices, du plus général au plus précis.
+  # Le site affiche déjà « Indice 1 · piste générale », « Indice 2 · plus précis » :
+  # inutile de l’écrire dans le texte de l’indice.
   - |
-    Piste générale : le signe de $f'(x)$ donne les variations de $f$. Ici $f'(x)$ est un trinôme du second degré.
+    Le signe de $f'(x)$ donne les variations de $f$. Ici $f'(x)$ est un trinôme du second degré.
   - |
-    Plus précis : $f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2)$, dont les racines sont $-1$ et $2$.
+    $f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2)$, dont les racines sont $-1$ et $2$.
 
 correction: |
   **1.** $f'(x) = 6x^2 - 6x - 12 = 6(x^2 - x - 2)$.
