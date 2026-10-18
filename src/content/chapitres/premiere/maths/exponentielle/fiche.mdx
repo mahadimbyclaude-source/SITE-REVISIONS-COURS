@@ -1,0 +1,58 @@
+---
+titre: Fiche — Fonction exponentielle
+---
+
+## À savoir par cœur
+
+| Notion | Résultat |
+| --- | --- |
+| Définition | $\exp' = \exp$ et $\exp(0) = 1$ |
+| Valeurs | $\mathrm{e}^0 = 1$, $\mathrm{e}^1 = \mathrm{e} \approx 2{,}718$ |
+| Somme | $\mathrm{e}^{a+b} = \mathrm{e}^a \, \mathrm{e}^b$ |
+| Opposé | $\mathrm{e}^{-a} = \dfrac{1}{\mathrm{e}^a}$ |
+| Différence | $\mathrm{e}^{a-b} = \dfrac{\mathrm{e}^a}{\mathrm{e}^b}$ |
+| Puissance | $\left(\mathrm{e}^a\right)^n = \mathrm{e}^{na}$ |
+| Signe | $\mathrm{e}^x > 0$ pour tout $x$ |
+| Variations | strictement croissante sur $\R$ |
+| Dérivée | $\left(\mathrm{e}^{ax+b}\right)' = a\,\mathrm{e}^{ax+b}$ |
+| Tangente en $0$ | $y = x + 1$ |
+
+## Équations et inéquations
+
+| Énoncé | Équivalent |
+| --- | --- |
+| $\mathrm{e}^a = \mathrm{e}^b$ | $a = b$ |
+| $\mathrm{e}^a \leq \mathrm{e}^b$ | $a \leq b$ |
+| $\mathrm{e}^x > 1$ | $x > 0$ |
+| $\mathrm{e}^x < 1$ | $x < 0$ |
+
+## Méthodes express
+
+<Bloc type="methode" titre="Étudier une fonction avec exp">
+
+Dériver, **factoriser par l'exponentielle**, étudier le signe du facteur restant (l'exponentielle est positive), dresser le tableau.
+
+</Bloc>
+
+<Bloc type="methode" titre="Équation avec $\mathrm{e}^{2x}$">
+
+Poser $X = \mathrm{e}^x$, résoudre le trinôme en $X$, rejeter les valeurs $X \leq 0$, revenir à $x$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Suite $(\mathrm{e}^{an})$">
+
+C'est une suite géométrique de raison $\mathrm{e}^a$ et de premier terme $1$.
+
+</Bloc>
+
+## Pièges
+
+<Bloc type="attention">
+
+- Écrire $\mathrm{e}^{a+b} = \mathrm{e}^a + \mathrm{e}^b$.
+- Dériver $\mathrm{e}^{2x}$ en $\mathrm{e}^{2x}$ : il manque le facteur $2$.
+- Oublier que $\mathrm{e}^x > 0$ : $\mathrm{e}^x = -3$ n'a jamais de solution.
+- Oublier de factoriser par l'exponentielle avant de faire le tableau de signes.
+
+</Bloc>

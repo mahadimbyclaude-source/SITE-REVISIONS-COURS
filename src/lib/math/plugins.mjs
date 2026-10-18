@@ -90,6 +90,53 @@ export function rehypeIndexFormules() {
   };
 }
 
+/** Texte d'un titre sans le rendu KaTeX : les formules restent sous forme ⟦LaTeX⟧. */
+function textePropre(node) {
+  if (node.type === 'text') return node.value;
+  if (node.type === 'element' && (aClasse(node, 'katex') || aClasse(node, 'katex-display'))) return '';
+  return (node.children ?? []).map(textePropre).join('');
+}
+
+function slugTitre(texte, dejaPris) {
+  const base =
+    texte
+      .replace(/\\[a-zA-Z]+/g, ' ')
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '') || 'section';
+  let slug = base;
+  for (let n = 1; dejaPris.has(slug); n++) slug = `${base}-${n}`;
+  dejaPris.add(slug);
+  return slug;
+}
+
+/**
+ * Titres contenant une formule : Astro construit le texte du sommaire à partir de tout
+ * le texte du titre, rendu KaTeX compris. On donne à ces titres un identifiant lisible
+ * et on transmet leur texte propre (⟦LaTeX⟧) dans `remarkPluginFrontmatter.titresFormules`,
+ * pour que le sommaire puisse rendre la formule avec KaTeX.
+ */
+export function rehypeTitresAvecFormules() {
+  return (tree, file) => {
+    const titres = {};
+    const pris = new Set();
+    visit(tree, 'element', (node) => {
+      if (!/^h[1-6]$/.test(node.tagName)) return;
+      const propre = textePropre(node).replace(/\s+/g, ' ').trim();
+      if (propre.includes(DEBUT_FORMULE)) {
+        node.properties.id ??= slugTitre(propre, pris);
+        titres[node.properties.id] = propre;
+      }
+      return SKIP;
+    });
+    if (Object.keys(titres).length && file.data.astro?.frontmatter) {
+      file.data.astro.frontmatter.titresFormules = titres;
+    }
+  };
+}
+
 /** Les tableaux Markdown défilent horizontalement sur petit écran. */
 export function rehypeTableauxDefilants() {
   return (tree) => {
@@ -114,5 +161,6 @@ export const rehypePlugins = [
   rehypeVirguleDecimale,
   [rehypeKatex, katexOptions],
   rehypeIndexFormules,
+  rehypeTitresAvecFormules,
   rehypeTableauxDefilants,
 ];

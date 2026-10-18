@@ -1,0 +1,47 @@
+---
+titre: Fiche — Probabilités conditionnelles
+---
+
+## À savoir par cœur
+
+| Notion | Formule |
+| --- | --- |
+| Probabilité conditionnelle | $P_A(B) = \dfrac{P(A \cap B)}{P(A)}$ |
+| Probabilités composées | $P(A \cap B) = P(A) \times P_A(B)$ |
+| Probabilités totales | $P(B) = P(A) \, P_A(B) + P(\overline{A}) \, P_{\overline{A}}(B)$ |
+| Probabilité inverse | $P_B(A) = \dfrac{P(A \cap B)}{P(B)}$ |
+| Indépendance | $P(A \cap B) = P(A) \times P(B)$ |
+| Réunion | $P(A \cup B) = P(A) + P(B) - P(A \cap B)$ |
+
+## Règles de l'arbre pondéré
+
+| Règle | Énoncé |
+| --- | --- |
+| Branches d'un même nœud | somme égale à $1$ |
+| Feuille | produit des probabilités du chemin |
+| Événement | somme des feuilles qui le réalisent |
+
+## Méthodes express
+
+<Bloc type="methode" titre="Un énoncé de probabilités en 4 étapes">
+
+Nommer les événements, traduire les données en probabilités (en distinguant $P(A)$, $P_A(B)$ et $P(A \cap B)$), construire l'arbre, puis calculer en suivant l'arbre.
+
+</Bloc>
+
+<Bloc type="methode" titre="Tester l'indépendance">
+
+Calculer $P(A)$, $P(B)$ et $P(A \cap B)$ puis comparer $P(A \cap B)$ avec $P(A) \times P(B)$.
+
+</Bloc>
+
+## Pièges
+
+<Bloc type="attention">
+
+- Confondre $P_A(B)$ et $P_B(A)$.
+- Confondre « incompatibles » et « indépendants ».
+- Oublier une feuille dans la formule des probabilités totales.
+- Prendre un pourcentage d'un sous-groupe pour un pourcentage de la population totale.
+
+</Bloc>

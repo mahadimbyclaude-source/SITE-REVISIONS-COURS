@@ -9,6 +9,10 @@ node_modules/
 test-results/
 playwright-report/
 
+# archives de contenu (zips des chapitres)
+archives/
+*.zip
+
 # environnement
 .env
 .env.*

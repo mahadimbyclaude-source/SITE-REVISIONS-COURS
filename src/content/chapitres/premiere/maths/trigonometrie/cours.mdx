@@ -1,0 +1,192 @@
+---
+titre: Trigonométrie
+ordre: 8
+description: Radian, cercle trigonométrique, cosinus et sinus, valeurs remarquables, angles associés, équations et inéquations trigonométriques, fonctions cosinus et sinus.
+---
+
+{/*
+  Chapitre Trigonométrie (Première, spécialité maths).
+  Plan : radian, cercle trigonométrique, valeurs remarquables, angles associés, équations, fonctions cos et sin.
+*/}
+
+## Le radian
+
+<Bloc type="definition" titre="Radian">
+
+Le **radian** est l'unité de mesure d'angle telle que $\pi$ radians correspondent à $180^\circ$. Un angle de $1$ radian intercepte, sur un cercle de rayon $1$, un arc de longueur $1$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Conversion">
+
+La mesure en degrés est proportionnelle à la mesure en radians : $180^\circ = \pi$ rad.
+
+| Degrés | $0^\circ$ | $30^\circ$ | $45^\circ$ | $60^\circ$ | $90^\circ$ | $120^\circ$ | $135^\circ$ | $150^\circ$ | $180^\circ$ | $360^\circ$ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Radians | $0$ | $\dfrac{\pi}{6}$ | $\dfrac{\pi}{4}$ | $\dfrac{\pi}{3}$ | $\dfrac{\pi}{2}$ | $\dfrac{2\pi}{3}$ | $\dfrac{3\pi}{4}$ | $\dfrac{5\pi}{6}$ | $\pi$ | $2\pi$ |
+
+</Bloc>
+
+<Bloc type="propriete" titre="Longueur d'un arc">
+
+Sur un cercle de rayon $R$, un arc d'angle $\alpha$ (en radians) a pour longueur $\ell = R \times \alpha$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$150^\circ$ correspondent à $\dfrac{150}{180}\pi = \dfrac{5\pi}{6}$ rad. Sur un cercle de rayon $3$, un arc d'angle $\dfrac{2\pi}{3}$ a pour longueur $3 \times \dfrac{2\pi}{3} = 2\pi$.
+
+</Bloc>
+
+## Cercle trigonométrique, cosinus et sinus
+
+<Bloc type="definition" titre="Cercle trigonométrique">
+
+Dans un repère orthonormé direct $(O\,;\,\vec{\imath}\,,\,\vec{\jmath})$, le **cercle trigonométrique** est le cercle de centre $O$ et de rayon $1$, orienté dans le sens direct (sens inverse des aiguilles d'une montre). À tout réel $x$ on associe le point $M$ du cercle obtenu en « enroulant » la droite des réels : $M$ est atteint à partir de $I(1\,;\,0)$ en parcourant un arc de longueur $|x|$.
+
+</Bloc>
+
+<Bloc type="definition" titre="Cosinus et sinus">
+
+Les **coordonnées** du point $M$ associé au réel $x$ sont $(\cos x\,;\,\sin x)$. Le cosinus est l'abscisse, le sinus est l'ordonnée.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Propriétés fondamentales">
+
+Pour tout réel $x$ :
+
+- $-1 \leq \cos x \leq 1$ et $-1 \leq \sin x \leq 1$ ;
+- $\cos^2 x + \sin^2 x = 1$ ;
+- $\cos(x + 2\pi) = \cos x$ et $\sin(x + 2\pi) = \sin x$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Valeurs remarquables">
+
+| $x$ | $0$ | $\dfrac{\pi}{6}$ | $\dfrac{\pi}{4}$ | $\dfrac{\pi}{3}$ | $\dfrac{\pi}{2}$ | $\pi$ |
+| --- | --- | --- | --- | --- | --- | --- |
+| $\cos x$ | $1$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{1}{2}$ | $0$ | $-1$ |
+| $\sin x$ | $0$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $1$ | $0$ |
+
+</Bloc>
+
+<Bloc type="methode" titre="Mesure principale d'un angle">
+
+Pour trouver la mesure principale d'un angle $x$ (celle qui est dans $\interof{-\pi}{\pi}$) : retrancher ou ajouter des multiples de $2\pi$ jusqu'à tomber dans l'intervalle.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$\dfrac{13\pi}{3} - 4\pi = \dfrac{\pi}{3}$ donc la mesure principale de $\dfrac{13\pi}{3}$ est $\dfrac{\pi}{3}$. De même $-\dfrac{7\pi}{4} + 2\pi = \dfrac{\pi}{4}$.
+
+</Bloc>
+
+## Angles associés
+
+<Bloc type="propriete" titre="Symétries du cercle">
+
+Pour tout réel $x$ :
+
+| Angle | Cosinus | Sinus |
+| --- | --- | --- |
+| $-x$ | $\cos x$ | $-\sin x$ |
+| $\pi - x$ | $-\cos x$ | $\sin x$ |
+| $\pi + x$ | $-\cos x$ | $-\sin x$ |
+| $\dfrac{\pi}{2} - x$ | $\sin x$ | $\cos x$ |
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$\cos\left(\dfrac{2\pi}{3}\right) = \cos\left(\pi - \dfrac{\pi}{3}\right) = -\cos\dfrac{\pi}{3} = -\dfrac{1}{2}$ et $\sin\left(\dfrac{7\pi}{6}\right) = \sin\left(\pi + \dfrac{\pi}{6}\right) = -\sin\dfrac{\pi}{6} = -\dfrac{1}{2}$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+- $\cos(a + b)$ n'est **pas** $\cos a + \cos b$.
+- $\cos^2 x$ désigne $\left(\cos x\right)^2$, pas $\cos\left(x^2\right)$.
+- Un angle en degrés dans une calculatrice réglée en radians donne un résultat faux : vérifier le mode.
+
+</Bloc>
+
+## Équations trigonométriques
+
+<Bloc type="methode" titre="Résoudre $\cos x = a$ ou $\sin x = a$">
+
+1. Reconnaître une **valeur remarquable** pour $a$ et trouver un angle $\alpha$ tel que $\cos\alpha = a$ (ou $\sin\alpha = a$).
+2. Utiliser les symétries du cercle pour trouver **toutes** les solutions sur l'intervalle donné : pour le cosinus, $x = \alpha$ ou $x = -\alpha$ ; pour le sinus, $x = \alpha$ ou $x = \pi - \alpha$.
+3. Ajouter $2k\pi$ si on cherche les solutions dans $\R$, ou restreindre à l'intervalle demandé.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Résoudre $\cos x = \dfrac{\sqrt{3}}{2}$ sur $\interof{-\pi}{\pi}$. Comme $\cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}$, les solutions sont $\dfrac{\pi}{6}$ et $-\dfrac{\pi}{6}$.
+
+Résoudre $\sin x = \dfrac{1}{2}$ sur $\interfo{0}{2\pi}$. Comme $\sin\dfrac{\pi}{6} = \dfrac{1}{2}$, les solutions sont $\dfrac{\pi}{6}$ et $\pi - \dfrac{\pi}{6} = \dfrac{5\pi}{6}$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Inéquations trigonométriques">
+
+On repère sur le cercle trigonométrique les points d'abscisse (pour $\cos$) ou d'ordonnée (pour $\sin$) qui conviennent, puis on lit l'intervalle d'angles correspondant.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$\cos x \geq \dfrac{1}{2}$ sur $\interff{-\pi}{\pi}$ : les points du cercle d'abscisse au moins $\dfrac{1}{2}$ correspondent aux angles de $-\dfrac{\pi}{3}$ à $\dfrac{\pi}{3}$. Solutions : $\interff{-\dfrac{\pi}{3}}{\dfrac{\pi}{3}}$.
+
+</Bloc>
+
+## Fonctions cosinus et sinus
+
+<Bloc type="propriete" titre="Parité et périodicité">
+
+- La fonction cosinus est **paire** : $\cos(-x) = \cos x$. Sa courbe est symétrique par rapport à l'axe des ordonnées.
+- La fonction sinus est **impaire** : $\sin(-x) = -\sin x$. Sa courbe est symétrique par rapport à l'origine.
+- Les deux fonctions sont **périodiques de période $2\pi$**.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Dérivées">
+
+Les fonctions $\cos$ et $\sin$ sont dérivables sur $\R$ et
+
+$$
+\cos'(x) = -\sin x \qquad \text{et} \qquad \sin'(x) = \cos x.
+$$
+
+Pour $a$ et $b$ réels, la dérivée de $x \mapsto \cos(ax + b)$ est $x \mapsto -a\sin(ax + b)$ et celle de $x \mapsto \sin(ax + b)$ est $x \mapsto a\cos(ax + b)$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Variations sur [0 ; π]">
+
+$$
+\begin{array}{c|ccc}
+x & 0 & & \pi \\ \hline
+\cos & 1 & \searrow & -1
+\end{array}
+$$
+
+Sur $\interff{0}{\pi}$, le cosinus est strictement décroissant. Le sinus est croissant sur $\interff{0}{\dfrac{\pi}{2}}$ de $0$ à $1$ puis décroissant sur $\interff{\dfrac{\pi}{2}}{\pi}$ de $1$ à $0$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Étudier une fonction trigonométrique">
+
+1. Chercher la **parité** et la **période** pour réduire l'intervalle d'étude.
+2. Calculer la dérivée et la **factoriser**.
+3. Étudier le signe de chaque facteur en utilisant le cercle trigonométrique pour les signes de $\cos$ et $\sin$.
+4. Dresser le tableau de variations avec les valeurs exactes.
+
+</Bloc>
+
+## Lien avec le second degré
+
+Beaucoup d'équations se ramènent à un **trinôme** en posant $X = \cos x$ ou $X = \sin x$ (avec $X \in \interff{-1}{1}$), souvent grâce à $\sin^2 x = 1 - \cos^2 x$. Après avoir résolu le trinôme en $X$, on **rejette les valeurs hors de $\interff{-1}{1}$** puis on résout $\cos x = X_1$ ou $\cos x = X_2$ avec les valeurs remarquables.

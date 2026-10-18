@@ -1,0 +1,153 @@
+---
+titre: Automatismes
+ordre: 9
+description: Calcul numérique et littéral, pourcentages, équations, fonctions, statistiques, probabilités et algorithmique à maîtriser sans calculatrice et rapidement.
+---
+
+{/*
+  Section Automatismes (Première, spécialité maths).
+  Plan : pourcentages, fractions et puissances, racines, calcul littéral, équations et inéquations, fonctions, statistiques et probabilités, suites et Python, conseils.
+*/}
+
+## Pourcentages et évolutions
+
+<Bloc type="propriete" titre="Coefficient multiplicateur">
+
+- Augmenter de $t\ \%$ revient à multiplier par $1 + \dfrac{t}{100}$ ; diminuer de $t\ \%$ revient à multiplier par $1 - \dfrac{t}{100}$.
+- Pour des évolutions successives, on **multiplie** les coefficients multiplicateurs.
+- Le coefficient multiplicateur de l'évolution **réciproque** est l'inverse du coefficient.
+- Prendre $p\ \%$ d'une quantité revient à la multiplier par $\dfrac{p}{100}$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Une hausse de $20\ \%$ suivie d'une baisse de $20\ \%$ donne $1{,}2 \times 0{,}8 = 0{,}96$, soit une baisse globale de $4\ \%$ (et non un retour au prix de départ). La réciproque d'une hausse de $25\ \%$ est une multiplication par $\dfrac{1}{1{,}25} = 0{,}8$, soit une baisse de $20\ \%$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+Deux évolutions de $+10\ \%$ puis $-10\ \%$ ne s'annulent pas : $1{,}1 \times 0{,}9 = 0{,}99$. Les pourcentages ne s'additionnent pas.
+
+</Bloc>
+
+## Fractions, puissances et racines
+
+<Bloc type="propriete" titre="Règles de calcul">
+
+- $\dfrac{a}{b} + \dfrac{c}{d} = \dfrac{ad + bc}{bd}$ (mettre au même dénominateur), $\dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{ac}{bd}$ et $\dfrac{a}{b} \div \dfrac{c}{d} = \dfrac{a}{b} \times \dfrac{d}{c}$.
+- $a^m \times a^n = a^{m+n}$, $\dfrac{a^m}{a^n} = a^{m-n}$, $\left(a^m\right)^n = a^{mn}$ et $a^{-n} = \dfrac{1}{a^n}$.
+- $\sqrt{ab} = \sqrt{a}\sqrt{b}$ pour $a, b \geq 0$ et $\left(\sqrt{a}\right)^2 = a$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Simplifier une racine">
+
+Chercher le plus grand **carré parfait** qui divise le nombre : $\sqrt{72} = \sqrt{36 \times 2} = 6\sqrt{2}$ et $\sqrt{12} + \sqrt{27} = 2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+$\sqrt{a + b}$ n'est **pas** égal à $\sqrt{a} + \sqrt{b}$ et $(a + b)^2$ n'est **pas** égal à $a^2 + b^2$.
+
+</Bloc>
+
+## Calcul littéral
+
+<Bloc type="propriete" titre="Identités remarquables">
+
+$$
+(a + b)^2 = a^2 + 2ab + b^2, \qquad (a - b)^2 = a^2 - 2ab + b^2, \qquad (a - b)(a + b) = a^2 - b^2.
+$$
+
+</Bloc>
+
+<Bloc type="methode" titre="Factoriser">
+
+1. Chercher un **facteur commun** : $(x + 2)(x - 5) - 3(x + 2) = (x + 2)(x - 8)$.
+2. Reconnaître une **identité remarquable** : $9x^2 - 16 = (3x - 4)(3x + 4)$ et $x^2 + 6x + 9 = (x + 3)^2$.
+3. Pour un trinôme, utiliser les **racines** : $ax^2 + bx + c = a(x - x_1)(x - x_2)$.
+
+</Bloc>
+
+## Équations et inéquations
+
+<Bloc type="methode" titre="Équations et inéquations de degré 1">
+
+On isole $x$ en faisant les mêmes opérations des deux côtés. **Multiplier ou diviser par un nombre négatif change le sens de l'inégalité.**
+
+</Bloc>
+
+<Bloc type="methode" titre="Équation produit nul">
+
+$A \times B = 0$ équivaut à $A = 0$ ou $B = 0$. Après factorisation, on obtient les solutions directement.
+
+</Bloc>
+
+<Bloc type="methode" titre="Système de deux équations">
+
+Par **substitution** (on exprime une inconnue) ou par **combinaison** (on additionne ou soustrait les équations pour éliminer une inconnue).
+
+</Bloc>
+
+## Fonctions et lecture de graphique
+
+<Bloc type="propriete" titre="Fonction affine">
+
+Une fonction affine $f(x) = mx + p$ a pour courbe une droite de **coefficient directeur** $m = \dfrac{y_B - y_A}{x_B - x_A}$ et d'**ordonnée à l'origine** $p$. Elle est croissante si $m > 0$ et décroissante si $m < 0$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Image et antécédent">
+
+L'**image** de $a$ est $f(a)$ : on remplace $x$ par $a$. Un **antécédent** de $b$ est une solution de $f(x) = b$ : on résout l'équation.
+
+</Bloc>
+
+<Bloc type="methode" titre="Trinôme : réflexes">
+
+- Racines évidentes, somme $x_1 + x_2 = -\dfrac{b}{a}$ et produit $x_1 x_2 = \dfrac{c}{a}$.
+- Forme canonique $a(x - \alpha)^2 + \beta$ avec $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$ : le sommet est $(\alpha\,;\,\beta)$.
+
+</Bloc>
+
+## Statistiques et probabilités
+
+<Bloc type="definition" titre="Indicateurs">
+
+Pour une série de $n$ valeurs rangées dans l'ordre croissant : la **moyenne** est la somme divisée par $n$ ; la **médiane** partage la série en deux groupes de même effectif ; le **premier quartile** $Q_1$ est la plus petite valeur telle qu'au moins $25\ \%$ des données lui soient inférieures ou égales, et $Q_3$ la plus petite valeur telle qu'au moins $75\ \%$ des données lui soient inférieures ou égales. L'**écart interquartile** est $Q_3 - Q_1$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Probabilités">
+
+- Équiprobabilité : $P(A) = \dfrac{\text{nombre de cas favorables}}{\text{nombre de cas possibles}}$.
+- $P(\overline{A}) = 1 - P(A)$, ce qui donne « au moins un » $= 1 -$ « aucun ».
+- Dénombrement : $n$ choix puis $m$ choix indépendants donnent $n \times m$ possibilités.
+- Indépendance : $P(A \cap B) = P(A) \times P(B)$.
+
+</Bloc>
+
+## Suites et algorithmique
+
+<Bloc type="propriete" titre="Formules à connaître">
+
+- Suite arithmétique de raison $r$ : $u_n = u_0 + nr$.
+- Suite géométrique de raison $q$ : $u_n = u_0 \times q^n$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Lire un programme Python">
+
+Faire un **tableau de suivi** des variables : on écrit leurs valeurs à chaque tour de boucle. Dans une boucle `while`, on s'arrête quand la condition devient fausse ; dans `for k in range(1, 5)`, $k$ prend les valeurs $1$, $2$, $3$, $4$ (la dernière est exclue).
+
+</Bloc>
+
+## Conseils pour l'épreuve sans calculatrice
+
+- **Estimer** d'abord : un résultat aberrant (un pourcentage supérieur à $100\ \%$ pour une baisse, une probabilité supérieure à $1$) signale une erreur.
+- **Vérifier** : remplacer la solution dans l'équation, tester avec une valeur simple.
+- **Garder les valeurs exactes** ($\sqrt{2}$, $\pi$, $\mathrm{e}$) tant que l'énoncé ne demande pas une valeur approchée.
+- **Écrire une phrase** de conclusion quand la question est posée en français.

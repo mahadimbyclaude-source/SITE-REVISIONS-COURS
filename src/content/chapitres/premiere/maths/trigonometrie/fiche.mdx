@@ -1,0 +1,63 @@
+---
+titre: Fiche — Trigonométrie
+---
+
+## À savoir par cœur
+
+| Notion | Résultat |
+| --- | --- |
+| Conversion | $180^\circ = \pi$ rad, donc $x^\circ = \dfrac{x\pi}{180}$ rad |
+| Longueur d'arc | $\ell = R\alpha$ ($\alpha$ en radians) |
+| Coordonnées sur le cercle | $M(\cos x\,;\,\sin x)$ |
+| Identité | $\cos^2 x + \sin^2 x = 1$ |
+| Périodicité | $\cos(x + 2\pi) = \cos x$, $\sin(x + 2\pi) = \sin x$ |
+| Parité | $\cos$ paire, $\sin$ impaire |
+| Dérivées | $\cos' = -\sin$ et $\sin' = \cos$ |
+| Dérivées composées | $(\cos(ax+b))' = -a\sin(ax+b)$, $(\sin(ax+b))' = a\cos(ax+b)$ |
+
+## Valeurs remarquables
+
+| $x$ | $0$ | $\dfrac{\pi}{6}$ | $\dfrac{\pi}{4}$ | $\dfrac{\pi}{3}$ | $\dfrac{\pi}{2}$ | $\pi$ |
+| --- | --- | --- | --- | --- | --- | --- |
+| $\cos x$ | $1$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{1}{2}$ | $0$ | $-1$ |
+| $\sin x$ | $0$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $1$ | $0$ |
+
+## Angles associés
+
+| Angle | $\cos$ | $\sin$ |
+| --- | --- | --- |
+| $-x$ | $\cos x$ | $-\sin x$ |
+| $\pi - x$ | $-\cos x$ | $\sin x$ |
+| $\pi + x$ | $-\cos x$ | $-\sin x$ |
+| $\dfrac{\pi}{2} - x$ | $\sin x$ | $\cos x$ |
+
+## Méthodes express
+
+<Bloc type="methode" titre="Résoudre $\cos x = a$">
+
+Trouver $\alpha$ avec $\cos\alpha = a$. Les solutions sont $\alpha$ et $-\alpha$ (à $2\pi$ près). Pour $\sin x = a$ : $\alpha$ et $\pi - \alpha$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Équation en $\cos^2 x$">
+
+Poser $X = \cos x$, résoudre le trinôme en $X$, rejeter $X \notin \interff{-1}{1}$, revenir à $x$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Mesure principale">
+
+Retrancher ou ajouter des multiples de $2\pi$ pour tomber dans $\interof{-\pi}{\pi}$.
+
+</Bloc>
+
+## Pièges
+
+<Bloc type="attention">
+
+- Oublier la seconde solution ($-\alpha$ pour $\cos$, $\pi - \alpha$ pour $\sin$).
+- Laisser la calculatrice en degrés.
+- Se tromper de signe dans $\cos' = -\sin$.
+- Oublier le facteur $a$ en dérivant $\cos(ax + b)$ ou $\sin(ax + b)$.
+
+</Bloc>

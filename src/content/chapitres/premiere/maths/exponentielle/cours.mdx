@@ -1,0 +1,175 @@
+---
+titre: Fonction exponentielle
+ordre: 6
+description: Définition de la fonction exponentielle, propriétés algébriques, dérivée de l’exponentielle d’une fonction affine, variations, équations, inéquations et lien avec les suites géométriques.
+---
+
+{/*
+  Chapitre Fonction exponentielle (Première, spécialité maths).
+  Plan : définition, propriétés algébriques, variations et signe, dérivée de exp(ax+b), équations et inéquations, suites géométriques.
+*/}
+
+## Définition
+
+<Bloc type="theoreme" titre="Existence et unicité (admis)">
+
+Il existe une **unique fonction $f$ dérivable sur $\R$** telle que
+
+$$
+f' = f \qquad \text{et} \qquad f(0) = 1.
+$$
+
+Cette fonction s'appelle la **fonction exponentielle**, notée $\exp$. On note aussi $\exp(x) = \mathrm{e}^x$.
+
+</Bloc>
+
+<Bloc type="definition" titre="Le nombre e">
+
+Le nombre $\mathrm{e}$ est l'image de $1$ par la fonction exponentielle : $\mathrm{e} = \exp(1) \approx 2{,}718$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Deux valeurs à connaître : $\mathrm{e}^0 = 1$ et $\mathrm{e}^1 = \mathrm{e}$. Par définition, la dérivée de $x \mapsto \mathrm{e}^x$ est elle-même.
+
+</Bloc>
+
+## Propriétés algébriques
+
+<Bloc type="propriete" titre="Relation fonctionnelle">
+
+Pour tous réels $a$ et $b$ et pour tout entier relatif $n$ :
+
+- $\mathrm{e}^{a + b} = \mathrm{e}^a \times \mathrm{e}^b$ ;
+- $\mathrm{e}^{-a} = \dfrac{1}{\mathrm{e}^a}$ ;
+- $\mathrm{e}^{a - b} = \dfrac{\mathrm{e}^a}{\mathrm{e}^b}$ ;
+- $\left(\mathrm{e}^a\right)^n = \mathrm{e}^{na}$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Ces règles sont les mêmes que celles des puissances : l'exponentielle transforme les **sommes** en **produits**.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$$
+\mathrm{e}^{3} \times \mathrm{e}^{-5} = \mathrm{e}^{-2}, \qquad \frac{\mathrm{e}^{x+1}}{\mathrm{e}^{x-2}} = \mathrm{e}^{(x+1) - (x-2)} = \mathrm{e}^{3}, \qquad \left(\mathrm{e}^{2}\right)^3 = \mathrm{e}^{6}.
+$$
+
+</Bloc>
+
+<Bloc type="attention">
+
+- $\mathrm{e}^{a + b} = \mathrm{e}^a \times \mathrm{e}^b$ et **non** $\mathrm{e}^a + \mathrm{e}^b$.
+- $\mathrm{e}^{2x}$ n'est pas $2\mathrm{e}^x$ : on a $\mathrm{e}^{2x} = \left(\mathrm{e}^x\right)^2$.
+- $\mathrm{e}^{-x}$ n'est pas $-\mathrm{e}^x$ : c'est $\dfrac{1}{\mathrm{e}^x}$.
+
+</Bloc>
+
+## Signe et variations
+
+<Bloc type="propriete" titre="Positivité">
+
+Pour tout réel $x$, $\mathrm{e}^x > 0$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Sens de variation">
+
+La fonction exponentielle est **strictement croissante sur $\R$**.
+
+</Bloc>
+
+<Bloc type="demonstration" titre="Pourquoi la fonction exponentielle est croissante">
+
+Sa dérivée est elle-même, c'est-à-dire $\exp'(x) = \mathrm{e}^x$, qui est strictement positive. Donc $\exp$ est strictement croissante sur $\R$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Conséquences sur les équations et inéquations">
+
+Pour tous réels $a$ et $b$ :
+
+- $\mathrm{e}^a = \mathrm{e}^b$ équivaut à $a = b$ ;
+- $\mathrm{e}^a < \mathrm{e}^b$ équivaut à $a < b$ (et de même avec $\leq$, $>$, $\geq$).
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Comme $\mathrm{e}^0 = 1$ et que $\exp$ est croissante : $\mathrm{e}^x > 1$ équivaut à $x > 0$, et $\mathrm{e}^x < 1$ équivaut à $x < 0$.
+
+</Bloc>
+
+## Dérivée de $x \mapsto \mathrm{e}^{ax + b}$
+
+<Bloc type="propriete" titre="Dérivée de exp(ax+b)">
+
+Soit $a$ et $b$ deux réels. La fonction $f : x \mapsto \mathrm{e}^{ax + b}$ est dérivable sur $\R$ et
+
+$$
+f'(x) = a \, \mathrm{e}^{ax + b}.
+$$
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Si $f(x) = \mathrm{e}^{2x}$, alors $f'(x) = 2\mathrm{e}^{2x}$. Si $g(x) = 3\mathrm{e}^{-x}$, alors $g'(x) = -3\mathrm{e}^{-x}$. Si $h(x) = \mathrm{e}^{3x - 1}$, alors $h'(x) = 3\mathrm{e}^{3x - 1}$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Étudier une fonction avec une exponentielle">
+
+1. Calculer la dérivée avec les formules du produit ou du quotient, en gardant l'exponentielle.
+2. **Factoriser par l'exponentielle** : $f'(x) = (\cdots)\,\mathrm{e}^{ax+b}$.
+3. Le facteur $\mathrm{e}^{ax+b}$ est **toujours strictement positif** : le signe de $f'$ est celui du facteur restant.
+4. Dresser le tableau de variations.
+
+</Bloc>
+
+<Bloc type="exemple" titre="Un produit">
+
+Soit $f(x) = (x - 1)\,\mathrm{e}^x$. Avec $u(x) = x - 1$ et $v(x) = \mathrm{e}^x$ :
+
+$$
+f'(x) = 1 \times \mathrm{e}^x + (x - 1)\mathrm{e}^x = x\,\mathrm{e}^x.
+$$
+
+Comme $\mathrm{e}^x > 0$, le signe de $f'(x)$ est celui de $x$. La fonction $f$ est décroissante sur $\interof{-\infty}{0}$ et croissante sur $\interfo{0}{+\infty}$, avec $f(0) = -1$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Tangente en 0">
+
+La tangente à la courbe de $\exp$ au point d'abscisse $0$ a pour équation $y = x + 1$. En effet $\exp(0) = 1$ et $\exp'(0) = 1$.
+
+</Bloc>
+
+## Exponentielle et suites géométriques
+
+<Bloc type="propriete" titre="Suite $(\mathrm{e}^{an})$">
+
+Pour tout réel $a$, la suite $(u_n)$ définie par $u_n = \mathrm{e}^{an}$ est **géométrique de raison $\mathrm{e}^a$** et de premier terme $u_0 = 1$.
+
+</Bloc>
+
+<Bloc type="demonstration" titre="Pourquoi">
+
+$u_{n+1} = \mathrm{e}^{a(n+1)} = \mathrm{e}^{an + a} = \mathrm{e}^{an} \times \mathrm{e}^{a} = \mathrm{e}^a \times u_n$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+La suite $(\mathrm{e}^{an})$ est croissante si $a > 0$ (raison $\mathrm{e}^a > 1$) et décroissante si $a < 0$ (raison $0 < \mathrm{e}^a < 1$).
+
+</Bloc>
+
+## Lien avec le second degré
+
+Beaucoup d'équations avec exponentielles se ramènent à un **trinôme** en posant $X = \mathrm{e}^x$ : l'équation $\mathrm{e}^{2x} - (\mathrm{e} + 1)\mathrm{e}^x + \mathrm{e} = 0$ devient $X^2 - (\mathrm{e} + 1)X + \mathrm{e} = 0$. Après résolution, on revient à $x$ en utilisant $\mathrm{e}^a = \mathrm{e}^b \iff a = b$. Attention : $X = \mathrm{e}^x$ est toujours **strictement positif**, on rejette donc les valeurs négatives de $X$.

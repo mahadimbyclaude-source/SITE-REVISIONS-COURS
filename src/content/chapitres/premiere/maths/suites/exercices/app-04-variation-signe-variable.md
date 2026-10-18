@@ -1,5 +1,5 @@
 ---
-titre: Sens de variation dont le signe dépend de n
+titre: 'Sens de variation dont le signe dépend de $n$'
 type: application
 notion: Sens de variation
 difficulte: Moyen

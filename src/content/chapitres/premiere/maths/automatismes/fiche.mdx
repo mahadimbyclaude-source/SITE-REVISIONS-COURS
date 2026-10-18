@@ -1,0 +1,52 @@
+---
+titre: Fiche — Automatismes
+---
+
+## À savoir par cœur
+
+| Thème | Réflexe |
+| --- | --- |
+| Hausse de $t\ \%$ | multiplier par $1 + \dfrac{t}{100}$ |
+| Baisse de $t\ \%$ | multiplier par $1 - \dfrac{t}{100}$ |
+| Évolutions successives | multiplier les coefficients |
+| Évolution réciproque | inverse du coefficient |
+| Fractions | même dénominateur pour additionner, inverser pour diviser |
+| Puissances | $a^m a^n = a^{m+n}$, $\dfrac{a^m}{a^n} = a^{m-n}$, $\left(a^m\right)^n = a^{mn}$ |
+| Racines | $\sqrt{ab} = \sqrt{a}\sqrt{b}$, $\left(\sqrt{a}\right)^2 = a$ |
+| Identités | $(a \pm b)^2 = a^2 \pm 2ab + b^2$, $(a - b)(a + b) = a^2 - b^2$ |
+| Produit nul | $AB = 0 \iff A = 0$ ou $B = 0$ |
+| Affine | $m = \dfrac{y_B - y_A}{x_B - x_A}$, $p = f(0)$ |
+| Trinôme | racines, somme $-\dfrac{b}{a}$, produit $\dfrac{c}{a}$, forme canonique |
+| Probabilité | $\dfrac{\text{cas favorables}}{\text{cas possibles}}$, « au moins un » $= 1 -$ « aucun » |
+| Suites | $u_n = u_0 + nr$ ou $u_n = u_0 q^n$ |
+
+## Méthodes express
+
+<Bloc type="methode" titre="Évolutions en pourcentage">
+
+Passer aux coefficients multiplicateurs, multiplier, puis revenir au pourcentage : $t = (\text{coefficient} - 1) \times 100$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Résoudre une équation avec un trinôme">
+
+Factoriser si possible (facteur commun, identité remarquable), sinon utiliser $\Delta$. Penser à l'équation produit nul.
+
+</Bloc>
+
+<Bloc type="methode" titre="Programme Python">
+
+Tableau de suivi des variables à chaque tour de boucle.
+
+</Bloc>
+
+## Pièges
+
+<Bloc type="attention">
+
+- Additionner des pourcentages au lieu de multiplier les coefficients.
+- Oublier de changer le sens d'une inégalité en multipliant par un nombre négatif.
+- Écrire $\sqrt{a + b} = \sqrt{a} + \sqrt{b}$ ou $(a + b)^2 = a^2 + b^2$.
+- Oublier la borne exclue dans `range(1, 5)`.
+
+</Bloc>

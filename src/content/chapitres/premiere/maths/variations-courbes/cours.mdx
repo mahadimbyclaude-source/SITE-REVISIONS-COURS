@@ -1,0 +1,160 @@
+---
+titre: Variations et courbes représentatives
+ordre: 4
+description: Lien entre signe de la dérivée et variations, tableau de variations, extremums, nombre de solutions d'une équation et problèmes d'optimisation.
+---
+
+{/*
+  Chapitre Variations et courbes (Première, spécialité maths).
+  Plan : dérivée et variations, tableau de variations, extremums, nombre de solutions, optimisation.
+*/}
+
+## Dérivée et sens de variation
+
+<Bloc type="theoreme" titre="Signe de la dérivée et variations">
+
+Soit $f$ une fonction dérivable sur un intervalle $I$.
+
+- Si $f'(x) \geq 0$ pour tout $x \in I$, alors $f$ est **croissante** sur $I$.
+- Si $f'(x) \leq 0$ pour tout $x \in I$, alors $f$ est **décroissante** sur $I$.
+- Si $f'(x) = 0$ pour tout $x \in I$, alors $f$ est **constante** sur $I$.
+
+Avec une dérivée strictement positive (respectivement négative) sauf éventuellement en des points isolés, la fonction est **strictement** croissante (respectivement décroissante).
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Ce théorème est admis. Il traduit une idée simple : la dérivée est le coefficient directeur de la tangente. Quand les tangentes « montent », la courbe monte.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $f(x) = x^2 - 4x + 1$. On a $f'(x) = 2x - 4$, qui est négatif pour $x < 2$ et positif pour $x > 2$. La fonction $f$ est donc décroissante sur $\interof{-\infty}{2}$ et croissante sur $\interfo{2}{+\infty}$.
+
+</Bloc>
+
+## Étudier les variations d'une fonction
+
+<Bloc type="methode" titre="Dresser un tableau de variations">
+
+1. Donner l'**ensemble de définition** (ou l'intervalle d'étude) et vérifier que $f$ est dérivable.
+2. **Calculer $f'(x)$** et la mettre sous une forme **factorisée** (c'est le plus important).
+3. **Étudier le signe de $f'(x)$** : racines, tableau de signes (facteur par facteur).
+4. **Reporter** le signe de $f'$ dans le tableau et en déduire les flèches de $f$.
+5. **Calculer les valeurs** de $f$ aux points où la dérivée s'annule et aux bornes utiles.
+
+</Bloc>
+
+<Bloc type="exemple" titre="Une fonction polynôme de degré 3">
+
+Soit $f(x) = x^3 - 3x^2 + 2$ sur $\R$. On a $f'(x) = 3x^2 - 6x = 3x(x - 2)$, qui s'annule en $0$ et en $2$. Le coefficient de $x^2$ est positif : $f'$ est positive à l'extérieur des racines.
+
+On calcule $f(0) = 2$ et $f(2) = 8 - 12 + 2 = -2$.
+
+$$
+\begin{array}{c|ccccccc}
+x & -\infty & & 0 & & 2 & & +\infty \\ \hline
+f'(x) & & + & 0 & - & 0 & + & \\ \hline
+f & & \nearrow & 2 & \searrow & -2 & \nearrow &
+\end{array}
+$$
+
+</Bloc>
+
+<Bloc type="attention">
+
+- Il faut **factoriser** $f'$ avant d'étudier son signe : le signe d'une somme ne se lit pas directement.
+- La flèche de $f$ dépend du signe de $f'$, pas de celui de $f$.
+- Pour un quotient $\dfrac{u}{v}$, le dénominateur de $f'$ est $v^2$ : il est toujours positif, seul le numérateur donne le signe.
+
+</Bloc>
+
+<Bloc type="exemple" titre="Un quotient">
+
+Soit $f(x) = x + \dfrac{4}{x}$ sur $\interoo{0}{+\infty}$. Alors
+
+$$
+f'(x) = 1 - \frac{4}{x^2} = \frac{x^2 - 4}{x^2} = \frac{(x - 2)(x + 2)}{x^2}.
+$$
+
+Sur $\interoo{0}{+\infty}$, $x + 2 > 0$ et $x^2 > 0$ : le signe de $f'(x)$ est celui de $x - 2$. La fonction $f$ est décroissante sur $\interof{0}{2}$ et croissante sur $\interfo{2}{+\infty}$, avec $f(2) = 4$.
+
+</Bloc>
+
+## Extremums
+
+<Bloc type="definition" titre="Extremum">
+
+Soit $f$ définie sur un intervalle $I$ et $a \in I$.
+
+- $f(a)$ est le **maximum** de $f$ sur $I$ si $f(x) \leq f(a)$ pour tout $x \in I$.
+- $f(a)$ est le **minimum** de $f$ sur $I$ si $f(x) \geq f(a)$ pour tout $x \in I$.
+- On parle d'**extremum local** si l'inégalité est vraie seulement pour les $x$ de $I$ proches de $a$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Extremum et dérivée">
+
+Soit $f$ dérivable sur un intervalle ouvert $I$ et $a \in I$.
+
+- Si $f$ admet un extremum local en $a$, alors $f'(a) = 0$.
+- Si $f'$ s'annule **en changeant de signe** en $a$, alors $f$ admet un extremum local en $a$ : un maximum si le signe passe de $+$ à $-$, un minimum si le signe passe de $-$ à $+$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+La condition $f'(a) = 0$ **ne suffit pas**. Pour $f(x) = x^3$, on a $f'(0) = 0$ mais $f'$ reste positive de chaque côté de $0$ : il n'y a pas d'extremum en $0$. Il faut vérifier le changement de signe.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Une tangente est **horizontale** au point d'abscisse $a$ lorsque $f'(a) = 0$. Dans ce cas, l'équation de la tangente est $y = f(a)$.
+
+</Bloc>
+
+## Nombre de solutions d'une équation $f(x) = k$
+
+<Bloc type="propriete" titre="Fonction strictement monotone">
+
+Si $f$ est **continue et strictement monotone** sur un intervalle $[a\,;\,b]$, alors pour tout réel $k$ compris entre $f(a)$ et $f(b)$, l'équation $f(x) = k$ admet **une unique solution** dans $[a\,;\,b]$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Compter les solutions avec le tableau de variations">
+
+1. Dresser le tableau de variations de $f$.
+2. Sur **chaque intervalle** où $f$ est strictement monotone, regarder si $k$ est compris entre les valeurs prises aux bornes. Si oui, il y a **une** solution sur cet intervalle.
+3. Additionner les solutions obtenues sur chaque intervalle (attention à ne pas compter deux fois une valeur partagée par deux intervalles).
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Avec le tableau de $f(x) = x^3 - 3x^2 + 2$ ci-dessus, l'équation $f(x) = 0$ a trois solutions : une dans $\interof{-\infty}{0}$ (où $f$ passe de « très négatif » à $2$), une dans $\interff{0}{2}$ (où $f$ passe de $2$ à $-2$) et une dans $\interfo{2}{+\infty}$ (où $f$ passe de $-2$ à « très grand »).
+
+</Bloc>
+
+## Optimisation
+
+<Bloc type="methode" titre="Résoudre un problème d'optimisation">
+
+1. **Choisir la variable** $x$ et préciser l'**intervalle** où elle peut varier (les contraintes du problème).
+2. **Exprimer la grandeur à optimiser** (aire, volume, coût...) comme une fonction $f(x)$.
+3. **Étudier les variations** de $f$ sur cet intervalle.
+4. **Conclure** avec une phrase : la valeur de $x$ qui réalise l'extremum et la valeur de l'extremum, avec les unités.
+
+</Bloc>
+
+<Bloc type="exemple" titre="Aire maximale d'un rectangle">
+
+On dispose de $20$ m de clôture pour entourer un rectangle de côtés $x$ et $10 - x$ avec $x \in \interff{0}{10}$. L'aire vaut $A(x) = x(10 - x) = -x^2 + 10x$. On a $A'(x) = -2x + 10$, positive sur $\interff{0}{5}$ et négative sur $\interff{5}{10}$. L'aire est maximale pour $x = 5$ : c'est un carré de côté $5$ m, d'aire $25$ m².
+
+</Bloc>
+
+## Lien avec le second degré
+
+Beaucoup de fonctions du chapitre ont une dérivée qui est un **trinôme** : pour étudier le signe de $f'$ on utilise alors les racines, le discriminant et la règle du signe du trinôme. Pour $f(x) = x^3 + mx$, la dérivée $f'(x) = 3x^2 + m$ change de nature selon le signe du paramètre $m$ : c'est un thème classique de contrôle.

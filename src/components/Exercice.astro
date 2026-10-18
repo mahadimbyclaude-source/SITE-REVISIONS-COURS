@@ -11,7 +11,7 @@ import {
   type Chapitre,
   type Exercice as ExerciceEntree,
 } from '../lib/contenu';
-import { rendreMarkdown } from '../lib/markdown';
+import { rendreMarkdown, rendreMarkdownEnLigne } from '../lib/markdown';
 
 interface Props {
   exo: ExerciceEntree;
@@ -23,22 +23,39 @@ const { exo, numero, chapitres } = Astro.props;
 const d = exo.data;
 const ancre = ancreExercice(exo);
 
-const [enonce, correction, ...indices] = await Promise.all([
+// Un indice qui commence par « Piste générale : » ou « Plus précis : » : ce mot devient
+// l'étiquette de l'indice au lieu d'être répété dans le texte.
+const PREFIXE_INDICE = /^\s*(piste générale|plus précis)\s*:\s*/i;
+const sourcesIndices = d.indices.map((texte) => {
+  const m = texte.match(PREFIXE_INDICE);
+  if (!m) return { texte, etiquette: undefined };
+  const reste = texte.slice(m[0].length);
+  return { texte: reste.charAt(0).toUpperCase() + reste.slice(1), etiquette: m[1].toLowerCase() };
+});
+
+// Le titre peut contenir une formule : « Étude de $f(x) = 2\sin x - \sin 2x$ ».
+const [titre, enonce, correction, ...indices] = await Promise.all([
+  rendreMarkdownEnLigne(d.titre),
   rendreMarkdown(d.enonce),
   rendreMarkdown(d.correction),
-  ...d.indices.map(rendreMarkdown),
+  ...sourcesIndices.map((i) => rendreMarkdown(i.texte)),
 ]);
 
 const mobilises =
   d.type === 'controle' ? nommerChapitresMobilises(d.chapitres_mobilises, chapitres) : [];
 const nbIndices = indices.length;
+const etiquettes = sourcesIndices.map(
+  (s, i) =>
+    s.etiquette ??
+    (nbIndices > 1 && i === 0 ? 'piste générale' : nbIndices > 1 && i === nbIndices - 1 ? 'plus précis' : undefined),
+);
 ---
 
 <article class="exo" id={ancre} aria-labelledby={`${ancre}-titre`}>
   <header class="exo-entete">
     <h3 class="exo-titre" id={`${ancre}-titre`}>
       <span class="exo-numero">Exercice {numero}<span class="sr-only"> — </span></span>
-      {d.titre}
+      <Fragment set:html={titre} />
     </h3>
     <div class="exo-meta">
       <Badge difficulte={d.difficulte} />
@@ -59,9 +76,7 @@ const nbIndices = indices.length;
               <>
                 {i > 0 && ' + '}
                 {m.chapitre ? (
-                  <a href={urlChapitre(m.chapitre.classe, m.chapitre.matiere, m.chapitre.slug)}>
-                    <strong>{m.titre}</strong>
-                  </a>
+                  <a href={urlChapitre(m.chapitre.classe, m.chapitre.matiere, m.chapitre.slug)}><strong>{m.titre}</strong></a>
                 ) : (
                   <strong>{m.titre}</strong>
                 )}
@@ -83,8 +98,7 @@ const nbIndices = indices.length;
             <li class="indice" hidden>
               <p class="indice-label">
                 Indice {i + 1}
-                {nbIndices > 1 && i === 0 && ' · piste générale'}
-                {nbIndices > 1 && i === nbIndices - 1 && ' · plus précis'}
+                {etiquettes[i] && ` · ${etiquettes[i]}`}
               </p>
               <div class="indice-contenu prose" set:html={html} />
             </li>

@@ -39,6 +39,26 @@ for (const url of liste) {
   test(`rendu des formules : ${url}`, async ({ page }, info) => {
     await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
+
+    // 0. Avant toute action : corrections fermées, indices masqués, et un clic
+    //    sur « Indice » n'affiche qu'un seul indice. Durée affichée sur les exos type contrôle.
+    for (const exo of await page.locator('article.exo').all()) {
+      await expect(exo.locator('details.correction')).not.toHaveAttribute('open', /.*/);
+      await expect(exo.locator('.correction-contenu')).toBeHidden();
+      await expect(exo.locator('.indice:visible')).toHaveCount(0);
+    }
+    const premierBouton = page.locator('.btn-indice').first();
+    if (await premierBouton.count()) {
+      const exo = page.locator('article.exo').filter({ has: premierBouton });
+      await premierBouton.click();
+      await expect(exo.locator('.indice:visible')).toHaveCount(1);
+    }
+    if (url.endsWith('/exos-controle/')) {
+      for (const exo of await page.locator('article.exo').all()) {
+        await expect(exo.locator('.exo-meta')).toContainText('Durée estimée');
+      }
+    }
+
     await toutDeplier(page);
 
     // 1. Aucune erreur de syntaxe KaTeX.
@@ -56,6 +76,13 @@ for (const url of liste) {
         .map((el) => el.closest('.katex')?.querySelector('annotation')?.textContent ?? '?'),
     );
     expect(vides, 'Formules sans rendu visuel').toEqual([]);
+    // Les flèches et accents dessinés en SVG (\vec, \overrightarrow, \widehat…) sont visibles.
+    const svgVides = await page.evaluate(() =>
+      [...document.querySelectorAll<SVGElement>('.katex-html svg')]
+        .filter((el) => el.getBoundingClientRect().width === 0)
+        .map((el) => el.closest('.katex')?.querySelector('annotation')?.textContent ?? '?'),
+    );
+    expect(svgVides, 'Accents ou flèches KaTeX invisibles').toEqual([]);
     if (await page.locator('.katex').count()) {
       expect(await page.evaluate(() => document.fonts.check('16px KaTeX_Main'))).toBe(true);
     }
@@ -124,6 +151,20 @@ test.describe('recherche', () => {
     await chercher(page, 'carton');
     expect(await textesResultats(page)).toContain('carton');
   });
+
+  for (const [requete, chapitre] of [
+    ['exponentielle', 'Fonction exponentielle'],
+    ['produit scalaire', 'Produit scalaire'],
+    ['trigonométrie', 'Trigonométrie'],
+    ['probabilités conditionnelles', 'Probabilités conditionnelles'],
+    ['automatismes', 'Automatismes'],
+    ['courbes représentatives', 'Variations et courbes représentatives'],
+  ]) {
+    test(`la recherche « ${requete} » trouve le chapitre ${chapitre}`, async ({ page }) => {
+      await chercher(page, requete);
+      await expect(page.locator('.resultat-chapitre', { hasText: chapitre }).first()).toBeVisible();
+    });
+  }
 
   test('les corrections ne sont pas indexées', async ({ page }) => {
     // « litres » n'apparaît que dans une correction.

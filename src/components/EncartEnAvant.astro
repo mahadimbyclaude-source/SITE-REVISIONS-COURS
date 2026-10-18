@@ -1,0 +1,28 @@
+---
+// Encart d'un chapitre mis en avant (voir CHAPITRES_EN_AVANT dans src/lib/catalogue.ts).
+import { miseEnAvant, urlChapitre } from '../lib/catalogue';
+import type { Chapitre } from '../lib/contenu';
+
+interface Props {
+  chapitre: Chapitre;
+}
+const { chapitre } = Astro.props;
+const info = miseEnAvant(chapitre)!;
+const id = `encart-${chapitre.slug}`;
+---
+
+<aside class="encart-en-avant" aria-labelledby={id}>
+  <p class="encart-etiquette">{info.etiquette}</p>
+  <h2 id={id}>{info.titre}</h2>
+  <p>{info.accroche}</p>
+  <div class="encart-actions">
+    <a class="bouton" href={urlChapitre(chapitre.classe, chapitre.matiere, chapitre.slug)}>{info.bouton}</a>
+    {
+      info.lienSecondaire && (
+        <a class="bouton bouton--contour" href={info.lienSecondaire.url}>
+          {info.lienSecondaire.texte}
+        </a>
+      )
+    }
+  </div>
+</aside>

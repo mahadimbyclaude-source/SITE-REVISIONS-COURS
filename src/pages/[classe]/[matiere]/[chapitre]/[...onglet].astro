@@ -21,6 +21,7 @@ import {
   type Onglet,
 } from '../../../../lib/catalogue';
 import { slugifier, tousLesChapitres, type Chapitre, type Exercice as ExerciceEntree } from '../../../../lib/contenu';
+import { echapperHtml, rendreMarkdownEnLigne, rendreTitreAvecFormules } from '../../../../lib/markdown';
 
 export const getStaticPaths = (async () => {
   const chapitres = await tousLesChapitres();
@@ -50,11 +51,18 @@ const matiere = matiereParSlug(chapitre.matiere)!;
 
 // Contenu de l'onglet
 let Contenu: Awaited<ReturnType<typeof render>>['Content'] | undefined;
-let sommaire: { slug: string; text: string }[] = [];
+let sommaire: { slug: string; html: string }[] = [];
 if (onglet.id === 'cours') {
   const rendu = await render(chapitre.cours);
   Contenu = rendu.Content;
-  sommaire = rendu.headings.filter((h) => h.depth === 2);
+  // Titres avec formule : texte propre fourni par rehypeTitresAvecFormules, rendu avec KaTeX.
+  const titresFormules = (rendu.remarkPluginFrontmatter?.titresFormules ?? {}) as Record<string, string>;
+  sommaire = rendu.headings
+    .filter((h) => h.depth === 2)
+    .map((h) => ({
+      slug: h.slug,
+      html: titresFormules[h.slug] ? rendreTitreAvecFormules(titresFormules[h.slug]) : echapperHtml(h.text),
+    }));
 } else if (onglet.id === 'fiche' && chapitre.fiche) {
   Contenu = (await render(chapitre.fiche)).Content;
 }
@@ -65,7 +73,14 @@ for (const exo of chapitre.application) {
   const notion = exo.data.type === 'application' ? exo.data.notion : 'Autres';
   notions.set(notion, [...(notions.get(notion) ?? []), exo]);
 }
-const groupes = [...notions].map(([nom, exos]) => ({ nom, ancre: `notion-${slugifier(nom)}`, exos }));
+// Le nom d'une notion peut contenir une formule ($…$), rendue par KaTeX.
+const groupes = await Promise.all(
+  [...notions].map(async ([nom, exos]) => ({
+    html: await rendreMarkdownEnLigne(nom),
+    ancre: `notion-${slugifier(nom)}`,
+    exos,
+  })),
+);
 // Numérotation dans l'ordre d'affichage (notion par notion).
 const numeros = new Map(groupes.flatMap((g) => g.exos).map((e, i) => [e.id, i + 1]));
 
@@ -127,7 +142,7 @@ const icones = { cours: 'cours', fiche: 'fiche', application: 'application', con
               <ol>
                 {sommaire.map((h) => (
                   <li>
-                    <a href={`#${h.slug}`}>{h.text}</a>
+                    <a href={`#${h.slug}`} set:html={h.html} />
                   </li>
                 ))}
               </ol>
@@ -169,7 +184,7 @@ const icones = { cours: 'cours', fiche: 'fiche', application: 'application', con
                 {groupes.map((g) => (
                   <li>
                     <a href={`#${g.ancre}`}>
-                      {g.nom} <span>({g.exos.length})</span>
+                      <Fragment set:html={g.html} /> <span>({g.exos.length})</span>
                     </a>
                   </li>
                 ))}
@@ -177,7 +192,7 @@ const icones = { cours: 'cours', fiche: 'fiche', application: 'application', con
               {groupes.map((g) => (
                 <section aria-labelledby={g.ancre}>
                   <h2 class="titre-notion" id={g.ancre}>
-                    {g.nom}
+                    <span set:html={g.html} />
                   </h2>
                   <div class="exercices">
                     {g.exos.map((exo) => (

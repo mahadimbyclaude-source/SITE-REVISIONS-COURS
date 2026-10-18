@@ -48,9 +48,13 @@ const REGLES_TEXTE = [
   [/\d\.\d/, 'Nombre décimal avec un point (utiliser la virgule)'],
 ];
 
+// Le texte écrit dans \text{…} ou \mathrm{…} (unités comme km/h ou m/s) n'est pas une fraction.
+const sansTexte = (tex) =>
+  tex.replace(/\\(?:text|textrm|mathrm|operatorname|mbox)\s*\{[^{}]*\}/g, (groupe) => groupe.replace(/\//g, '∕'));
+
 const REGLES_TEX = [
-  [/[\w)}]\s*\/\s*[\w({\\]/, 'Fraction avec une barre oblique dans une formule (utiliser \\frac)'],
-  [/\d\.\d/, 'Point décimal dans une formule (utiliser la virgule : 0,25)'],
+  [/[\w)}]\s*\/\s*[\w({\\]/, 'Fraction avec une barre oblique dans une formule (utiliser \\frac)', sansTexte],
+  [/\d\.\d/, 'Point décimal dans une formule (utiliser la virgule : 0,25)', (tex) => tex],
 ];
 
 const fichiers = await fichiersHtml(DIST);
@@ -76,7 +80,7 @@ for (const fichier of fichiers) {
   nbFormules += sources.length;
   for (const source of sources) {
     const tex = source.textContent;
-    for (const [regex, message] of REGLES_TEX) chercher(tex, regex, message, problemes);
+    for (const [regex, message, preparer] of REGLES_TEX) chercher(preparer(tex), regex, message, problemes);
   }
 
   // 4. Indices et corrections hors index

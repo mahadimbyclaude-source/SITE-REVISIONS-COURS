@@ -71,6 +71,28 @@ export const ONGLETS: Onglet[] = [
   { id: 'controle', slug: 'exos-controle', nom: 'Exos type contrôle' },
 ];
 
+/**
+ * Chapitres mis en avant sur l'accueil et dans la liste des chapitres.
+ * Clé : « classe/matière/chapitre ».
+ */
+export const CHAPITRES_EN_AVANT: Record<
+  string,
+  { etiquette: string; titre: string; accroche: string; bouton: string; lienSecondaire?: { texte: string; url: string } }
+> = {
+  'premiere/maths/automatismes': {
+    etiquette: 'Épreuve anticipée · sans calculatrice',
+    titre: 'Prépare l’épreuve anticipée de maths',
+    accroche:
+      'Calcul, pourcentages, fonctions, statistiques, probabilités : les réflexes à maîtriser sans calculatrice pour la partie automatismes de l’épreuve de fin de Première.',
+    bouton: 'Réviser les automatismes',
+    lienSecondaire: { texte: 'Voir les sujets zéro', url: '/annales/#premiere' },
+  },
+};
+
+export function miseEnAvant(chapitre: { classe: string; matiere: string; slug: string }) {
+  return CHAPITRES_EN_AVANT[`${chapitre.classe}/${chapitre.matiere}/${chapitre.slug}`];
+}
+
 export const DIFFICULTES = ['Facile', 'Moyen', 'Difficile', 'Très difficile'] as const;
 export type Difficulte = (typeof DIFFICULTES)[number];
 

@@ -27,6 +27,8 @@ src/content/chapitres/premiere/maths/second-degre/
     └── ctl-01-equation-parametre.md → type: controle  → onglet « Exos type contrôle »
 ```
 
+Pour mettre un chapitre en avant sur l’accueil (comme les Automatismes, pour l’épreuve anticipée), ajoute-le à `CHAPITRES_EN_AVANT` dans `src/lib/catalogue.ts`.
+
 **Ajouter un chapitre = créer un dossier avec ces fichiers.** Aucune autre modification : la liste des chapitres, les onglets, la navigation et la recherche se mettent à jour seuls. Les classes possibles sont `premiere` et `terminale`, les matières `maths` et `physique-chimie` (voir `src/lib/catalogue.ts`).
 
 ### Le cours (`cours.mdx`)
@@ -86,7 +88,9 @@ Ces règles sont vérifiées au build : un exercice d’application « Difficile
 - Virgule décimale : écrire `$0,25$` ; elle est automatiquement collée (`0{,}25`). Pour une liste de nombres, utiliser le point-virgule : `\{1\,;\,2\}`.
 - Raccourcis disponibles : `\R`, `\N`, `\Z`, `\Q` et les intervalles à la française `\interoo{-\infty}{-1}` → ]−∞ ; −1[, `\interff`, `\interof`, `\interfo` (o = ouvert, f = fermé).
 - Tableaux de signes et de variations : `\begin{array}…\end{array}` dans un bloc `$$` (voir les exemples dans les cours). Les formules larges défilent horizontalement sur téléphone.
-- Pas de formule dans les titres (`##`, `titre=`, `notion:`) : ils servent au sommaire et à la recherche.
+- Les titres peuvent contenir une formule entre `$…$` : sections (`##`), encadrés (`titre="Suite $(\mathrm{e}^{an})$"`), exercices (`titre:`) et notions (`notion:`). Jamais de formule en texte simple (`e^(2x)`, `f(x) = k`).
+- Seule exception : la `description` d’un chapitre reste en texte simple (elle sert aussi de résumé pour les moteurs de recherche), donc sans formule.
+- Indices : inutile de commencer par « Piste générale : » ou « Plus précis : ». Si c’est le cas, le site s’en sert comme étiquette de l’indice au lieu de le répéter.
 
 ## Vérifications automatiques
 

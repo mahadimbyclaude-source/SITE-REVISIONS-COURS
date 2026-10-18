@@ -1,0 +1,182 @@
+---
+titre: Produit scalaire
+ordre: 7
+description: Produit scalaire de deux vecteurs (norme, angle, coordonnées, projeté orthogonal), orthogonalité, Al-Kashi, équations de droites et de cercles.
+---
+
+{/*
+  Chapitre Produit scalaire (Première, spécialité maths).
+  Plan : définitions, expressions, propriétés, orthogonalité et projeté, Al-Kashi, droites et cercles.
+*/}
+
+## Définitions et expressions
+
+<Bloc type="definition" titre="Produit scalaire par la norme">
+
+Le **produit scalaire** de deux vecteurs $\vec{u}$ et $\vec{v}$ est le nombre
+
+$$
+\vec{u} \cdot \vec{v} = \frac{1}{2}\left(\|\vec{u} + \vec{v}\|^2 - \|\vec{u}\|^2 - \|\vec{v}\|^2\right).
+$$
+
+C'est un **nombre réel**, pas un vecteur.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Avec le cosinus de l'angle">
+
+Si $\vec{u}$ et $\vec{v}$ sont non nuls et si $\theta$ est une mesure de l'angle $(\vec{u}\,;\,\vec{v})$, alors
+
+$$
+\vec{u} \cdot \vec{v} = \|\vec{u}\| \times \|\vec{v}\| \times \cos \theta.
+$$
+
+Pour trois points, $\overrightarrow{AB} \cdot \overrightarrow{AC} = AB \times AC \times \cos\widehat{BAC}$. Le produit scalaire est nul si l'un des deux vecteurs est nul.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Avec les coordonnées">
+
+Dans un **repère orthonormé**, si $\vec{u}(x\,;\,y)$ et $\vec{v}(x'\,;\,y')$, alors
+
+$$
+\vec{u} \cdot \vec{v} = xx' + yy'.
+$$
+
+En particulier $\|\vec{u}\|^2 = \vec{u} \cdot \vec{u} = x^2 + y^2$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Avec $\vec{u}(3\,;\,-2)$ et $\vec{v}(4\,;\,5)$ : $\vec{u} \cdot \vec{v} = 3 \times 4 + (-2) \times 5 = 2$.
+
+Avec $AB = 4$, $AC = 3$ et $\widehat{BAC} = 60^\circ$ : $\overrightarrow{AB} \cdot \overrightarrow{AC} = 4 \times 3 \times \cos 60^\circ = 12 \times \dfrac{1}{2} = 6$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Valeurs de $\cos$ à connaître : $\cos 0^\circ = 1$, $\cos 30^\circ = \dfrac{\sqrt{3}}{2}$, $\cos 45^\circ = \dfrac{\sqrt{2}}{2}$, $\cos 60^\circ = \dfrac{1}{2}$, $\cos 90^\circ = 0$, $\cos 120^\circ = -\dfrac{1}{2}$, $\cos 180^\circ = -1$.
+
+</Bloc>
+
+## Propriétés
+
+<Bloc type="propriete" titre="Règles de calcul">
+
+Pour tous vecteurs $\vec{u}$, $\vec{v}$, $\vec{w}$ et tout réel $k$ :
+
+- **symétrie** : $\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u}$ ;
+- **bilinéarité** : $\vec{u} \cdot (\vec{v} + \vec{w}) = \vec{u} \cdot \vec{v} + \vec{u} \cdot \vec{w}$ et $(k\vec{u}) \cdot \vec{v} = k\,(\vec{u} \cdot \vec{v})$ ;
+- **identités remarquables** : $\|\vec{u} + \vec{v}\|^2 = \|\vec{u}\|^2 + 2\,\vec{u} \cdot \vec{v} + \|\vec{v}\|^2$ et $\|\vec{u} - \vec{v}\|^2 = \|\vec{u}\|^2 - 2\,\vec{u} \cdot \vec{v} + \|\vec{v}\|^2$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+- $\vec{u} \cdot \vec{v}$ est un **nombre** : l'expression $(\vec{u} \cdot \vec{v}) \cdot \vec{w}$ n'a pas de sens.
+- $\vec{u} \cdot \vec{u}$ se note $\vec{u}^{\,2}$ et vaut $\|\vec{u}\|^2$ (pas $\|\vec{u}\|$).
+- Dans la formule des coordonnées, le repère doit être **orthonormé**.
+
+</Bloc>
+
+## Orthogonalité et projeté orthogonal
+
+<Bloc type="propriete" titre="Vecteurs orthogonaux">
+
+Deux vecteurs $\vec{u}$ et $\vec{v}$ sont **orthogonaux** si et seulement si $\vec{u} \cdot \vec{v} = 0$. Dans un repère orthonormé, $\vec{u}(x\,;\,y)$ et $\vec{v}(x'\,;\,y')$ sont orthogonaux si et seulement si $xx' + yy' = 0$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Projeté orthogonal">
+
+Soit $H$ le projeté orthogonal de $C$ sur la droite $(AB)$. Alors
+
+$$
+\overrightarrow{AB} \cdot \overrightarrow{AC} = \overrightarrow{AB} \cdot \overrightarrow{AH}.
+$$
+
+Si $\overrightarrow{AH}$ et $\overrightarrow{AB}$ ont le même sens, le produit scalaire vaut $AB \times AH$ ; s'ils ont des sens opposés, il vaut $-AB \times AH$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Calculer un angle avec un produit scalaire">
+
+1. Calculer $\vec{u} \cdot \vec{v}$ avec les coordonnées.
+2. Calculer $\|\vec{u}\|$ et $\|\vec{v}\|$.
+3. Écrire $\cos\theta = \dfrac{\vec{u} \cdot \vec{v}}{\|\vec{u}\|\,\|\vec{v}\|}$ et identifier l'angle (valeur remarquable ou calculatrice).
+
+</Bloc>
+
+## Théorème d'Al-Kashi
+
+<Bloc type="theoreme" titre="Al-Kashi">
+
+Dans un triangle $ABC$, avec $a = BC$, $b = AC$ et $c = AB$ :
+
+$$
+a^2 = b^2 + c^2 - 2bc\cos\widehat{A}.
+$$
+
+</Bloc>
+
+<Bloc type="demonstration" titre="Preuve avec le produit scalaire">
+
+On écrit $\overrightarrow{BC} = \overrightarrow{AC} - \overrightarrow{AB}$ puis $BC^2 = \|\overrightarrow{AC} - \overrightarrow{AB}\|^2 = AC^2 + AB^2 - 2\,\overrightarrow{AB} \cdot \overrightarrow{AC}$, et $\overrightarrow{AB} \cdot \overrightarrow{AC} = AB \times AC \times \cos\widehat{A}$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Quand $\widehat{A} = 90^\circ$, $\cos\widehat{A} = 0$ et on retrouve le **théorème de Pythagore**. Al-Kashi permet de calculer un troisième côté si on connaît deux côtés et l'angle entre eux, ou un angle si on connaît les trois côtés.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Une autre expression du produit scalaire">
+
+$\overrightarrow{AB} \cdot \overrightarrow{AC} = \dfrac{1}{2}\left(AB^2 + AC^2 - BC^2\right)$.
+
+</Bloc>
+
+## Droites et cercles
+
+<Bloc type="definition" titre="Vecteur normal">
+
+Un **vecteur normal** à une droite $d$ est un vecteur non nul orthogonal à un vecteur directeur de $d$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Équation d'une droite avec un vecteur normal">
+
+Dans un repère orthonormé, la droite de vecteur normal $\vec{n}(a\,;\,b)$ a une équation de la forme $ax + by + c = 0$. Réciproquement, la droite d'équation $ax + by + c = 0$ a pour vecteur normal $\vec{n}(a\,;\,b)$ et pour vecteur directeur $\vec{u}(-b\,;\,a)$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Droite passant par A et de vecteur normal n">
+
+Un point $M(x\,;\,y)$ est sur la droite si et seulement si $\overrightarrow{AM} \cdot \vec{n} = 0$. On écrit cette condition avec les coordonnées puis on développe.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+La droite passant par $A(2\,;\,1)$ de vecteur normal $\vec{n}(3\,;\,-2)$ : $3(x - 2) - 2(y - 1) = 0$, soit $3x - 2y - 4 = 0$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Cercle">
+
+Le cercle de centre $\Omega(a\,;\,b)$ et de rayon $r$ a pour équation $(x - a)^2 + (y - b)^2 = r^2$. Le cercle de **diamètre $[AB]$** est l'ensemble des points $M$ tels que $\overrightarrow{MA} \cdot \overrightarrow{MB} = 0$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Tangente à un cercle en un point A du cercle">
+
+La tangente en $A$ est la droite passant par $A$ et de vecteur normal $\overrightarrow{\Omega A}$ (le rayon est perpendiculaire à la tangente).
+
+</Bloc>
+
+## Lien avec le second degré
+
+Pour reconnaître un cercle dans une équation comme $x^2 + y^2 - 4x + 2y - 20 = 0$, on met $x^2 - 4x$ et $y^2 + 2y$ sous **forme canonique** : $(x - 2)^2 + (y + 1)^2 = 25$. Pour trouver l'intersection d'une droite et d'un cercle, on remplace une variable par son expression et on résout un trinôme : le discriminant donne le nombre de points d'intersection.
