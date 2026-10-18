@@ -118,7 +118,7 @@ for (const url of liste) {
   });
 }
 
-test.describe('parcours : accueil, puis page de la classe', () => {
+test.describe('parcours : accueil, puis Première, puis Mathématiques, puis chapitre', () => {
   test('accueil : le choix de la classe vient d’abord, sans bandeau ni liste de chapitres', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('.encart-en-avant')).toHaveCount(0);
@@ -137,18 +137,51 @@ test.describe('parcours : accueil, puis page de la classe', () => {
     await expect(page.locator('header [data-ouvrir-recherche]')).toBeVisible();
   });
 
-  test('clic sur Première : titre, bandeau, puis liste numérotée des chapitres', async ({ page }) => {
+  test('Première : choix de la matière, deux cartes de même taille', async ({ page }) => {
     await page.goto('/');
-    const carte = page.locator('main a.carte', { hasText: 'Première' });
-    const nbChapitres = Number((await carte.innerText()).match(/(\d+) chapitres? en ligne/)![1]);
-    await carte.click();
+    await page.locator('main a.carte', { hasText: 'Première' }).click();
 
     await expect(page).toHaveURL(/\/premiere\/$/);
     await expect(page.locator('h1')).toHaveText('Première · Spécialité');
+    await expect(page.locator('.chapeau')).toHaveText('Choisis une matière.');
+    await expect(page.locator('.encart-en-avant')).toHaveCount(0);
+    await expect(page.locator('.chapitres-compacts')).toHaveCount(0);
+    await expect(page.getByText('Autres matières')).toHaveCount(0);
+
+    const cartes = page.locator('main .grille-cartes .carte');
+    await expect(cartes).toHaveCount(2);
+    const maths = cartes.filter({ hasText: 'Mathématiques' });
+    await expect(maths).toHaveAttribute('href', '/premiere/maths/');
+    await expect(maths).toContainText(/\d+ chapitres? en ligne/);
+    const physique = cartes.filter({ hasText: 'Physique-chimie' });
+    await expect(physique).toContainText('Bientôt disponible');
+    expect(await physique.evaluate((el) => el.tagName)).not.toBe('A');
+
+    // Même taille sur ordinateur (côte à côte), même largeur sur téléphone (l'une sous l'autre).
+    const [a, b] = [await maths.boundingBox(), await physique.boundingBox()];
+    expect(Math.abs(a!.width - b!.width)).toBeLessThanOrEqual(1);
+    expect(Math.abs(a!.height - b!.height)).toBeLessThanOrEqual(1);
+  });
+
+  test('Mathématiques : bandeau puis liste numérotée des chapitres', async ({ page }) => {
+    await page.goto('/premiere/');
+    const carte = page.locator('main a.carte', { hasText: 'Mathématiques' });
+    const nbChapitres = Number((await carte.innerText()).match(/(\d+) chapitres? en ligne/)![1]);
+    await carte.click();
+
+    await expect(page).toHaveURL(/\/premiere\/maths\/$/);
+    await expect(page.locator('h1')).toHaveText('Mathématiques · Première');
+    const fil = (await page.locator('.fil li').allInnerTexts()).map((t) => t.replace('›', '').trim());
+    expect(fil).toEqual(['Accueil', 'Première', 'Maths']);
+    await expect(page.locator('.fil a', { hasText: 'Première' })).toHaveAttribute('href', '/premiere/');
+
     const encart = page.locator('.encart-en-avant');
     await expect(encart).toContainText('Prépare l’épreuve anticipée de maths');
-    await expect(encart.getByRole('link', { name: 'Réviser les automatismes' })).toBeVisible();
-    await expect(encart.getByRole('link', { name: 'Voir les sujets zéro' })).toBeVisible();
+    await expect(encart.getByRole('link', { name: 'Réviser les automatismes' })).toHaveAttribute(
+      'href',
+      '/premiere/maths/automatismes/',
+    );
+    await expect(encart.getByRole('link', { name: 'Voir les sujets zéro' })).toHaveAttribute('href', '/annales/#premiere');
     await expect(page.getByRole('heading', { name: 'Chapitres de Première · Maths' })).toBeVisible();
 
     // Ordre : titre, bandeau, liste.
@@ -158,7 +191,7 @@ test.describe('parcours : accueil, puis page de la classe', () => {
     });
     expect(dansLOrdre).toBe(true);
 
-    // Autant de chapitres que sur la carte de l'accueil, numérotés 1, 2, 3…
+    // Autant de chapitres que sur la carte Mathématiques, numérotés 1, 2, 3…
     await expect(page.locator('.chapitres-compacts > li')).toHaveCount(nbChapitres);
     const numeros = (await page.locator('.chapitres-compacts .chapitre-numero').allInnerTexts()).map(Number);
     expect(numeros).toEqual(Array.from({ length: nbChapitres }, (_, i) => i + 1));
@@ -166,26 +199,44 @@ test.describe('parcours : accueil, puis page de la classe', () => {
     await expect(automatismes).toHaveClass(/chapitre-compact--en-avant/);
     await expect(automatismes).toContainText('Sans calculatrice');
 
-    // Le bouton « retour » du navigateur ramène à l'accueil.
+    // Le bouton « retour » du navigateur ramène au choix de la matière.
     await page.goBack();
-    await expect(page).toHaveURL(/\/$/);
-    await expect(page.getByRole('heading', { name: 'Choisis ta classe' })).toBeVisible();
+    await expect(page).toHaveURL(/\/premiere\/$/);
+    await expect(page.locator('.chapeau')).toHaveText('Choisis une matière.');
   });
 
-  test('téléphone 390 px : rien ne déborde sur l’accueil et la page Première', async ({ page }) => {
+  test('boutons du bandeau : automatismes et sujets zéro', async ({ page }) => {
+    await page.goto('/premiere/maths/');
+    await page.locator('.encart-en-avant').getByRole('link', { name: 'Réviser les automatismes' }).click();
+    await expect(page.locator('h1')).toHaveText('Automatismes');
+    await page.goto('/premiere/maths/');
+    await page.locator('.encart-en-avant').getByRole('link', { name: 'Voir les sujets zéro' }).click();
+    await expect(page).toHaveURL(/\/annales\/#premiere$/);
+    await expect(page.locator('#premiere h2')).toContainText('Première');
+  });
+
+  test('page de chapitre : le fil d’Ariane ramène à Maths puis à Première', async ({ page }) => {
+    await page.goto('/premiere/maths/');
+    await page.locator('.chapitre-compact', { hasText: 'Dérivation' }).click();
+    await expect(page).toHaveURL(/\/premiere\/maths\/derivation\/$/);
+
+    await page.locator('.fil a', { hasText: 'Maths' }).click();
+    await expect(page).toHaveURL(/\/premiere\/maths\/$/);
+    await expect(page.locator('h1')).toHaveText('Mathématiques · Première');
+
+    await page.goto('/premiere/maths/derivation/fiche/');
+    await page.locator('.fil a', { hasText: 'Première' }).click();
+    await expect(page).toHaveURL(/\/premiere\/$/);
+    await expect(page.locator('h1')).toHaveText('Première · Spécialité');
+  });
+
+  test('téléphone 390 px : rien ne déborde sur l’accueil, Première et Mathématiques', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    for (const url of ['/', '/premiere/']) {
+    for (const url of ['/', '/premiere/', '/premiere/maths/']) {
       await page.goto(url);
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(debordement, url).toBeLessThanOrEqual(0);
     }
-  });
-
-  test('page de chapitre : le fil d’Ariane ramène à la page Première', async ({ page }) => {
-    await page.goto('/premiere/maths/derivation/');
-    await page.locator('.fil a', { hasText: 'Première' }).click();
-    await expect(page).toHaveURL(/\/premiere\/$/);
-    await expect(page.locator('h1')).toHaveText('Première · Spécialité');
   });
 });
 

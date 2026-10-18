@@ -461,6 +461,8 @@ a.carte:hover {
   letter-spacing: 0.02em;
   border-radius: 999px;
   padding: 0.15rem 0.6rem;
+  /* Même hauteur pour toutes les étiquettes, qu'elles aient une bordure visible ou non. */
+  border: 1px solid transparent;
 }
 
 .etiquette--bientot {

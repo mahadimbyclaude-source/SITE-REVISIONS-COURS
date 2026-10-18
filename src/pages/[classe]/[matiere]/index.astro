@@ -1,4 +1,6 @@
 ---
+// Page d'une matière dans une classe (ex. /premiere/maths/) : chapitre mis en avant,
+// puis la liste numérotée des chapitres, générée depuis la collection et triée par `ordre`.
 import type { GetStaticPaths } from 'astro';
 import Base from '../../../layouts/Base.astro';
 import BientotDisponible from '../../../components/BientotDisponible.astro';
@@ -17,49 +19,47 @@ export const getStaticPaths = (() =>
 
 const { classe, matiere } = Astro.props as { classe: Classe; matiere: Matiere };
 const chapitres = await chapitresDe(classe.slug, matiere.slug);
-const titre = `${matiere.nom} — ${classe.nom}`;
+const titre = `${matiere.nom} · ${classe.nom}`;
 const enAvant = chapitres.filter((c) => miseEnAvant(c));
 ---
 
 <Base titre={titre}>
-  <Fil elements={[{ nom: classe.nom, url: urlClasse(classe.slug) }, { nom: matiere.nom }]} />
+  <Fil elements={[{ nom: classe.nom, url: urlClasse(classe.slug) }, { nom: matiere.court }]} />
   {
     chapitres.length > 0 ? (
       <>
         <section class="intro">
-          <p class="surtitre">{classe.nom}</p>
-          <h1>{matiere.nom}</h1>
-          <p class="chapeau">
-            Chaque chapitre contient un cours, une fiche de révision, des exercices d’application et
-            des exos type contrôle corrigés.
-          </p>
+          <h1>{titre}</h1>
         </section>
-        {enAvant.map((c) => <EncartEnAvant chapitre={c} />)}
-        <ol class="liste-chapitres">
-          {chapitres.map((c) => (
-            <li>
-              <a
-                class:list={['carte chapitre-lien', { 'carte--en-avant': miseEnAvant(c) }]}
-                href={urlChapitre(c.classe, c.matiere, c.slug)}
-              >
-                <span class="chapitre-numero" aria-hidden="true">
-                  {c.numero}
-                </span>
-                <span class="carte-titre">
-                  <span class="sr-only">Chapitre {c.numero} : </span>
-                  {c.titre}
-                </span>
-                <span class="carte-texte">{c.description}</span>
-                <span class="carte-pied">
-                  {miseEnAvant(c) && (
-                    <span class="etiquette etiquette--epreuve">{miseEnAvant(c)!.etiquette}</span>
-                  )}
-                  <span>{c.application.length} exercices d’application</span>
-                  <span>{c.controle.length} exos type contrôle</span>
-                </span>
-              </a>
-            </li>
-          ))}
+
+        {enAvant.map((c) => (
+          <EncartEnAvant chapitre={c} />
+        ))}
+
+        <h2 class="section-titre">
+          Chapitres de {classe.nom} · {matiere.court}
+        </h2>
+        <ol class="chapitres-compacts">
+          {chapitres.map((c) => {
+            const info = miseEnAvant(c);
+            return (
+              <li>
+                <a
+                  class:list={['chapitre-compact', { 'chapitre-compact--en-avant': info }]}
+                  href={urlChapitre(c.classe, c.matiere, c.slug)}
+                >
+                  <span class="chapitre-numero" aria-hidden="true">
+                    {c.numero}
+                  </span>
+                  <span class="chapitre-compact-titre">
+                    <span class="sr-only">Chapitre {c.numero} : </span>
+                    {c.titre}
+                  </span>
+                  {info && <span class="etiquette etiquette--epreuve">Sans calculatrice</span>}
+                </a>
+              </li>
+            );
+          })}
         </ol>
       </>
     ) : (
