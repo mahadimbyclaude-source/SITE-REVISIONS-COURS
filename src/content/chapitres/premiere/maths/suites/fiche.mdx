@@ -1,0 +1,78 @@
+---
+titre: Fiche — Suites numériques
+---
+
+## À savoir par cœur
+
+| Notion | Suite arithmétique (raison $r$) | Suite géométrique (raison $q$) |
+| --- | --- | --- |
+| Définition | $u_{n+1} = u_n + r$ | $u_{n+1} = q \times u_n$ |
+| Test | $u_{n+1} - u_n$ constant | $\dfrac{u_{n+1}}{u_n}$ constant |
+| Terme général | $u_n = u_0 + nr$ | $u_n = u_0 \times q^n$ |
+| Entre deux termes | $u_n = u_p + (n - p)r$ | $u_n = u_p \times q^{n-p}$ |
+| Somme $u_0 + \cdots + u_n$ | $(n + 1) \times \dfrac{u_0 + u_n}{2}$ | $u_0 \times \dfrac{1 - q^{n+1}}{1 - q}$ pour $q \neq 1$ |
+
+## Sommes à connaître
+
+| Somme | Valeur |
+| --- | --- |
+| $1 + 2 + \cdots + n$ | $\dfrac{n(n + 1)}{2}$ |
+| $1 + q + \cdots + q^n$ avec $q \neq 1$ | $\dfrac{1 - q^{n+1}}{1 - q}$ |
+
+## Sens de variation
+
+| Suite | Condition | Variation |
+| --- | --- | --- |
+| Arithmétique | $r > 0$ | croissante |
+| Arithmétique | $r < 0$ | décroissante |
+| Géométrique, $u_0 > 0$ | $q > 1$ | croissante |
+| Géométrique, $u_0 > 0$ | $0 < q < 1$ | décroissante |
+| Géométrique | $q < 0$ | non monotone |
+
+Si $u_0 < 0$, les variations d’une suite géométrique sont inversées.
+
+## Méthodes express
+
+<Bloc type="methode" titre="Étudier le sens de variation d’une suite quelconque">
+
+Calculer $u_{n+1} - u_n$ et étudier son signe pour tout $n \in \N$. Si c’est un trinôme en $n$, on utilise $\Delta$ et un tableau de signes.
+
+</Bloc>
+
+<Bloc type="methode" titre="Prouver qu’une suite est arithmétique ou géométrique">
+
+Arithmétique : calculer $u_{n+1} - u_n$. Géométrique : calculer $\dfrac{u_{n+1}}{u_n}$ ou écrire $u_{n+1} = q\,u_n$. Dans les deux cas, le résultat ne doit pas dépendre de $n$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Trouver la raison avec deux termes">
+
+Arithmétique : $r = \dfrac{u_n - u_p}{n - p}$. Géométrique : $q^{n-p} = \dfrac{u_n}{u_p}$. Exemple : $u_2 = 7$ et $u_6 = 19$ donnent $r = \dfrac{19 - 7}{6 - 2} = 3$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Suite auxiliaire">
+
+Quand $u_{n+1} = a\,u_n + b$, on cherche un réel $c$ pour que $v_n = u_n + c$ soit géométrique de raison $a$. Il reste à écrire $u_n = v_n - c$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Chercher un seuil">
+
+Résoudre l’inéquation $u_n > S$ (avec une puissance, on teste des valeurs de $n$) ou utiliser une boucle `while u <= S`.
+
+</Bloc>
+
+## Pièges classiques
+
+<Bloc type="attention">
+
+- Si la suite commence à $u_1$, le terme général s’écrit $u_n = u_1 + (n - 1)r$ (ou $u_1 \times q^{n-1}$).
+- Trois premiers termes en progression ne prouvent pas qu’une suite est arithmétique ou géométrique : il faut un calcul pour tout $n$.
+- De $u_0$ à $u_n$, il y a $n + 1$ termes, pas $n$.
+- $u_{n+1}$ n’est pas $u_n + 1$.
+- Une suite géométrique de raison $q < 0$ n’est jamais monotone.
+- La formule $\dfrac{1 - q^{n+1}}{1 - q}$ n’est valable que pour $q \neq 1$.
+- Le critère $u_n = f(n)$ avec $f$ croissante ne marche pas pour une suite définie par récurrence.
+
+</Bloc>

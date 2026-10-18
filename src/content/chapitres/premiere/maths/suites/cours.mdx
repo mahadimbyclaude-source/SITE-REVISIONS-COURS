@@ -1,0 +1,353 @@
+---
+titre: Suites numériques
+ordre: 3
+description: Suites définies par une formule ou par récurrence, sens de variation, suites arithmétiques et géométriques, sommes de termes.
+---
+
+{/*
+  Chapitre Suites (Première, spécialité maths).
+  Plan : généralités, sens de variation, suites arithmétiques, suites géométriques, sommes, seuil et algorithme.
+*/}
+
+## Généralités
+
+<Bloc type="definition" titre="Suite numérique">
+
+Une **suite numérique** associe à chaque entier naturel $n$ un réel noté $u_n$, appelé **terme de rang $n$**. La suite entière se note $(u_n)$.
+
+</Bloc>
+
+<Bloc type="definition" titre="Deux façons de définir une suite">
+
+- **Par une formule explicite** : $u_n = f(n)$. On calcule directement n’importe quel terme.
+- **Par récurrence** : on donne le premier terme $u_0$ et une relation $u_{n+1} = f(u_n)$ qui permet de passer d’un terme au suivant.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Avec $u_n = 2n^2 - 1$ : $u_0 = -1$ et $u_3 = 2 \times 9 - 1 = 17$.
+
+Avec $u_0 = 3$ et $u_{n+1} = 2u_n - 1$ : $u_1 = 2 \times 3 - 1 = 5$, puis $u_2 = 2 \times 5 - 1 = 9$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+- $u_{n+1}$ est le terme **qui suit** $u_n$ : ce n’est pas $u_n + 1$.
+- $u_n$ désigne un nombre (un terme) et $(u_n)$ désigne la suite entière.
+- Avec une définition par récurrence, pour obtenir $u_{10}$ il faut calculer les termes un par un.
+
+</Bloc>
+
+## Sens de variation
+
+<Bloc type="definition">
+
+Soit $(u_n)$ une suite.
+
+- $(u_n)$ est **croissante** si $u_{n+1} \geq u_n$ pour tout $n \in \N$.
+- $(u_n)$ est **décroissante** si $u_{n+1} \leq u_n$ pour tout $n \in \N$.
+- $(u_n)$ est **constante** si $u_{n+1} = u_n$ pour tout $n \in \N$.
+
+Avec des inégalités strictes, on parle de suite **strictement** croissante ou décroissante. Une suite croissante ou décroissante est dite **monotone**.
+
+</Bloc>
+
+<Bloc type="methode" titre="Étudier le sens de variation">
+
+1. Exprimer $u_{n+1}$ puis calculer $u_{n+1} - u_n$ et le simplifier.
+2. Étudier le signe de cette différence pour tout $n \in \N$.
+3. Conclure : différence positive, suite croissante ; différence négative, suite décroissante.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $u_n = n^2 + n$. Pour tout $n \in \N$ :
+
+$$
+u_{n+1} - u_n = (n+1)^2 + (n+1) - n^2 - n = 2n + 2 > 0.
+$$
+
+La suite $(u_n)$ est strictement croissante.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Lien avec les fonctions">
+
+Si $u_n = f(n)$ et si $f$ est croissante (respectivement décroissante) sur $\interfo{0}{+\infty}$, alors $(u_n)$ est croissante (respectivement décroissante).
+
+</Bloc>
+
+<Bloc type="attention">
+
+- Cette propriété ne vaut que pour une suite définie par une **formule explicite**, pas pour une relation de récurrence.
+- La réciproque est fausse : une suite peut être croissante sans que la fonction $f$ le soit sur tout $\interfo{0}{+\infty}$.
+- Une suite n’est pas toujours monotone. Pour $u_n = n^2 - 6n$, on a $u_0 = 0$, $u_1 = -5$, $u_2 = -8$, $u_3 = -9$ puis $u_4 = -8$ : elle décroît d’abord, puis croît **à partir d’un certain rang**.
+
+</Bloc>
+
+## Suites arithmétiques
+
+<Bloc type="definition" titre="Suite arithmétique">
+
+Une suite $(u_n)$ est **arithmétique** s’il existe un réel $r$ tel que, pour tout $n \in \N$,
+
+$$
+u_{n+1} = u_n + r.
+$$
+
+Le nombre $r$ s’appelle la **raison** de la suite.
+
+</Bloc>
+
+<Bloc type="methode" titre="Montrer qu’une suite est arithmétique">
+
+1. Calculer $u_{n+1} - u_n$ en fonction de $n$.
+2. Montrer que le résultat est une constante $r$ (il ne dépend pas de $n$).
+3. Conclure : la suite est arithmétique de raison $r$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $u_n = 3n - 2$. Pour tout $n \in \N$ :
+
+$$
+u_{n+1} - u_n = 3(n + 1) - 2 - (3n - 2) = 3.
+$$
+
+La suite $(u_n)$ est arithmétique de raison $3$ et de premier terme $u_0 = -2$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+Calculer seulement les premiers termes ne suffit pas à prouver qu’une suite est arithmétique. En revanche, cela suffit pour prouver qu’elle **ne l’est pas** : pour $u_n = n^2$, on a $u_1 - u_0 = 1$ mais $u_2 - u_1 = 3$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Terme général">
+
+Si $(u_n)$ est arithmétique de raison $r$, alors pour tous entiers naturels $n$ et $p$ :
+
+$$
+u_n = u_0 + nr
+\qquad\text{et}\qquad
+u_n = u_p + (n - p)r.
+$$
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Si $u_0 = 1,5$ et $r = 0,5$, alors $u_{10} = 1,5 + 10 \times 0,5 = 6,5$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Sens de variation">
+
+Soit $(u_n)$ une suite arithmétique de raison $r$.
+
+- Si $r > 0$, la suite est strictement croissante.
+- Si $r < 0$, la suite est strictement décroissante.
+- Si $r = 0$, la suite est constante.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Les points de coordonnées $(n\,;\,u_n)$ sont alignés sur la droite d’équation $y = rx + u_0$.
+
+</Bloc>
+
+## Suites géométriques
+
+<Bloc type="definition" titre="Suite géométrique">
+
+Une suite $(u_n)$ est **géométrique** s’il existe un réel $q$ tel que, pour tout $n \in \N$,
+
+$$
+u_{n+1} = q \times u_n.
+$$
+
+Le nombre $q$ s’appelle la **raison** de la suite.
+
+</Bloc>
+
+<Bloc type="methode" titre="Montrer qu’une suite est géométrique">
+
+1. Si $u_n$ ne s’annule jamais, calculer le quotient $\dfrac{u_{n+1}}{u_n}$, ou directement exprimer $u_{n+1}$ en fonction de $u_n$.
+2. Montrer que le résultat est une constante $q$ (il ne dépend pas de $n$).
+3. Conclure : la suite est géométrique de raison $q$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $u_n = 3 \times 2^n$. Pour tout $n \in \N$ :
+
+$$
+\frac{u_{n+1}}{u_n} = \frac{3 \times 2^{n+1}}{3 \times 2^n} = 2.
+$$
+
+La suite $(u_n)$ est géométrique de raison $2$ et de premier terme $u_0 = 3$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Terme général">
+
+Si $(u_n)$ est géométrique de raison $q$, alors pour tous entiers naturels $n$ et $p$ :
+
+$$
+u_n = u_0 \times q^n
+\qquad\text{et}\qquad
+u_n = u_p \times q^{n-p}.
+$$
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Si $u_0 = 2$ et $q = 3$, alors $u_4 = 2 \times 3^4 = 162$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Sens de variation">
+
+Soit $(u_n)$ une suite géométrique de raison $q$ et de premier terme $u_0$.
+
+| Raison | $u_0 > 0$ | $u_0 < 0$ |
+| --- | --- | --- |
+| $q > 1$ | croissante | décroissante |
+| $0 < q < 1$ | décroissante | croissante |
+| $q = 1$ | constante | constante |
+| $q < 0$ | non monotone | non monotone |
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Pour $q < 0$, les termes changent de signe à chaque étape. Par exemple, avec $u_0 = 2$ et $q = -3$ on obtient $2$, $-6$, $18$, $-54$, ...
+
+</Bloc>
+
+## Sommes de termes
+
+<Bloc type="theoreme" titre="Somme des premiers entiers">
+
+Pour tout entier $n \geq 1$ :
+
+$$
+1 + 2 + \cdots + n = \frac{n(n + 1)}{2}.
+$$
+
+</Bloc>
+
+<Bloc type="demonstration">
+
+On note $S = 1 + 2 + \cdots + n$ et on écrit la somme dans les deux sens :
+
+$$
+\begin{aligned}
+S &= 1 + 2 + \cdots + n \\
+S &= n + (n - 1) + \cdots + 1
+\end{aligned}
+$$
+
+En additionnant terme à terme, on obtient $n$ fois la valeur $n + 1$ : $2S = n(n + 1)$, d’où $S = \dfrac{n(n + 1)}{2}$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Somme de termes d’une suite arithmétique">
+
+Si $(u_n)$ est arithmétique, alors
+
+$$
+u_0 + u_1 + \cdots + u_n = (n + 1) \times \frac{u_0 + u_n}{2}.
+$$
+
+De façon générale : la somme de termes consécutifs vaut (nombre de termes) $\times \dfrac{\text{premier terme} + \text{dernier terme}}{2}$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Pour $u_n = 3n + 1$ : $u_0 + u_1 + \cdots + u_{10}$ comporte $11$ termes, avec $u_0 = 1$ et $u_{10} = 31$, donc la somme vaut $11 \times \dfrac{1 + 31}{2} = 176$.
+
+</Bloc>
+
+<Bloc type="theoreme" titre="Somme de termes d’une suite géométrique">
+
+Pour tout réel $q \neq 1$ et tout entier $n \geq 0$ :
+
+$$
+1 + q + q^2 + \cdots + q^n = \frac{1 - q^{n+1}}{1 - q}.
+$$
+
+Pour une suite géométrique $(u_n)$ de raison $q \neq 1$ :
+
+$$
+u_0 + u_1 + \cdots + u_n = u_0 \times \frac{1 - q^{n+1}}{1 - q}.
+$$
+
+</Bloc>
+
+<Bloc type="demonstration">
+
+On note $S = 1 + q + q^2 + \cdots + q^n$. En multipliant par $q$ :
+
+$$
+\begin{aligned}
+S &= 1 + q + q^2 + \cdots + q^n \\
+qS &= q + q^2 + \cdots + q^n + q^{n+1}
+\end{aligned}
+$$
+
+En soustrayant, tous les termes se simplifient sauf le premier et le dernier : $S - qS = 1 - q^{n+1}$, donc $S(1 - q) = 1 - q^{n+1}$. Comme $q \neq 1$, on divise par $1 - q$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+$1 + 2 + 4 + \cdots + 2^{10} = \dfrac{1 - 2^{11}}{1 - 2} = 2^{11} - 1 = 2047$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+De $u_0$ à $u_n$, il y a $n + 1$ termes (pas $n$). Pour une somme qui commence à $u_p$ avec $p \geq 1$, le nombre de termes de $u_p$ à $u_n$ est $n - p + 1$.
+
+</Bloc>
+
+## Seuil et algorithme
+
+<Bloc type="methode" titre="Chercher un seuil avec une boucle">
+
+Pour trouver le plus petit rang $n$ tel que $u_n$ dépasse une valeur donnée, on calcule les termes un par un tant que la condition n’est pas atteinte.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Pour $u_n = 3 \times 2^n$, on cherche le plus petit $n$ tel que $u_n > 500$.
+
+```python
+n = 0
+u = 3
+while u <= 500:
+    n = n + 1
+    u = 2 * u
+print(n)
+```
+
+Le programme affiche $8$ : on a $u_7 = 384 \leq 500$ et $u_8 = 768 > 500$.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+La condition de la boucle `while` est la **négation** de ce qu’on cherche : on continue tant que $u_n \leq 500$, et on s’arrête dès que $u_n > 500$.
+
+</Bloc>

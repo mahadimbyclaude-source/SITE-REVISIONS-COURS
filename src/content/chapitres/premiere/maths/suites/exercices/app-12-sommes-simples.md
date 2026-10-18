@@ -1,0 +1,39 @@
+---
+titre: Calculer des sommes de termes
+type: application
+notion: Sommes de termes
+difficulte: Facile
+ordre: 12
+
+enonce: |
+  Calculer les sommes suivantes.
+
+  1. $S_1 = 1 + 2 + 3 + \cdots + 50$
+  2. $S_2 = u_0 + u_1 + \cdots + u_{20}$ où $(u_n)$ est arithmétique de premier terme $u_0 = 3$ et de raison $r = 2$.
+  3. $S_3 = 1 + 3 + 9 + \cdots + 3^6$
+
+indices:
+  - |
+    Reconnais le type de somme (entiers consécutifs, suite arithmétique, suite géométrique) puis applique la formule correspondante.
+  - |
+    Pour $S_2$, calcule d’abord $u_{20}$ et compte les termes de $u_0$ à $u_{20}$. Pour $S_3$, la raison est $q = 3$.
+
+correction: |
+  **1.**
+
+  $$
+  S_1 = \frac{50 \times 51}{2} = 1275.
+  $$
+
+  **2.** $u_{20} = 3 + 20 \times 2 = 43$. Il y a $21$ termes, donc
+
+  $$
+  S_2 = 21 \times \frac{3 + 43}{2} = 21 \times 23 = 483.
+  $$
+
+  **3.** C’est la somme des puissances de $q = 3$ jusqu’à $n = 6$ :
+
+  $$
+  S_3 = \frac{1 - 3^{7}}{1 - 3} = \frac{1 - 2187}{-2} = 1093.
+  $$
+---
