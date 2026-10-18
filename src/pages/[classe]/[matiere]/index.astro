@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../../layouts/Base.astro';
+import BientotDisponible from '../../../components/BientotDisponible.astro';
+import Fil from '../../../components/Fil.astro';
+import { CLASSES, MATIERES, urlChapitre, urlClasse, type Classe, type Matiere } from '../../../lib/catalogue';
+import { chapitresDe } from '../../../lib/contenu';
+
+export const getStaticPaths = (() =>
+  CLASSES.flatMap((classe) =>
+    MATIERES.map((matiere) => ({
+      params: { classe: classe.slug, matiere: matiere.slug },
+      props: { classe, matiere },
+    })),
+  )) satisfies GetStaticPaths;
+
+const { classe, matiere } = Astro.props as { classe: Classe; matiere: Matiere };
+const chapitres = await chapitresDe(classe.slug, matiere.slug);
+const titre = `${matiere.nom} — ${classe.nom}`;
+---
+
+<Base titre={titre}>
+  <Fil elements={[{ nom: classe.nom, url: urlClasse(classe.slug) }, { nom: matiere.nom }]} />
+  {
+    chapitres.length > 0 ? (
+      <>
+        <section class="intro">
+          <p class="surtitre">{classe.nom}</p>
+          <h1>{matiere.nom}</h1>
+          <p class="chapeau">
+            Chaque chapitre contient un cours, une fiche de révision, des exercices d’application et
+            des exos type contrôle corrigés.
+          </p>
+        </section>
+        <ol class="liste-chapitres">
+          {chapitres.map((c) => (
+            <li>
+              <a class="carte chapitre-lien" href={urlChapitre(c.classe, c.matiere, c.slug)}>
+                <span class="chapitre-numero" aria-hidden="true">
+                  {c.numero}
+                </span>
+                <span class="carte-titre">
+                  <span class="sr-only">Chapitre {c.numero} : </span>
+                  {c.titre}
+                </span>
+                <span class="carte-texte">{c.description}</span>
+                <span class="carte-pied">
+                  <span>{c.application.length} exercices d’application</span>
+                  <span>{c.controle.length} exos type contrôle</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </>
+    ) : (
+      <BientotDisponible
+        titre={titre}
+        retour={{ nom: `Retour à ${classe.nom}`, url: urlClasse(classe.slug) }}
+        annales={matiere.slug === 'maths'}
+      />
+    )
+  }
+</Base>

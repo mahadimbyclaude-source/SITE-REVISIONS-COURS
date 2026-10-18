@@ -1,0 +1,17 @@
+---
+import { DIFFICULTES, type Difficulte } from '../lib/catalogue';
+import { slugifier } from '../lib/contenu';
+
+interface Props {
+  difficulte: Difficulte;
+}
+const { difficulte } = Astro.props;
+const niveau = DIFFICULTES.indexOf(difficulte) + 1;
+---
+
+<span class={`badge badge--${slugifier(difficulte)}`}>
+  <span class="badge-jauge" aria-hidden="true">
+    {DIFFICULTES.map((_, i) => <i class={i < niveau ? 'plein' : undefined} />)}
+  </span>
+  <span><span class="sr-only">Difficulté : </span>{difficulte}</span>
+</span>

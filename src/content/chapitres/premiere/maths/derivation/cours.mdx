@@ -1,0 +1,211 @@
+---
+titre: Dérivation
+ordre: 2
+description: Nombre dérivé, tangente, dérivées usuelles, opérations sur les dérivées et lien avec les variations.
+---
+
+## Taux de variation
+
+<Bloc type="definition" titre="Taux de variation">
+
+Soit $f$ une fonction définie sur un intervalle $I$, $a$ un réel de $I$ et $h$ un réel non nul tel que $a + h \in I$. Le **taux de variation** de $f$ entre $a$ et $a + h$ est
+
+$$
+\frac{f(a + h) - f(a)}{h}.
+$$
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Graphiquement, c’est le **coefficient directeur de la sécante** passant par les points $A(a\,;\,f(a))$ et $M(a + h\,;\,f(a + h))$ de la courbe de $f$.
+
+</Bloc>
+
+## Nombre dérivé
+
+<Bloc type="definition" titre="Nombre dérivé">
+
+On dit que $f$ est **dérivable en $a$** si le taux de variation $\dfrac{f(a + h) - f(a)}{h}$ tend vers un nombre réel $\ell$ quand $h$ tend vers $0$. Ce nombre est appelé **nombre dérivé** de $f$ en $a$ et noté $f'(a)$ :
+
+$$
+f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}.
+$$
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $f(x) = x^2$ et $a = 3$. Pour $h \neq 0$ :
+
+$$
+\frac{f(3 + h) - f(3)}{h} = \frac{9 + 6h + h^2 - 9}{h} = \frac{h(6 + h)}{h} = 6 + h.
+$$
+
+Quand $h$ tend vers $0$, $6 + h$ tend vers $6$. Donc $f$ est dérivable en $3$ et $f'(3) = 6$.
+
+</Bloc>
+
+## Tangente à une courbe
+
+<Bloc type="definition" titre="Tangente">
+
+Si $f$ est dérivable en $a$, la **tangente** à la courbe $\mathcal{C}_f$ au point $A(a\,;\,f(a))$ est la droite qui passe par $A$ et dont le coefficient directeur est $f'(a)$.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Équation de la tangente">
+
+La tangente à $\mathcal{C}_f$ au point d’abscisse $a$ a pour équation
+
+$$
+y = f'(a)(x - a) + f(a).
+$$
+
+</Bloc>
+
+<Bloc type="methode" titre="Écrire l’équation d’une tangente">
+
+1. Calculer $f(a)$.
+2. Calculer $f'(x)$, puis $f'(a)$.
+3. Remplacer dans $y = f'(a)(x - a) + f(a)$, puis simplifier sous la forme $y = mx + p$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Pour $f(x) = x^2$ en $a = 3$ : $f(3) = 9$ et $f'(3) = 6$. La tangente a pour équation $y = 6(x - 3) + 9$, soit $y = 6x - 9$.
+
+</Bloc>
+
+## Fonction dérivée et dérivées usuelles
+
+<Bloc type="definition" titre="Fonction dérivée">
+
+Une fonction $f$ est **dérivable sur un intervalle $I$** si elle est dérivable en tout réel $x$ de $I$. La fonction qui à tout $x$ de $I$ associe $f'(x)$ est la **fonction dérivée** de $f$, notée $f'$.
+
+</Bloc>
+
+| Fonction $f$ | Dérivée $f'$ | $f$ est dérivable sur |
+| --- | --- | --- |
+| $f(x) = k$ (constante) | $f'(x) = 0$ | $\R$ |
+| $f(x) = x$ | $f'(x) = 1$ | $\R$ |
+| $f(x) = x^2$ | $f'(x) = 2x$ | $\R$ |
+| $f(x) = x^3$ | $f'(x) = 3x^2$ | $\R$ |
+| $f(x) = x^n$ ($n \geq 1$ entier) | $f'(x) = nx^{n-1}$ | $\R$ |
+| $f(x) = \dfrac{1}{x}$ | $f'(x) = -\dfrac{1}{x^2}$ | $\interoo{-\infty}{0}$ et $\interoo{0}{+\infty}$ |
+| $f(x) = \sqrt{x}$ | $f'(x) = \dfrac{1}{2\sqrt{x}}$ | $\interoo{0}{+\infty}$ |
+
+<Bloc type="demonstration" titre="dérivée de la fonction inverse">
+
+Soit $a \neq 0$ et $h \neq 0$ tel que $a + h$ soit non nul et du même signe que $a$.
+
+$$
+\frac{\frac{1}{a + h} - \frac{1}{a}}{h} = \frac{a - (a + h)}{h\,a(a + h)} = \frac{-h}{h\,a(a + h)} = -\frac{1}{a(a + h)}.
+$$
+
+Quand $h$ tend vers $0$, cette quantité tend vers $-\dfrac{1}{a^2}$. Donc $f'(a) = -\dfrac{1}{a^2}$.
+
+</Bloc>
+
+<Bloc type="attention" titre="la racine carrée en 0">
+
+La fonction racine carrée est définie sur $\interfo{0}{+\infty}$ mais **n’est pas dérivable en $0$**. En effet, pour $h > 0$ :
+
+$$
+\frac{\sqrt{0 + h} - \sqrt{0}}{h} = \frac{\sqrt{h}}{h} = \frac{1}{\sqrt{h}},
+$$
+
+qui devient aussi grand que l’on veut quand $h$ tend vers $0$ : il n’y a pas de limite finie. La courbe admet une tangente verticale à l’origine.
+
+</Bloc>
+
+## Opérations sur les dérivées
+
+Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$ et $k$ un réel.
+
+| Fonction | Dérivée | Condition |
+| --- | --- | --- |
+| $u + v$ | $u' + v'$ | |
+| $ku$ | $ku'$ | |
+| $uv$ | $u'v + uv'$ | |
+| $\dfrac{1}{v}$ | $-\dfrac{v'}{v^2}$ | $v$ ne s’annule pas sur $I$ |
+| $\dfrac{u}{v}$ | $\dfrac{u'v - uv'}{v^2}$ | $v$ ne s’annule pas sur $I$ |
+| $x \mapsto g(ax + b)$ | $x \mapsto a\,g'(ax + b)$ | $g$ dérivable en $ax + b$ |
+
+<Bloc type="methode" titre="Dériver un quotient">
+
+Pour $f(x) = \dfrac{2x + 1}{x - 3}$ sur $\interoo{3}{+\infty}$ : on pose $u(x) = 2x + 1$ et $v(x) = x - 3$, donc $u'(x) = 2$ et $v'(x) = 1$.
+
+$$
+f'(x) = \frac{2(x - 3) - (2x + 1) \times 1}{(x - 3)^2} = \frac{-7}{(x - 3)^2}.
+$$
+
+</Bloc>
+
+<Bloc type="exemple" titre="produit et fonction composée">
+
+- $f(x) = x^2\sqrt{x}$ sur $\interoo{0}{+\infty}$ : $f'(x) = 2x\sqrt{x} + x^2 \times \dfrac{1}{2\sqrt{x}} = 2x\sqrt{x} + \dfrac{x\sqrt{x}}{2} = \dfrac{5}{2}x\sqrt{x}$.
+- $g(x) = (3x - 1)^4$ : avec $a = 3$, $g'(x) = 3 \times 4(3x - 1)^3 = 12(3x - 1)^3$.
+- $h(x) = \sqrt{2x + 1}$ sur $\interoo{-\frac{1}{2}}{+\infty}$ : $h'(x) = 2 \times \dfrac{1}{2\sqrt{2x + 1}} = \dfrac{1}{\sqrt{2x + 1}}$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+La dérivée d’un produit n’est **pas** le produit des dérivées : $(uv)' \neq u'v'$. Et dans la dérivée d’un quotient, le dénominateur est **au carré**.
+
+</Bloc>
+
+## Dérivée et sens de variation
+
+<Bloc type="theoreme" titre="Signe de la dérivée et variations">
+
+Soit $f$ une fonction dérivable sur un **intervalle** $I$.
+
+- Si $f'(x) \geq 0$ pour tout $x \in I$, alors $f$ est croissante sur $I$.
+- Si $f'(x) \leq 0$ pour tout $x \in I$, alors $f$ est décroissante sur $I$.
+- Si $f'(x) = 0$ pour tout $x \in I$, alors $f$ est constante sur $I$.
+
+Si de plus $f'$ ne s’annule qu’en des points isolés, la monotonie est stricte.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Extremum local">
+
+Si $f'$ s’annule en $a$ **en changeant de signe**, alors $f$ admet un extremum local en $a$ : un maximum si $f'$ passe de $+$ à $-$, un minimum si $f'$ passe de $-$ à $+$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Étudier les variations d’une fonction">
+
+1. Préciser l’ensemble de définition et justifier la dérivabilité.
+2. Calculer $f'(x)$ et l’écrire sous une forme dont on sait étudier le signe (souvent un trinôme du second degré ou un produit).
+3. Dresser le tableau de signes de $f'(x)$, puis le tableau de variations de $f$.
+4. Calculer les extremums aux valeurs où $f'$ s’annule en changeant de signe.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $f(x) = x^3 - 3x^2 - 9x + 2$ sur $\R$. On a $f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3)$.
+
+Le trinôme $x^2 - 2x - 3$ a pour discriminant $\Delta = 4 + 12 = 16$ et pour racines $-1$ et $3$. Il est positif à l’extérieur des racines. Avec $f(-1) = 7$ et $f(3) = -25$ :
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & -1 & & 3 & & +\infty \\
+\hline
+f'(x) & & + & 0 & - & 0 & + & \\
+\hline
+ & & & 7 & & & & \\
+f & & \nearrow & & \searrow & & \nearrow & \\
+ & & & & & -25 & & \\
+\hline
+\end{array}
+$$
+
+$f$ admet un maximum local égal à $7$ en $x = -1$ et un minimum local égal à $-25$ en $x = 3$.
+
+</Bloc>

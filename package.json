@@ -1,0 +1,33 @@
+{
+  "name": "revisions-spe",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site statique de révisions de spécialité (maths, physique-chimie) — Première et Terminale.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist && node scripts/verifier-formules.mjs",
+    "preview": "astro preview",
+    "check:formules": "node scripts/verifier-formules.mjs",
+    "test:visuel": "playwright test",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.14",
+    "astro": "^5.18.2",
+    "katex": "^0.16.47",
+    "rehype-katex": "^7.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "node-html-parser": "^9.0.4",
+    "pagefind": "^1.5.2"
+  }
+}

@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import BientotDisponible from '../../components/BientotDisponible.astro';
+import Fil from '../../components/Fil.astro';
+import { CLASSES, MATIERES, urlMatiere, type Classe } from '../../lib/catalogue';
+import { chapitresDe } from '../../lib/contenu';
+
+export const getStaticPaths = (() =>
+  CLASSES.map((classe) => ({ params: { classe: classe.slug }, props: { classe } }))) satisfies GetStaticPaths;
+
+const { classe } = Astro.props as { classe: Classe };
+const chapitres = await chapitresDe(classe.slug);
+const matieres = MATIERES.map((m) => {
+  const n = chapitres.filter((c) => c.matiere === m.slug).length;
+  return { ...m, nbChapitres: n, disponible: n > 0 };
+});
+const disponible = chapitres.length > 0;
+---
+
+<Base titre={classe.nom}>
+  <Fil elements={[{ nom: classe.nom }]} />
+  {
+    disponible ? (
+      <>
+        <section class="intro">
+          <p class="surtitre">{classe.accroche}</p>
+          <h1>{classe.nom}</h1>
+          <p class="chapeau">Choisis ta matière.</p>
+        </section>
+        <ul class="grille-cartes">
+          {matieres.map((m) => (
+            <li>
+              <a
+                class:list={['carte', { 'carte--bientot': !m.disponible }]}
+                href={urlMatiere(classe.slug, m.slug)}
+              >
+                <span class="carte-titre">{m.nom}</span>
+                <span class="carte-pied">
+                  {m.disponible ? (
+                    <span class="etiquette etiquette--dispo">
+                      {m.nbChapitres} chapitre{m.nbChapitres > 1 ? 's' : ''}
+                    </span>
+                  ) : (
+                    <span class="etiquette etiquette--bientot">Bientôt disponible</span>
+                  )}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <BientotDisponible titre={classe.nom} retour={{ nom: 'Retour à l’accueil', url: '/' }} annales />
+    )
+  }
+</Base>

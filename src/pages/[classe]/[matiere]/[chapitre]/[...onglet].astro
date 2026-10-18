@@ -1,0 +1,236 @@
+---
+// Une page par onglet de chapitre :
+//   /premiere/maths/second-degre/                        Cours
+//   /premiere/maths/second-degre/fiche/                  Fiche de révision
+//   /premiere/maths/second-degre/exercices-application/  Exercices d'application
+//   /premiere/maths/second-degre/exos-controle/          Exos type contrôle
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import Base from '../../../../layouts/Base.astro';
+import Bloc from '../../../../components/Bloc.astro';
+import Exercice from '../../../../components/Exercice.astro';
+import Fil from '../../../../components/Fil.astro';
+import Icone from '../../../../components/Icone.astro';
+import {
+  ONGLETS,
+  classeParSlug,
+  matiereParSlug,
+  urlChapitre,
+  urlClasse,
+  urlMatiere,
+  type Onglet,
+} from '../../../../lib/catalogue';
+import { slugifier, tousLesChapitres, type Chapitre, type Exercice as ExerciceEntree } from '../../../../lib/contenu';
+
+export const getStaticPaths = (async () => {
+  const chapitres = await tousLesChapitres();
+  return chapitres.flatMap((chapitre) =>
+    ONGLETS.map((onglet) => ({
+      params: {
+        classe: chapitre.classe,
+        matiere: chapitre.matiere,
+        chapitre: chapitre.slug,
+        onglet: onglet.slug || undefined,
+      },
+      props: { cle: `${chapitre.classe}/${chapitre.matiere}/${chapitre.slug}`, onglet },
+    })),
+  );
+}) satisfies GetStaticPaths;
+
+const { cle, onglet } = Astro.props as { cle: string; onglet: Onglet };
+const tous = await tousLesChapitres();
+const chapitre = tous.find((c) => `${c.classe}/${c.matiere}/${c.slug}` === cle) as Chapitre;
+const voisins = tous.filter((c) => c.classe === chapitre.classe && c.matiere === chapitre.matiere);
+const position = voisins.indexOf(chapitre);
+const precedent = voisins[position - 1];
+const suivant = voisins[position + 1];
+
+const classe = classeParSlug(chapitre.classe)!;
+const matiere = matiereParSlug(chapitre.matiere)!;
+
+// Contenu de l'onglet
+let Contenu: Awaited<ReturnType<typeof render>>['Content'] | undefined;
+let sommaire: { slug: string; text: string }[] = [];
+if (onglet.id === 'cours') {
+  const rendu = await render(chapitre.cours);
+  Contenu = rendu.Content;
+  sommaire = rendu.headings.filter((h) => h.depth === 2);
+} else if (onglet.id === 'fiche' && chapitre.fiche) {
+  Contenu = (await render(chapitre.fiche)).Content;
+}
+
+// Exercices d'application regroupés par notion (dans l'ordre d'apparition).
+const notions = new Map<string, ExerciceEntree[]>();
+for (const exo of chapitre.application) {
+  const notion = exo.data.type === 'application' ? exo.data.notion : 'Autres';
+  notions.set(notion, [...(notions.get(notion) ?? []), exo]);
+}
+const groupes = [...notions].map(([nom, exos]) => ({ nom, ancre: `notion-${slugifier(nom)}`, exos }));
+const numeros = new Map(chapitre.application.map((e, i) => [e.id, i + 1]));
+
+const titrePage = onglet.id === 'cours' ? chapitre.titre : `${chapitre.titre} — ${onglet.nom}`;
+const description =
+  onglet.id === 'cours' ? chapitre.description : `${onglet.nom} : ${chapitre.titre} (${matiere.nom}, ${classe.nom}).`;
+const icones = { cours: 'cours', fiche: 'fiche', application: 'application', controle: 'controle' } as const;
+---
+
+<Base titre={titrePage} description={description}>
+  <Fil
+    elements={[
+      { nom: classe.nom, url: urlClasse(classe.slug) },
+      { nom: matiere.court, url: urlMatiere(classe.slug, matiere.slug) },
+      { nom: chapitre.titre },
+    ]}
+  />
+
+  <header class="chapitre-entete">
+    <p class="surtitre">{classe.nom} · {matiere.court} · Chapitre {chapitre.numero}</p>
+    <h1>{chapitre.titre}</h1>
+    <p>{chapitre.description}</p>
+  </header>
+
+  <nav aria-label="Onglets du chapitre">
+    <ul class="onglets">
+      {
+        ONGLETS.map((o) => (
+          <li>
+            <a
+              href={urlChapitre(chapitre.classe, chapitre.matiere, chapitre.slug, o.id)}
+              aria-current={o.id === onglet.id ? 'page' : undefined}
+            >
+              <Icone nom={icones[o.id]} />
+              {o.nom}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <section data-pagefind-body aria-label={onglet.nom}>
+    <div hidden data-pagefind-ignore>
+      <span data-pagefind-meta="title">{chapitre.titre} — {onglet.nom}</span>
+      <span data-pagefind-meta="chapitre">{chapitre.titre}</span>
+      <span data-pagefind-meta="onglet">{onglet.nom}</span>
+      <span data-pagefind-meta="classe" data-pagefind-filter="classe">{classe.nom}</span>
+      <span data-pagefind-meta="matiere" data-pagefind-filter="matiere">{matiere.court}</span>
+      <span data-pagefind-filter="onglet">{onglet.nom}</span>
+    </div>
+
+    {
+      onglet.id === 'cours' && Contenu && (
+        <>
+          {sommaire.length > 2 && (
+            <details class="sommaire" data-pagefind-ignore>
+              <summary>Sommaire du cours</summary>
+              <ol>
+                {sommaire.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          )}
+          <article class="prose">
+            <Contenu components={{ Bloc }} />
+          </article>
+        </>
+      )
+    }
+
+    {
+      onglet.id === 'fiche' &&
+        (Contenu ? (
+          <article class="prose">
+            <Contenu components={{ Bloc }} />
+          </article>
+        ) : (
+          <p class="vide">La fiche de révision de ce chapitre est en préparation.</p>
+        ))
+    }
+
+    {
+      onglet.id === 'application' && (
+        <>
+          <div class="onglet-intro" data-pagefind-ignore>
+            <p>
+              <strong>Une notion à la fois.</strong> Des exercices courts, juste après le cours, pour
+              t’entraîner sur une seule méthode du chapitre.
+            </p>
+            <p>Cherche d’abord seul, puis demande un indice, et seulement ensuite la correction.</p>
+          </div>
+          {groupes.length === 0 ? (
+            <p class="vide">Les exercices d’application de ce chapitre sont en préparation.</p>
+          ) : (
+            <>
+              <ul class="notions" aria-label="Notions" data-pagefind-ignore>
+                {groupes.map((g) => (
+                  <li>
+                    <a href={`#${g.ancre}`}>
+                      {g.nom} <span>({g.exos.length})</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {groupes.map((g) => (
+                <section aria-labelledby={g.ancre}>
+                  <h2 class="titre-notion" id={g.ancre}>
+                    {g.nom}
+                  </h2>
+                  <div class="exercices">
+                    {g.exos.map((exo) => (
+                      <Exercice exo={exo} numero={numeros.get(exo.id)!} chapitres={voisins} />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </>
+          )}
+        </>
+      )
+    }
+
+    {
+      onglet.id === 'controle' && (
+        <>
+          <div class="onglet-intro" data-pagefind-ignore>
+            <p>
+              <strong>Comme en devoir surveillé.</strong> Des problèmes longs qui mobilisent tout le
+              chapitre et des notions des chapitres précédents.
+            </p>
+            <p>Chronomètre-toi avec la durée estimée et rédige entièrement avant de regarder la correction.</p>
+          </div>
+          {chapitre.controle.length === 0 ? (
+            <p class="vide">Les exos type contrôle de ce chapitre sont en préparation.</p>
+          ) : (
+            <div class="exercices">
+              {chapitre.controle.map((exo, i) => (
+                <Exercice exo={exo} numero={i + 1} chapitres={voisins} />
+              ))}
+            </div>
+          )}
+        </>
+      )
+    }
+  </section>
+
+  <nav class="chapitres-voisins" aria-label="Chapitres voisins">
+    {
+      precedent && (
+        <a class="precedent" href={urlChapitre(precedent.classe, precedent.matiere, precedent.slug)}>
+          <span>← Chapitre précédent</span>
+          {precedent.titre}
+        </a>
+      )
+    }
+    {
+      suivant && (
+        <a class="suivant" href={urlChapitre(suivant.classe, suivant.matiere, suivant.slug)}>
+          <span>Chapitre suivant →</span>
+          {suivant.titre}
+        </a>
+      )
+    }
+  </nav>
+</Base>

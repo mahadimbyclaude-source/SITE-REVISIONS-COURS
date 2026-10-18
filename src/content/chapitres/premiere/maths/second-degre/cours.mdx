@@ -1,0 +1,292 @@
+---
+titre: Second degré
+ordre: 1
+description: Forme canonique, discriminant, racines, factorisation et signe d’un trinôme du second degré.
+---
+
+## Fonction polynôme du second degré
+
+<Bloc type="definition" titre="Trinôme du second degré">
+
+On appelle **fonction polynôme du second degré** toute fonction $f$ définie sur $\R$ par
+
+$$
+f(x) = ax^2 + bx + c
+$$
+
+où $a$, $b$ et $c$ sont des nombres réels avec $a \neq 0$. L’expression $ax^2 + bx + c$ est appelée **trinôme du second degré**.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+- $f(x) = 3x^2 - 5x + 1$ est un trinôme avec $a = 3$, $b = -5$ et $c = 1$.
+- $g(x) = -x^2 + 4$ est un trinôme avec $a = -1$, $b = 0$ et $c = 4$.
+- $h(x) = (x - 2)(2x + 1)$ est un trinôme : en développant, $h(x) = 2x^2 - 3x - 2$.
+- $k(x) = 4x - 7$ n’est **pas** un trinôme du second degré, car le coefficient de $x^2$ est nul.
+
+</Bloc>
+
+## Forme canonique
+
+<Bloc type="propriete" titre="Forme canonique">
+
+Tout trinôme $f(x) = ax^2 + bx + c$ (avec $a \neq 0$) peut s’écrire sous la forme
+
+$$
+f(x) = a(x - \alpha)^2 + \beta
+$$
+
+avec $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$. Cette écriture s’appelle la **forme canonique** de $f(x)$.
+
+</Bloc>
+
+<Bloc type="demonstration">
+
+Comme $a \neq 0$, on peut factoriser par $a$ :
+
+$$
+f(x) = a\left(x^2 + \frac{b}{a}x + \frac{c}{a}\right).
+$$
+
+On reconnaît le début du carré $\left(x + \frac{b}{2a}\right)^2 = x^2 + \frac{b}{a}x + \frac{b^2}{4a^2}$. Donc
+
+$$
+f(x) = a\left[\left(x + \frac{b}{2a}\right)^2 - \frac{b^2}{4a^2} + \frac{c}{a}\right]
+= a\left(x + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{4a}.
+$$
+
+En posant $\alpha = -\frac{b}{2a}$ et $\beta = -\frac{b^2 - 4ac}{4a}$, on obtient $f(x) = a(x - \alpha)^2 + \beta$. Enfin $f(\alpha) = a \times 0^2 + \beta = \beta$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Mettre sous forme canonique">
+
+1. Calculer $\alpha = -\dfrac{b}{2a}$.
+2. Calculer $\beta = f(\alpha)$.
+3. Écrire $f(x) = a(x - \alpha)^2 + \beta$, puis vérifier en développant.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Pour $f(x) = 2x^2 - 12x + 13$ : $\alpha = -\dfrac{-12}{2 \times 2} = 3$ et $\beta = f(3) = 18 - 36 + 13 = -5$.
+
+Donc $f(x) = 2(x - 3)^2 - 5$.
+
+</Bloc>
+
+## Variations et parabole
+
+<Bloc type="propriete" titre="Sens de variation">
+
+Soit $f(x) = a(x - \alpha)^2 + \beta$.
+
+- Si $a > 0$, $f$ est décroissante sur $\interof{-\infty}{\alpha}$ puis croissante sur $\interfo{\alpha}{+\infty}$ : elle admet un **minimum** égal à $\beta$, atteint en $x = \alpha$.
+- Si $a < 0$, $f$ est croissante sur $\interof{-\infty}{\alpha}$ puis décroissante sur $\interfo{\alpha}{+\infty}$ : elle admet un **maximum** égal à $\beta$, atteint en $x = \alpha$.
+
+</Bloc>
+
+Cas $a > 0$ :
+
+$$
+\begin{array}{|c|ccccc|}
+\hline
+x & -\infty & & \alpha & & +\infty \\
+\hline
+ & & & & & \\
+f & & \searrow & & \nearrow & \\
+ & & & \beta & & \\
+\hline
+\end{array}
+$$
+
+Cas $a < 0$ :
+
+$$
+\begin{array}{|c|ccccc|}
+\hline
+x & -\infty & & \alpha & & +\infty \\
+\hline
+ & & & \beta & & \\
+f & & \nearrow & & \searrow & \\
+ & & & & & \\
+\hline
+\end{array}
+$$
+
+<Bloc type="propriete" titre="Parabole">
+
+Dans un repère, la courbe d’une fonction polynôme du second degré est une **parabole** :
+
+- de sommet $S(\alpha\,;\,\beta)$ ;
+- d’axe de symétrie la droite d’équation $x = \alpha$ ;
+- tournée vers le haut si $a > 0$, vers le bas si $a < 0$.
+
+</Bloc>
+
+## Équation du second degré
+
+<Bloc type="definition" titre="Discriminant">
+
+Le **discriminant** du trinôme $ax^2 + bx + c$ est le nombre
+
+$$
+\Delta = b^2 - 4ac.
+$$
+
+</Bloc>
+
+<Bloc type="theoreme" titre="Solutions de l’équation du second degré">
+
+- Si $\Delta > 0$, l’équation admet **deux solutions** distinctes :
+  $$
+  x_1 = \frac{-b - \sqrt{\Delta}}{2a}
+  \qquad\text{et}\qquad
+  x_2 = \frac{-b + \sqrt{\Delta}}{2a}.
+  $$
+- Si $\Delta = 0$, l’équation admet **une seule solution** : $x_0 = -\dfrac{b}{2a}$.
+- Si $\Delta < 0$, l’équation **n’admet aucune solution** réelle.
+
+Les solutions de l’équation $ax^2 + bx + c = 0$ sont aussi appelées **racines** du trinôme.
+
+</Bloc>
+
+<Bloc type="demonstration">
+
+D’après la démonstration de la forme canonique, avec $\beta = -\frac{\Delta}{4a}$ :
+
+$$
+ax^2 + bx + c = a\left[\left(x + \frac{b}{2a}\right)^2 - \frac{\Delta}{4a^2}\right].
+$$
+
+Comme $a \neq 0$, l’équation équivaut à $\left(x + \frac{b}{2a}\right)^2 = \frac{\Delta}{4a^2}$.
+
+- Si $\Delta < 0$, le membre de droite est strictement négatif alors qu’un carré est positif : aucune solution.
+- Si $\Delta = 0$, on obtient $\left(x + \frac{b}{2a}\right)^2 = 0$, donc $x = -\frac{b}{2a}$.
+- Si $\Delta > 0$, on obtient $x + \frac{b}{2a} = \frac{\sqrt{\Delta}}{2a}$ ou $x + \frac{b}{2a} = -\frac{\sqrt{\Delta}}{2a}$, ce qui donne les deux solutions $x_1$ et $x_2$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Résolvons $2x^2 - x - 6 = 0$. Ici $a = 2$, $b = -1$, $c = -6$.
+
+$\Delta = (-1)^2 - 4 \times 2 \times (-6) = 1 + 48 = 49 > 0$ et $\sqrt{49} = 7$. Il y a deux solutions :
+
+$$
+x_1 = \frac{1 - 7}{4} = -\frac{3}{2}
+\qquad\text{et}\qquad
+x_2 = \frac{1 + 7}{4} = 2.
+$$
+
+L’ensemble des solutions est $S = \left\{-\dfrac{3}{2}\,;\,2\right\}$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+Avant de calculer $\Delta$, l’équation doit être sous la forme $ax^2 + bx + c = 0$ : tout passer dans le même membre. Et lorsque $b = 0$ ou $c = 0$, il est souvent plus rapide de factoriser directement (par exemple $3x^2 - 6x = 3x(x - 2)$).
+
+</Bloc>
+
+## Factorisation, somme et produit des racines
+
+<Bloc type="propriete" titre="Forme factorisée">
+
+- Si $\Delta > 0$ : $\;ax^2 + bx + c = a(x - x_1)(x - x_2)$.
+- Si $\Delta = 0$ : $\;ax^2 + bx + c = a(x - x_0)^2$.
+- Si $\Delta < 0$ : le trinôme ne peut pas s’écrire comme un produit de facteurs du premier degré.
+
+</Bloc>
+
+<Bloc type="propriete" titre="Somme et produit des racines">
+
+Si $\Delta \geq 0$, les racines $x_1$ et $x_2$ (éventuellement égales) vérifient
+
+$$
+x_1 + x_2 = -\frac{b}{a}
+\qquad\text{et}\qquad
+x_1 \times x_2 = \frac{c}{a}.
+$$
+
+</Bloc>
+
+<Bloc type="methode" titre="Utiliser une racine évidente">
+
+Si l’on repère une racine « évidente » $x_1$ (souvent $1$, $-1$, $2$…), on trouve l’autre sans calculer $\Delta$ grâce au produit : $x_2 = \dfrac{c}{a \, x_1}$.
+
+Par exemple, $1$ est racine de $3x^2 + 2x - 5$ car $3 + 2 - 5 = 0$. Le produit des racines vaut $-\dfrac{5}{3}$, donc l’autre racine est $x_2 = -\dfrac{5}{3}$.
+
+</Bloc>
+
+## Signe d’un trinôme
+
+<Bloc type="theoreme" titre="Signe d’un trinôme">
+
+Un trinôme du second degré est **du signe de $a$**, sauf entre ses racines lorsqu’il en a deux.
+
+</Bloc>
+
+Si $\Delta > 0$ (racines $x_1 < x_2$) :
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & x_1 & & x_2 & & +\infty \\
+\hline
+ax^2 + bx + c & & \text{signe de } a & 0 & \text{signe de } -a & 0 & \text{signe de } a & \\
+\hline
+\end{array}
+$$
+
+Si $\Delta = 0$ :
+
+$$
+\begin{array}{|c|ccccc|}
+\hline
+x & -\infty & & x_0 & & +\infty \\
+\hline
+ax^2 + bx + c & & \text{signe de } a & 0 & \text{signe de } a & \\
+\hline
+\end{array}
+$$
+
+Si $\Delta < 0$ :
+
+$$
+\begin{array}{|c|ccc|}
+\hline
+x & -\infty & & +\infty \\
+\hline
+ax^2 + bx + c & & \text{signe de } a & \\
+\hline
+\end{array}
+$$
+
+<Bloc type="methode" titre="Résoudre une inéquation du second degré">
+
+1. Tout passer dans un membre pour se ramener à $ax^2 + bx + c > 0$ (ou $<$, $\geq$, $\leq$).
+2. Calculer $\Delta$ et les éventuelles racines.
+3. Dresser le tableau de signes du trinôme.
+4. Lire l’ensemble des solutions, en faisant attention aux crochets (racines incluses ou non).
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Résolvons $x^2 - x - 6 < 0$. On a $\Delta = 1 + 24 = 25$, d’où les racines $x_1 = \dfrac{1 - 5}{2} = -2$ et $x_2 = \dfrac{1 + 5}{2} = 3$.
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & -2 & & 3 & & +\infty \\
+\hline
+x^2 - x - 6 & & + & 0 & - & 0 & + & \\
+\hline
+\end{array}
+$$
+
+Comme $a = 1 > 0$, le trinôme est négatif entre les racines : $S = \interoo{-2}{3}$.
+
+</Bloc>

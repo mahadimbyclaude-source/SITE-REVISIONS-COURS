@@ -1,0 +1,54 @@
+---
+// Encadrés du cours, utilisables directement dans les fichiers .mdx :
+//   <Bloc type="definition" titre="Discriminant"> … </Bloc>
+// (laisser une ligne vide après la balise ouvrante et avant la balise fermante)
+interface Props {
+  type:
+    | 'definition'
+    | 'propriete'
+    | 'theoreme'
+    | 'methode'
+    | 'exemple'
+    | 'remarque'
+    | 'attention'
+    | 'demonstration';
+  titre?: string;
+}
+const { type, titre } = Astro.props;
+
+const labels: Record<Props['type'], string> = {
+  definition: 'Définition',
+  propriete: 'Propriété',
+  theoreme: 'Théorème',
+  methode: 'Méthode',
+  exemple: 'Exemple',
+  remarque: 'Remarque',
+  attention: 'Attention',
+  demonstration: 'Démonstration',
+};
+const label = labels[type];
+---
+
+{
+  type === 'demonstration' ? (
+    <details class="bloc bloc--demonstration">
+      <summary>
+        {label}
+        {titre && ` — ${titre}`}
+      </summary>
+      <div class="bloc-contenu">
+        <slot />
+      </div>
+    </details>
+  ) : (
+    <div class={`bloc bloc--${type}`}>
+      <p class="bloc-label">
+        {label}
+        {titre && <span> — {titre}</span>}
+      </p>
+      <div class="bloc-contenu">
+        <slot />
+      </div>
+    </div>
+  )
+}

@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import Fil from '../components/Fil.astro';
+import Icone from '../components/Icone.astro';
+import { ANNALES } from '../data/annales';
+---
+
+<Base
+  titre="Annales officielles"
+  description="Liens vers les sujets officiels : sujets zéro de l’épreuve anticipée de mathématiques (Première) et annales du bac de spécialité (Terminale)."
+>
+  <Fil elements={[{ nom: 'Annales' }]} />
+  <section class="intro">
+    <p class="surtitre">S’entraîner sur de vrais sujets</p>
+    <h1>Annales officielles</h1>
+    <p class="chapeau">
+      Les sujets restent hébergés sur les sites officiels : chaque lien ouvre la source (Éduscol pour
+      le ministère, APMEP pour les annales corrigées).
+    </p>
+  </section>
+
+  {
+    ANNALES.map((section) => (
+      <section class="annales-section" id={section.classe}>
+        <h2>{section.titre}</h2>
+        <p>{section.intro}</p>
+        <ul class="grille-cartes">
+          {section.liens.map((lien) => (
+            <li>
+              <a class="carte lien-annale" href={lien.url} target="_blank" rel="noopener">
+                <span class="source">
+                  {lien.source}
+                  {lien.format && <span class="etiquette etiquette--dispo">{lien.format}</span>}
+                </span>
+                <span class="carte-titre">{lien.titre}</span>
+                <span class="carte-texte">{lien.description}</span>
+                <span class="externe">
+                  Ouvrir sur le site {lien.source === 'Éduscol' ? 'd’Éduscol' : 'de l’APMEP'}{' '}
+                  <Icone nom="externe" class="icone-externe" />
+                  <span class="sr-only">(nouvel onglet)</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .externe :global(.icone-externe) {
+    width: 0.95rem;
+    height: 0.95rem;
+    vertical-align: -0.12em;
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import Icone from './Icone.astro';
+
+interface Props {
+  titre: string;
+  retour: { nom: string; url: string };
+  annales?: boolean;
+}
+const { titre, retour, annales = false } = Astro.props;
+---
+
+<section class="bientot">
+  <span class="bientot-icone"><Icone nom="sablier" /></span>
+  <p class="surtitre">Bientôt disponible</p>
+  <h1>{titre}</h1>
+  <p class="chapeau">
+    Les cours, fiches et exercices de cette partie sont en préparation. En attendant, tu peux réviser
+    les contenus déjà en ligne.
+  </p>
+  <div class="actions">
+    <a class="bouton" href={retour.url}>{retour.nom}</a>
+    {annales && <a class="bouton bouton--contour" href="/annales/">Voir les annales officielles</a>}
+  </div>
+</section>

@@ -1,0 +1,133 @@
+---
+// Carte d'exercice : énoncé, puis indices progressifs, puis correction repliable.
+// Les indices et la correction sont exclus de l'index de recherche.
+import Badge from './Badge.astro';
+import Icone from './Icone.astro';
+import { formaterDuree, urlChapitre } from '../lib/catalogue';
+import {
+  ancreExercice,
+  nommerChapitresMobilises,
+  type Chapitre,
+  type Exercice as ExerciceEntree,
+} from '../lib/contenu';
+import { rendreMarkdown } from '../lib/markdown';
+
+interface Props {
+  exo: ExerciceEntree;
+  numero: number;
+  /** Chapitres de la même classe/matière, pour nommer les chapitres mobilisés. */
+  chapitres: Chapitre[];
+}
+const { exo, numero, chapitres } = Astro.props;
+const d = exo.data;
+const ancre = ancreExercice(exo);
+
+const [enonce, correction, ...indices] = await Promise.all([
+  rendreMarkdown(d.enonce),
+  rendreMarkdown(d.correction),
+  ...d.indices.map(rendreMarkdown),
+]);
+
+const mobilises =
+  d.type === 'controle' ? nommerChapitresMobilises(d.chapitres_mobilises, chapitres) : [];
+const nbIndices = indices.length;
+---
+
+<article class="exo" id={ancre} aria-labelledby={`${ancre}-titre`}>
+  <header class="exo-entete">
+    <h3 class="exo-titre" id={`${ancre}-titre`}>
+      <span class="exo-numero">Exercice {numero}<span class="sr-only"> — </span></span>
+      {d.titre}
+    </h3>
+    <div class="exo-meta">
+      <Badge difficulte={d.difficulte} />
+      {
+        d.duree_estimee && (
+          <span>
+            <Icone nom="horloge" />
+            Durée estimée : <strong>{formaterDuree(d.duree_estimee)}</strong>
+          </span>
+        )
+      }
+      {
+        mobilises.length > 0 && (
+          <span class="exo-mobilises">
+            <Icone nom="liens" />
+            Chapitres mobilisés :{' '}
+            {mobilises.map((m, i) => (
+              <>
+                {i > 0 && ' + '}
+                {m.chapitre ? (
+                  <a href={urlChapitre(m.chapitre.classe, m.chapitre.matiere, m.chapitre.slug)}>
+                    <strong>{m.titre}</strong>
+                  </a>
+                ) : (
+                  <strong>{m.titre}</strong>
+                )}
+              </>
+            ))}
+          </span>
+        )
+      }
+    </div>
+  </header>
+
+  <div class="exo-corps">
+    <div class="exo-enonce prose" set:html={enonce} />
+
+    <div class="indices" data-indices data-pagefind-ignore="all">
+      <ol class="indices-liste" aria-live="polite">
+        {
+          indices.map((html, i) => (
+            <li class="indice" hidden>
+              <p class="indice-label">
+                Indice {i + 1}
+                {nbIndices > 1 && i === 0 && ' · piste générale'}
+                {nbIndices > 1 && i === nbIndices - 1 && ' · plus précis'}
+              </p>
+              <div class="indice-contenu prose" set:html={html} />
+            </li>
+          ))
+        }
+      </ol>
+      <button type="button" class="btn-indice" data-total={nbIndices}>
+        <Icone nom="ampoule" />
+        <span class="btn-indice-texte">Indice</span>
+        <span class="btn-indice-compteur">0 sur {nbIndices}</span>
+      </button>
+    </div>
+
+    <details class="correction" data-pagefind-ignore="all">
+      <summary>
+        <Icone nom="chevron" />
+        <span class="voir">Voir la correction</span>
+        <span class="masquer">Masquer la correction</span>
+      </summary>
+      <div class="correction-contenu prose" set:html={correction} />
+    </details>
+  </div>
+</article>
+
+<script>
+  // Un clic sur « Indice » affiche l'indice suivant.
+  for (const bloc of document.querySelectorAll<HTMLElement>('[data-indices]')) {
+    const bouton = bloc.querySelector<HTMLButtonElement>('.btn-indice')!;
+    const texte = bouton.querySelector('.btn-indice-texte')!;
+    const compteur = bouton.querySelector('.btn-indice-compteur')!;
+    const indices = [...bloc.querySelectorAll<HTMLElement>('.indice')];
+
+    bouton.addEventListener('click', () => {
+      const suivant = indices.find((li) => li.hidden);
+      if (!suivant) return;
+      suivant.hidden = false;
+      const affiches = indices.filter((li) => !li.hidden).length;
+      compteur.textContent = `${affiches} sur ${indices.length}`;
+      if (affiches === indices.length) {
+        texte.textContent = 'Tous les indices sont affichés';
+        bouton.disabled = true;
+      } else {
+        texte.textContent = 'Indice suivant';
+      }
+    });
+  }
+</script>

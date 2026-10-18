@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { CLASSES, SITE, urlClasse } from '../lib/catalogue';
+import { tousLesChapitres } from '../lib/contenu';
+
+const chapitres = await tousLesChapitres();
+const classes = CLASSES.map((c) => {
+  const liste = chapitres.filter((ch) => ch.classe === c.slug);
+  return { ...c, nbChapitres: liste.length, disponible: liste.length > 0 };
+});
+---
+
+<Base titre={SITE.nom}>
+  <section class="accueil-hero">
+    <p class="surtitre">Spécialité · lycée général</p>
+    <h1>Révise la spé <em>chapitre par chapitre</em>.</h1>
+    <p class="chapeau">
+      Cours, fiche de révision, exercices d’application puis exercices type contrôle : avec des
+      indices progressifs et des corrections détaillées.
+    </p>
+  </section>
+
+  <h2 class="section-titre">Choisis ta classe</h2>
+  <ul class="grille-cartes">
+    {
+      classes.map((c) => (
+        <li>
+          <a class:list={['carte', { 'carte--bientot': !c.disponible }]} href={urlClasse(c.slug)}>
+            <span class="carte-titre">{c.nom}</span>
+            <span class="carte-texte">{c.accroche}</span>
+            <span class="carte-pied">
+              {c.disponible ? (
+                <span class="etiquette etiquette--dispo">
+                  {c.nbChapitres} chapitre{c.nbChapitres > 1 ? 's' : ''} en ligne
+                </span>
+              ) : (
+                <span class="etiquette etiquette--bientot">Bientôt disponible</span>
+              )}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="section-titre">Comment travailler un chapitre</h2>
+  <ol class="etapes">
+    <li><strong>Cours</strong>Les définitions, propriétés et méthodes, avec des exemples.</li>
+    <li><strong>Fiche de révision</strong>L’essentiel à connaître par cœur, en une page.</li>
+    <li>
+      <strong>Exercices d’application</strong>Une méthode à la fois, juste après le cours.
+    </li>
+    <li>
+      <strong>Exos type contrôle</strong>Des problèmes longs qui mobilisent tout le chapitre.
+    </li>
+  </ol>
+
+  <h2 class="section-titre">S’entraîner sur de vrais sujets</h2>
+  <p>
+    Les <a href="/annales/">annales</a> rassemblent les liens vers les sujets officiels : sujets zéro de
+    l’épreuve anticipée de Première et annales du bac de spécialité.
+  </p>
+</Base>

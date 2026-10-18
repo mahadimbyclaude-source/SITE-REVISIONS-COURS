@@ -1,0 +1,332 @@
+---
+// Fenêtre de recherche (Pagefind), ouverte depuis l'en-tête de toutes les pages,
+// ou avec « / » ou Ctrl+K. Les formules des extraits sont rendues par KaTeX.
+import Icone from './Icone.astro';
+---
+
+<dialog class="recherche" id="recherche" aria-label="Rechercher dans les révisions">
+  <form method="dialog" class="recherche-form" role="search">
+    <Icone nom="recherche" class="recherche-loupe" />
+    <label class="sr-only" for="recherche-champ">Rechercher</label>
+    <input
+      id="recherche-champ"
+      type="search"
+      placeholder="Discriminant, tangente, dérivée d’un quotient…"
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <button type="submit" value="fermer" class="recherche-fermer" data-fermer>Fermer</button>
+  </form>
+  <p class="recherche-etat" aria-live="polite"></p>
+  <ol class="recherche-resultats"></ol>
+</dialog>
+
+<style is:global>
+  .recherche {
+    width: min(42rem, calc(100vw - 1.5rem));
+    max-height: min(42rem, calc(100vh - 3rem));
+    margin: 1.5rem auto auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--rayon);
+    box-shadow: 0 20px 60px rgb(11 31 58 / 0.35);
+    color: var(--texte);
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .recherche[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recherche::backdrop {
+    background: rgb(11 31 58 / 0.55);
+  }
+
+  .recherche-form {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 0.9rem;
+    border-bottom: 1px solid var(--bord);
+  }
+
+  .recherche-loupe {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--bleu-600);
+    flex: none;
+  }
+
+  #recherche-champ {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    font-size: 1.05rem;
+    border: 0;
+    outline: 0;
+    padding: 0.4rem 0;
+    color: var(--texte);
+    background: transparent;
+  }
+
+  .recherche-fermer {
+    font: inherit;
+    font-size: 0.85rem;
+    border: 1px solid var(--bord);
+    background: var(--fond-doux);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    color: var(--texte-doux);
+  }
+
+  .recherche-etat {
+    margin: 0;
+    padding: 0.6rem 1rem 0;
+    font-size: 0.85rem;
+    color: var(--texte-doux);
+  }
+
+  .recherche-etat:empty {
+    display: none;
+  }
+
+  .recherche-resultats {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0.75rem 0.9rem;
+    overflow-y: auto;
+  }
+
+  .resultat {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--bord);
+  }
+
+  .resultat:last-child {
+    border-bottom: 0;
+  }
+
+  .resultat-chemin {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--texte-doux);
+  }
+
+  .resultat-titre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--bleu-900);
+  }
+
+  .resultat-onglet {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.05rem 0.55rem;
+    border-radius: 999px;
+    background: var(--jaune-200);
+    color: var(--jaune-texte);
+  }
+
+  .resultat-extrait {
+    margin: 0.3rem 0 0;
+    font-size: 0.92rem;
+    color: var(--texte-doux);
+  }
+
+  .resultat mark {
+    background: var(--jaune-200);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  .resultat-sous {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0 0 0 0.75rem;
+    border-left: 2px solid var(--bleu-100);
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .resultat-sous a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 6px;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .resultat-sous a:hover {
+    background: var(--bleu-50);
+  }
+
+  .resultat-sous-titre {
+    display: block;
+    font-weight: 600;
+    color: var(--bleu-700);
+    font-size: 0.95rem;
+  }
+
+  .resultat .katex {
+    font-size: 1em;
+  }
+</style>
+
+<script>
+  import type katexType from 'katex';
+  import { rendreExtrait } from '../lib/extrait';
+
+  interface SousResultat {
+    title: string;
+    url: string;
+    excerpt: string;
+  }
+  interface DonneesResultat {
+    url: string;
+    excerpt: string;
+    meta: Record<string, string>;
+    sub_results?: SousResultat[];
+  }
+  interface Pagefind {
+    options(o: Record<string, unknown>): Promise<void>;
+    init(): void;
+    search(q: string): Promise<{ results: { data(): Promise<DonneesResultat> }[] }>;
+  }
+
+  const dialog = document.getElementById('recherche') as HTMLDialogElement;
+  const champ = document.getElementById('recherche-champ') as HTMLInputElement;
+  const etat = dialog.querySelector('.recherche-etat') as HTMLElement;
+  const liste = dialog.querySelector('.recherche-resultats') as HTMLOListElement;
+  const MAX_RESULTATS = 10;
+
+  let pagefind: Promise<Pagefind> | undefined;
+  let katex: Promise<typeof katexType> | undefined;
+
+  function chargerPagefind() {
+    pagefind ??= import(/* @vite-ignore */ `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}pagefind/pagefind.js`).then(
+      async (pf: Pagefind) => {
+        await pf.options({ excerptLength: 24 });
+        pf.init();
+        return pf;
+      },
+    );
+    return pagefind;
+  }
+
+  function chargerKatex() {
+    katex ??= import('katex').then((m) => m.default);
+    return katex;
+  }
+
+  function ouvrir() {
+    if (!dialog.open) dialog.showModal();
+    champ.focus();
+    champ.select();
+    chargerPagefind().catch(() => {});
+    chargerKatex().catch(() => {});
+  }
+
+  for (const bouton of document.querySelectorAll('[data-ouvrir-recherche]')) {
+    bouton.addEventListener('click', ouvrir);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (dialog.open) return;
+    const cible = e.target as HTMLElement | null;
+    const enSaisie = cible?.closest('input, textarea, select, [contenteditable="true"]');
+    if ((e.key === '/' && !enSaisie) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) {
+      e.preventDefault();
+      ouvrir();
+    }
+  });
+
+  // Clic sur le fond : fermeture.
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  // Entrée dans le champ : ouvre le premier résultat au lieu de fermer la fenêtre.
+  dialog.querySelector('form')!.addEventListener('submit', (e) => {
+    const soumis = (e as SubmitEvent).submitter;
+    if (soumis?.hasAttribute('data-fermer')) return;
+    e.preventDefault();
+    liste.querySelector<HTMLAnchorElement>('a')?.click();
+  });
+
+  // Un lien vers une ancre de la page courante doit aussi fermer la fenêtre.
+  liste.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) dialog.close();
+  });
+
+  const echapper = (s: string) =>
+    s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+
+  function carte(d: DonneesResultat, k: typeof katexType) {
+    const m = d.meta;
+    const sous = (d.sub_results ?? []).filter((s) => s.url.includes('#')).slice(0, 3);
+    const chemin = [m.classe, m.matiere].filter(Boolean).map(echapper).join(' · ');
+    const corps = sous.length
+      ? `<ul class="resultat-sous">${sous
+          .map(
+            (s) => `<li><a href="${echapper(s.url)}">
+              <span class="resultat-sous-titre">${rendreExtrait(echapper(s.title), k)}</span>
+              <span class="resultat-extrait">${rendreExtrait(s.excerpt, k)}</span></a></li>`,
+          )
+          .join('')}</ul>`
+      : `<p class="resultat-extrait">${rendreExtrait(d.excerpt, k)}</p>`;
+    return `<li class="resultat">
+      ${chemin ? `<p class="resultat-chemin">${chemin}</p>` : ''}
+      <a class="resultat-titre" href="${echapper(d.url)}">
+        <span class="resultat-chapitre">${echapper(m.chapitre ?? m.title ?? '')}</span>
+        ${m.onglet ? `<span class="resultat-onglet">${echapper(m.onglet)}</span>` : ''}
+      </a>
+      ${corps}
+    </li>`;
+  }
+
+  let minuteur: ReturnType<typeof setTimeout> | undefined;
+  let jeton = 0;
+
+  async function chercher() {
+    const requete = champ.value.trim();
+    const moi = ++jeton;
+    if (requete.length < 2) {
+      liste.replaceChildren();
+      etat.textContent = '';
+      return;
+    }
+    let pf: Pagefind;
+    let k: typeof katexType;
+    try {
+      [pf, k] = await Promise.all([chargerPagefind(), chargerKatex()]);
+    } catch {
+      etat.textContent =
+        'La recherche est disponible sur le site construit (npm run build, puis npm run preview).';
+      return;
+    }
+    const reponse = await pf.search(requete);
+    const donnees = await Promise.all(reponse.results.slice(0, MAX_RESULTATS).map((r) => r.data()));
+    if (moi !== jeton) return;
+
+    const n = reponse.results.length;
+    etat.textContent = n === 0 ? 'Aucun résultat.' : `${n} résultat${n > 1 ? 's' : ''}`;
+    liste.innerHTML = donnees.map((d) => carte(d, k)).join('');
+  }
+
+  champ.addEventListener('input', () => {
+    clearTimeout(minuteur);
+    minuteur = setTimeout(chercher, 150);
+  });
+</script>

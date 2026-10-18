@@ -1,0 +1,60 @@
+---
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+import Icone from '../components/Icone.astro';
+import Recherche from '../components/Recherche.astro';
+import { SITE } from '../lib/catalogue';
+
+interface Props {
+  titre: string;
+  description?: string;
+}
+const { titre, description = SITE.description } = Astro.props;
+const titreComplet = titre === SITE.nom ? titre : `${titre} · ${SITE.nom}`;
+const surAnnales = Astro.url.pathname.startsWith('/annales');
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titreComplet}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1f3a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+    <header class="entete">
+      <div class="conteneur entete-interieur">
+        <a class="logo" href="/" aria-label={`${SITE.nom} — accueil`}>
+          <span class="logo-marque" aria-hidden="true">√</span>
+          <span class="logo-texte">Révisions <strong>Spé</strong></span>
+        </a>
+        <nav class="entete-nav" aria-label="Navigation principale">
+          <a href="/annales/" aria-current={surAnnales ? 'page' : undefined}>Annales</a>
+          <button type="button" class="btn-recherche" data-ouvrir-recherche aria-haspopup="dialog">
+            <Icone nom="recherche" />
+            <span class="btn-recherche-texte">Rechercher</span>
+            <kbd>/</kbd>
+            <span class="sr-only">Ouvrir la recherche</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenu" class="conteneur">
+      <slot />
+    </main>
+
+    <footer class="pied">
+      <div class="conteneur">
+        <p><strong>{SITE.nom}</strong> — cours, fiches et exercices corrigés de spécialité.</p>
+        <p>Les annales renvoient vers les sources officielles (Éduscol, APMEP).</p>
+      </div>
+    </footer>
+
+    <Recherche />
+  </body>
+</html>

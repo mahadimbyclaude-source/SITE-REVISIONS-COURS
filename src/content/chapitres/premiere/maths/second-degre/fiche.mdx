@@ -1,0 +1,81 @@
+---
+titre: Fiche — Second degré
+---
+
+## À savoir par cœur
+
+Pour $f(x) = ax^2 + bx + c$ avec $a \neq 0$ :
+
+| Notion | Formule |
+| --- | --- |
+| Forme canonique | $f(x) = a(x - \alpha)^2 + \beta$ |
+| Sommet de la parabole | $\alpha = -\dfrac{b}{2a}$ et $\beta = f(\alpha)$ |
+| Discriminant | $\Delta = b^2 - 4ac$ |
+| Somme des racines | $x_1 + x_2 = -\dfrac{b}{a}$ |
+| Produit des racines | $x_1 x_2 = \dfrac{c}{a}$ |
+
+## Le tableau qui résume tout
+
+| | $\Delta > 0$ | $\Delta = 0$ | $\Delta < 0$ |
+| --- | --- | --- | --- |
+| Solutions de $f(x) = 0$ | $x_{1,2} = \dfrac{-b \pm \sqrt{\Delta}}{2a}$ | $x_0 = -\dfrac{b}{2a}$ | aucune |
+| Forme factorisée | $a(x - x_1)(x - x_2)$ | $a(x - x_0)^2$ | impossible |
+| Signe de $f(x)$ | signe de $a$ sauf entre $x_1$ et $x_2$ | signe de $a$, nul en $x_0$ | signe de $a$ |
+| La parabole coupe l’axe des abscisses | en deux points | en un point (le sommet) | jamais |
+
+## Tableaux à savoir refaire
+
+Signe d’un trinôme avec deux racines $x_1 < x_2$ :
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & x_1 & & x_2 & & +\infty \\
+\hline
+f(x) & & \text{signe de } a & 0 & \text{signe de } -a & 0 & \text{signe de } a & \\
+\hline
+\end{array}
+$$
+
+Variations pour $a > 0$ (pour $a < 0$, les flèches s’inversent et $\beta$ devient un maximum) :
+
+$$
+\begin{array}{|c|ccccc|}
+\hline
+x & -\infty & & \alpha & & +\infty \\
+\hline
+ & & & & & \\
+f & & \searrow & & \nearrow & \\
+ & & & \beta & & \\
+\hline
+\end{array}
+$$
+
+## Méthodes express
+
+<Bloc type="methode" titre="Avant de calculer Δ">
+
+- Si $c = 0$ : factoriser par $x$. Exemple : $2x^2 - 5x = x(2x - 5)$.
+- Si $b = 0$ : isoler $x^2$. Exemple : $x^2 = 9 \iff x = -3$ ou $x = 3$.
+- Racine évidente $x_1$ ? L’autre vaut $x_2 = \dfrac{c}{a\,x_1}$.
+- Identité remarquable ? $x^2 - 6x + 9 = (x - 3)^2$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Inéquation">
+
+Tout dans un membre, $\Delta$, racines, **tableau de signes**, puis lecture des solutions avec les bons crochets.
+
+</Bloc>
+
+## Pièges classiques
+
+<Bloc type="attention">
+
+- Oublier le signe de $b$ : pour $x^2 - 4x + 1$, on a $b = -4$, donc $b^2 = 16$ (et non $-16$).
+- Diviser par $2$ au lieu de $2a$ dans la formule des racines.
+- Écrire la forme factorisée sans le coefficient $a$ : $2x^2 - 2 = 2(x - 1)(x + 1)$, pas $(x - 1)(x + 1)$.
+- Inverser le sens d’une inéquation en lisant le tableau : « $> 0$ » se lit sur les signes $+$.
+- Pour un trinôme à paramètre $m$, penser au cas où le coefficient de $x^2$ s’annule : l’équation n’est alors plus du second degré.
+
+</Bloc>
