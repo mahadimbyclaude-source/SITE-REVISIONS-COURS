@@ -1,0 +1,182 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# MODÈLE — Cours d'un chapitre (onglet « Cours »)
+#
+# Pour créer un nouveau chapitre :
+#   1. Créer un dossier : src/content/chapitres/<classe>/<matiere>/<nom-du-chapitre>/
+#      ex. src/content/chapitres/premiere/maths/suites/
+#      (le nom du dossier apparaît dans l'URL : minuscules, tirets, sans accents)
+#   2. Copier ce fichier dedans sous le nom : cours.mdx
+#   3. (facultatif) Copier modeles/fiche.mdx sous le nom : fiche.mdx
+#   4. Ajouter les exercices dans un sous-dossier exercices/ (voir les autres modèles)
+#
+# Ce fichier est OBLIGATOIRE : c'est lui qui fait apparaître le chapitre sur le site.
+# Les lignes qui commencent par # (ici) et les blocs {/* ... */} (plus bas)
+# sont des commentaires : ils ne s'affichent pas sur le site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+titre: Suites arithmétiques    # nom du chapitre (pas de formule)
+ordre: 3                       # position dans la liste des chapitres (1, 2, 3…)
+description: Définition, terme général, sens de variation et somme des premiers entiers.
+---
+
+{/*
+  RÈGLES D'ÉCRITURE
+  - Toute expression mathématique en LaTeX : $...$ dans une phrase,
+    $$ ... $$ sur des lignes à part pour une formule centrée.
+  - Fractions : \dfrac{a}{b} dans une phrase, \frac{a}{b} dans un bloc $$ (jamais a/b).
+  - Virgule décimale : écrire $1,5$ directement.
+  - Raccourcis : \R (réels), \N (entiers naturels),
+    \interoo{a}{b} = ]a;b[   \interff{a}{b} = [a;b]   \interof{a}{b} = ]a;b]   \interfo{a}{b} = [a;b[
+  - Titres de section avec ## (ils forment le sommaire du cours). Pas de formule dans les titres.
+
+  ENCADRÉS : <Bloc type="..." titre="...">
+  Types : definition, propriete, theoreme, methode, exemple, remarque, attention,
+  demonstration (repliable). Le titre est facultatif.
+  IMPORTANT : laisser une ligne vide après <Bloc ...> et une avant </Bloc>.
+*/}
+
+## Définition
+
+<Bloc type="definition" titre="Suite arithmétique">
+
+Une suite $(u_n)$ est **arithmétique** s’il existe un réel $r$ tel que, pour tout $n \in \N$,
+
+$$
+u_{n+1} = u_n + r.
+$$
+
+Le nombre $r$ s’appelle la **raison** de la suite.
+
+</Bloc>
+
+<Bloc type="methode" titre="Montrer qu’une suite est arithmétique">
+
+1. Calculer $u_{n+1} - u_n$ en fonction de $n$.
+2. Montrer que le résultat est une constante $r$ (il ne dépend pas de $n$).
+3. Conclure : la suite est arithmétique de raison $r$.
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Soit $u_n = 3n - 2$. Pour tout $n \in \N$ :
+
+$$
+u_{n+1} - u_n = 3(n + 1) - 2 - (3n - 2) = 3.
+$$
+
+La suite $(u_n)$ est arithmétique de raison $3$ et de premier terme $u_0 = -2$.
+
+</Bloc>
+
+<Bloc type="attention">
+
+Calculer seulement les premiers termes ne suffit pas à prouver qu’une suite est arithmétique. En revanche, cela suffit pour prouver qu’elle **ne l’est pas** : pour $u_n = n^2$, on a $u_1 - u_0 = 1$ mais $u_2 - u_1 = 3$.
+
+</Bloc>
+
+## Terme général
+
+<Bloc type="propriete" titre="Expression du terme général">
+
+Si $(u_n)$ est arithmétique de raison $r$, alors pour tous entiers naturels $n$ et $p$ :
+
+$$
+u_n = u_0 + nr
+\qquad\text{et}\qquad
+u_n = u_p + (n - p)r.
+$$
+
+</Bloc>
+
+<Bloc type="exemple">
+
+Si $u_0 = 1,5$ et $r = 0,5$, alors $u_{10} = 1,5 + 10 \times 0,5 = 6,5$.
+
+</Bloc>
+
+## Sens de variation
+
+<Bloc type="propriete">
+
+Soit $(u_n)$ une suite arithmétique de raison $r$.
+
+- Si $r > 0$, la suite est strictement croissante.
+- Si $r < 0$, la suite est strictement décroissante.
+- Si $r = 0$, la suite est constante.
+
+</Bloc>
+
+<Bloc type="remarque">
+
+Les points de coordonnées $(n\,;\,u_n)$ sont alignés sur la droite d’équation $y = rx + u_0$.
+
+</Bloc>
+
+## Somme des premiers entiers
+
+<Bloc type="theoreme">
+
+Pour tout entier $n \geq 1$ :
+
+$$
+1 + 2 + \cdots + n = \frac{n(n + 1)}{2}.
+$$
+
+</Bloc>
+
+<Bloc type="demonstration">
+
+On note $S = 1 + 2 + \cdots + n$ et on écrit la somme dans les deux sens :
+
+$$
+\begin{aligned}
+S &= 1 + 2 + \cdots + n \\
+S &= n + (n - 1) + \cdots + 1
+\end{aligned}
+$$
+
+En additionnant terme à terme, on obtient $n$ fois la valeur $n + 1$ : $2S = n(n + 1)$, d’où $S = \dfrac{n(n + 1)}{2}$.
+
+</Bloc>
+
+{/*
+  ─────────────────────────────────────────────────────────────────────────────
+  MODÈLES DE TABLEAUX (à copier si besoin, sinon supprimer cette section)
+  - Une colonne par valeur de x et une colonne vide entre deux valeurs.
+  - & sépare les cases, \\ termine une ligne, \hline trace un trait horizontal.
+  - Valeur interdite : écrire \| dans la case (double barre).
+  - Flèches : \nearrow (croissante) et \searrow (décroissante).
+  ─────────────────────────────────────────────────────────────────────────────
+*/}
+
+## Modèles de tableaux
+
+Tableau de signes :
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & a & & b & & +\infty \\
+\hline
+f(x) & & + & 0 & - & 0 & + & \\
+\hline
+\end{array}
+$$
+
+Tableau de variations :
+
+$$
+\begin{array}{|c|ccccccc|}
+\hline
+x & -\infty & & a & & b & & +\infty \\
+\hline
+f'(x) & & + & 0 & - & 0 & + & \\
+\hline
+ & & & f(a) & & & & \\
+f & & \nearrow & & \searrow & & \nearrow & \\
+ & & & & & f(b) & & \\
+\hline
+\end{array}
+$$

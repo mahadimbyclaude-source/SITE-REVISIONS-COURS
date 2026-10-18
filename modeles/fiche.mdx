@@ -1,0 +1,66 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# MODÈLE — Fiche de révision d'un chapitre (onglet « Fiche de révision »)
+#
+# Copier ce fichier dans le dossier du chapitre, sous le nom : fiche.mdx
+#   ex. src/content/chapitres/premiere/maths/suites/fiche.mdx
+# Le chapitre doit aussi avoir un cours.mdx (voir modeles/cours.mdx).
+# Si la fiche n'existe pas, l'onglet affiche « en préparation ».
+#
+# Esprit d'une fiche : l'essentiel à savoir par cœur, en une page.
+# Les lignes qui commencent par # (ici) et les blocs {/* ... */} (plus bas)
+# sont des commentaires : ils ne s'affichent pas sur le site.
+# ─────────────────────────────────────────────────────────────────────────────
+
+titre: Fiche — Suites arithmétiques   # facultatif
+---
+
+{/*
+  Mêmes règles que le cours : formules en LaTeX ($...$ et $$...$$), \dfrac pour les fractions,
+  encadrés <Bloc type="..."> avec une ligne vide après l'ouverture et avant la fermeture.
+
+  TABLEAUX : une ligne d'en-tête, puis une ligne de tirets, puis les lignes.
+  Les cases sont séparées par |. Les formules sont permises dans les cases.
+*/}
+
+## À savoir par cœur
+
+Pour une suite arithmétique $(u_n)$ de raison $r$ :
+
+| Notion | Formule |
+| --- | --- |
+| Définition | $u_{n+1} = u_n + r$ |
+| Terme général | $u_n = u_0 + nr$ |
+| Entre deux termes | $u_n = u_p + (n - p)r$ |
+| Somme des entiers | $1 + 2 + \cdots + n = \dfrac{n(n + 1)}{2}$ |
+
+## Le tableau qui résume tout
+
+| | $r > 0$ | $r = 0$ | $r < 0$ |
+| --- | --- | --- | --- |
+| Sens de variation | croissante | constante | décroissante |
+| Points $(n\,;\,u_n)$ | sur une droite qui monte | sur une droite horizontale | sur une droite qui descend |
+
+## Méthodes express
+
+<Bloc type="methode" titre="Prouver qu’une suite est arithmétique">
+
+Calculer $u_{n+1} - u_n$ : si le résultat ne dépend pas de $n$, c’est la raison $r$.
+
+</Bloc>
+
+<Bloc type="methode" titre="Trouver la raison avec deux termes">
+
+$u_n - u_p = (n - p)r$, donc $r = \dfrac{u_n - u_p}{n - p}$. Exemple : $u_2 = 7$ et $u_6 = 19$ donnent $r = \dfrac{19 - 7}{6 - 2} = 3$.
+
+</Bloc>
+
+## Pièges classiques
+
+<Bloc type="attention">
+
+- Si la suite commence à $u_1$, le terme général s’écrit $u_n = u_1 + (n - 1)r$, et non $u_1 + nr$.
+- Trois premiers termes en progression ne prouvent pas qu’une suite est arithmétique : il faut un calcul pour tout $n$.
+- De $u_0$ à $u_n$, il y a $n + 1$ termes, pas $n$.
+
+</Bloc>
