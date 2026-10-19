@@ -19,9 +19,20 @@ indices:
     Plus précis : le tableau de signes a trois facteurs ($4x$, $x - 1$, $x + 1$) et donc quatre intervalles.
 
 correction: |
-  **1.** $f'(x) = 4x^3 - 4x = 4x(x^2 - 1) = 4x(x - 1)(x + 1)$.
+  **1.** La fonction $f$ est dérivable sur $\R$ et $f'(x) = 4x^3 - 4x = 4x(x^2 - 1)$. On reconnaît une identité remarquable : $x^2 - 1 = (x - 1)(x + 1)$, donc
 
-  **2.** Racines de $f'$ : $-1$, $0$ et $1$. On calcule le signe sur chaque intervalle, par exemple pour $x > 1$ les trois facteurs sont positifs. On a $f(-1) = f(1) = -1$ et $f(0) = 0$.
+  $$
+  f'(x) = 4x(x - 1)(x + 1).
+  $$
+
+  **2.** Les racines de $f'$ sont $-1$, $0$ et $1$. On étudie le signe de chaque facteur sur les quatre intervalles :
+
+  - pour $x > 1$, les trois facteurs $4x$, $x - 1$ et $x + 1$ sont positifs : $f'(x) > 0$ ;
+  - pour $0 < x < 1$, seul $x - 1$ est négatif : $f'(x) < 0$ ;
+  - pour $-1 < x < 0$, $4x$ et $x - 1$ sont négatifs, $x + 1$ positif : $f'(x) > 0$ ;
+  - pour $x < -1$, les trois facteurs sont négatifs : $f'(x) < 0$.
+
+  On calcule $f(-1) = 1 - 2 = -1$, $f(0) = 0$ et $f(1) = -1$.
 
   $$
   \begin{array}{c|ccccccccc}
@@ -31,5 +42,5 @@ correction: |
   \end{array}
   $$
 
-  **3.** $f$ admet un minimum local égal à $-1$ en $x = -1$ et en $x = 1$ (c’est même le minimum global), et un maximum local égal à $0$ en $x = 0$.
+  **3.** D'après le tableau, $f$ admet un **minimum local** égal à $-1$ en $x = -1$ et en $x = 1$ (c'est même le minimum global de $f$ sur $\R$), et un **maximum local** égal à $0$ en $x = 0$.
 ---

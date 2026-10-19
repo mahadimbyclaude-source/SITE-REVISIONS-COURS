@@ -20,11 +20,13 @@ indices:
     Plus précis : $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.
 
 correction: |
-  **1.** $P(A) \times P(B) = 0{,}5 \times 0{,}4 = 0{,}2 = P(A \cap B)$ : $A$ et $B$ sont indépendants.
+  Deux événements $A$ et $B$ sont indépendants si et seulement si $P(A \cap B) = P(A) \times P(B)$.
 
-  **2.** $P(A) \times P(C) = 0{,}5 \times 0{,}3 = 0{,}15 \neq 0{,}2 = P(A \cap C)$ : $A$ et $C$ ne sont pas indépendants.
+  **1.** $P(A) \times P(B) = 0{,}5 \times 0{,}4 = 0{,}2 = P(A \cap B)$. L'égalité est vérifiée : $A$ et $B$ sont **indépendants**.
 
-  **3.** $P(A \cup B) = 0{,}5 + 0{,}4 - 0{,}2 = 0{,}7$.
+  **2.** $P(A) \times P(C) = 0{,}5 \times 0{,}3 = 0{,}15$, alors que $P(A \cap C) = 0{,}2$. Les deux valeurs sont différentes : $A$ et $C$ ne sont **pas** indépendants.
 
-  **4.** $P_A(B) = \dfrac{0{,}2}{0{,}5} = 0{,}4 = P(B)$ : savoir que $A$ est réalisé ne change pas la probabilité de $B$, ce qui est cohérent avec l’indépendance.
+  **3.** D'après la formule du crible, $P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0{,}5 + 0{,}4 - 0{,}2 = 0{,}7$.
+
+  **4.** $P_A(B) = \dfrac{P(A \cap B)}{P(A)} = \dfrac{0{,}2}{0{,}5} = 0{,}4 = P(B)$. Savoir que $A$ est réalisé ne change pas la probabilité de $B$ : c'est cohérent avec l'indépendance de $A$ et $B$.
 ---

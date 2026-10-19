@@ -19,9 +19,11 @@ indices:
     Plus précis : $\cos 60^\circ = \dfrac{1}{2}$, $\cos 120^\circ = -\dfrac{1}{2}$ et $\cos 90^\circ = 0$.
 
 correction: |
-  **1.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 4 \times 3 \times \cos 60^\circ = 12 \times \dfrac{1}{2} = 6$.
+  On utilise la formule $\overrightarrow{AB} \cdot \overrightarrow{AC} = AB \times AC \times \cos\widehat{BAC}$, avec $AB \times AC = 4 \times 3 = 12$.
+
+  **1.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 12 \times \cos 60^\circ = 12 \times \dfrac{1}{2} = 6$.
 
   **2.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 12 \times \cos 120^\circ = 12 \times \left(-\dfrac{1}{2}\right) = -6$.
 
-  **3.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 12 \times \cos 90^\circ = 0$. Les vecteurs sont orthogonaux : le triangle est rectangle en $A$.
+  **3.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 12 \times \cos 90^\circ = 0$. Le produit scalaire est nul, donc les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont orthogonaux (ce que l'on savait déjà puisque l'angle vaut $90^\circ$) : le triangle $ABC$ est **rectangle en $A$**.
 ---

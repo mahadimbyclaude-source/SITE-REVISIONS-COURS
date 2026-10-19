@@ -19,19 +19,19 @@ indices:
     Pour $S_2$, calcule d’abord $u_{20}$ et compte les termes de $u_0$ à $u_{20}$. Pour $S_3$, la raison est $q = 3$.
 
 correction: |
-  **1.**
+  **1.** C'est la somme des $50$ premiers entiers non nuls :
 
   $$
   S_1 = \frac{50 \times 51}{2} = 1275.
   $$
 
-  **2.** $u_{20} = 3 + 20 \times 2 = 43$. Il y a $21$ termes, donc
+  **2.** $(u_n)$ est arithmétique, donc $u_{20} = u_0 + 20r = 3 + 20 \times 2 = 43$. La somme de $u_0$ à $u_{20}$ comporte $21$ termes, d'où
 
   $$
-  S_2 = 21 \times \frac{3 + 43}{2} = 21 \times 23 = 483.
+  S_2 = 21 \times \frac{u_0 + u_{20}}{2} = 21 \times \frac{3 + 43}{2} = 21 \times 23 = 483.
   $$
 
-  **3.** C’est la somme des puissances de $q = 3$ jusqu’à $n = 6$ :
+  **3.** Les termes $1 = 3^0$, $3 = 3^1$, $\ldots$, $3^6$ sont ceux d'une suite géométrique de raison $q = 3 \neq 1$ et de premier terme $1$. Pour $q \neq 1$, $1 + q + \cdots + q^n = \dfrac{1 - q^{n+1}}{1 - q}$, donc
 
   $$
   S_3 = \frac{1 - 3^{7}}{1 - 3} = \frac{1 - 2187}{-2} = 1093.

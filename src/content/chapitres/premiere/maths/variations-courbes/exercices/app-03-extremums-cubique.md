@@ -19,9 +19,13 @@ indices:
     Plus précis : $x^2 - 3x + 2 = (x - 1)(x - 2)$. Le signe de $f'$ est celui d’un trinôme de coefficient dominant positif.
 
 correction: |
-  **1.** $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x - 1)(x - 2)$.
+  **1.** La fonction $f$ est dérivable sur $\R$ et $f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2)$. Or $x^2 - 3x + 2$ a pour racines $1$ et $2$, donc $x^2 - 3x + 2 = (x - 1)(x - 2)$ et
 
-  **2.** $f'$ est positive à l’extérieur des racines $1$ et $2$, négative entre. On a $f(1) = 2 - 9 + 12 + 1 = 6$ et $f(2) = 16 - 36 + 24 + 1 = 5$.
+  $$
+  f'(x) = 6(x - 1)(x - 2).
+  $$
+
+  **2.** Le trinôme $f'$ a un coefficient dominant positif : il est positif à l'extérieur des racines $1$ et $2$ et négatif entre elles. On calcule $f(1) = 2 - 9 + 12 + 1 = 6$ et $f(2) = 16 - 36 + 24 + 1 = 5$.
 
   $$
   \begin{array}{c|ccccccc}
@@ -31,5 +35,5 @@ correction: |
   \end{array}
   $$
 
-  **3.** $f$ admet un **maximum local** égal à $6$ en $x = 1$ et un **minimum local** égal à $5$ en $x = 2$.
+  **3.** La dérivée s'annule en changeant de signe en $1$ (de $+$ à $-$) et en $2$ (de $-$ à $+$). Donc $f$ admet un **maximum local** égal à $6$ atteint en $x = 1$, et un **minimum local** égal à $5$ atteint en $x = 2$.
 ---

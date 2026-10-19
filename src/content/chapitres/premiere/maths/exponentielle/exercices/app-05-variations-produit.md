@@ -19,9 +19,13 @@ indices:
     Plus précis : $f'(x) = \mathrm{e}^{x} + (x - 1)\mathrm{e}^{x} = \mathrm{e}^{x}\,(1 + x - 1)$. Le signe de $f'$ est celui de $x$ car $\mathrm{e}^{x} > 0$.
 
 correction: |
-  **1.** $f'(x) = 1 \times \mathrm{e}^{x} + (x - 1) \times \mathrm{e}^{x} = \mathrm{e}^{x}(1 + x - 1) = x\,\mathrm{e}^{x}$.
+  **1.** La fonction $f$ est dérivable sur $\R$. On pose $u(x) = x - 1$ et $v(x) = \mathrm{e}^{x}$, donc $u'(x) = 1$ et $v'(x) = \mathrm{e}^{x}$. Alors
 
-  **2.** Comme $\mathrm{e}^{x} > 0$, $f'(x)$ a le signe de $x$. On a $f(0) = -1$.
+  $$
+  f'(x) = 1 \times \mathrm{e}^{x} + (x - 1)\,\mathrm{e}^{x} = \mathrm{e}^{x}(1 + x - 1) = x\,\mathrm{e}^{x}.
+  $$
+
+  **2.** Pour tout $x$, $\mathrm{e}^{x} > 0$, donc $f'(x)$ a le signe de $x$ : négatif pour $x < 0$, nul en $0$, positif pour $x > 0$. De plus $f(0) = (0 - 1)\mathrm{e}^{0} = -1$.
 
   $$
   \begin{array}{c|ccccc}
@@ -31,5 +35,5 @@ correction: |
   \end{array}
   $$
 
-  **3.** Le minimum de $f$ sur $\R$ est $f(0) = -1$, donc $f(x) \geq -1$ pour tout $x$.
+  **3.** D'après le tableau, $f$ admet un minimum sur $\R$ atteint en $0$, égal à $f(0) = -1$. Donc $f(x) \geq -1$ pour tout réel $x$.
 ---

@@ -33,13 +33,21 @@ indices:
     Pour le programme, la boucle doit continuer tant que la concentration est supérieure ou égale à $1$ : la condition utilise $5 \times \exp(-0{,}4 \times n)$.
 
 correction: |
-  **1.** $C(0) = 5\,\mathrm{e}^{0} = 5$ mg/L. De plus $C'(t) = 5 \times (-0{,}4)\,\mathrm{e}^{-0{,}4t} = -2\,\mathrm{e}^{-0{,}4t} < 0$, donc $C$ est strictement décroissante sur $\interfo{0}{+\infty}$.
+  **1.** $C(0) = 5\,\mathrm{e}^{0} = 5$ : la concentration initiale est de $5$ mg/L.
 
-  **2.** $c_{n+1} = 5\,\mathrm{e}^{-0{,}4n - 0{,}4} = \mathrm{e}^{-0{,}4} \times 5\,\mathrm{e}^{-0{,}4n} = \mathrm{e}^{-0{,}4}\,c_n$. La suite $(c_n)$ est géométrique de raison $\mathrm{e}^{-0{,}4}$ et de premier terme $c_0 = 5$.
+  La fonction $C$ est dérivable sur $\interfo{0}{+\infty}$ et $C'(t) = 5 \times (-0{,}4)\,\mathrm{e}^{-0{,}4t} = -2\,\mathrm{e}^{-0{,}4t}$. Comme $\mathrm{e}^{-0{,}4t} > 0$, on a $C'(t) < 0$ pour tout $t \geq 0$ : la fonction $C$ est **strictement décroissante**.
 
-  **3.** $C(5) = 5\,\mathrm{e}^{-2} \approx 5 \times 0{,}135 = 0{,}675$, soit environ $0{,}68$ mg/L.
+  **2.** Pour tout entier $n$ :
 
-  **4.**
+  $$
+  c_{n+1} = 5\,\mathrm{e}^{-0{,}4(n+1)} = 5\,\mathrm{e}^{-0{,}4n} \times \mathrm{e}^{-0{,}4} = \mathrm{e}^{-0{,}4}\,c_n.
+  $$
+
+  La suite $(c_n)$ est donc **géométrique** de raison $\mathrm{e}^{-0{,}4}$ et de premier terme $c_0 = C(0) = 5$.
+
+  **3.** $C(5) = 5\,\mathrm{e}^{-0{,}4 \times 5} = 5\,\mathrm{e}^{-2} \approx 5 \times 0{,}135 = 0{,}675$. Au bout de $5$ heures, la concentration est d'environ $0{,}68$ mg/L.
+
+  **4.** On incrémente $n$ tant que la concentration est encore supérieure ou égale à $1$ mg/L :
 
   ```python
   from math import exp
@@ -49,5 +57,5 @@ correction: |
   print(n)
   ```
 
-  On a $5\,\mathrm{e}^{-1{,}6} \approx 1{,}01 \geq 1$ pour $n = 4$ et $5\,\mathrm{e}^{-2} \approx 0{,}68 < 1$ pour $n = 5$. Le programme affiche $5$.
+  Pour $n = 4$, $5\,\mathrm{e}^{-1{,}6} \approx 1,01 \geq 1$ : la boucle continue. Pour $n = 5$, $5\,\mathrm{e}^{-2} \approx 0,68 < 1$ : la boucle s'arrête. Le programme affiche **5** : c'est à partir de la $5^{\text{e}}$ heure que la concentration est inférieure à $1$ mg/L.
 ---

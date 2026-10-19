@@ -18,11 +18,15 @@ indices:
     Plus précis : pour « au moins une fois », passe par l’événement contraire « aucune fois ».
 
 correction: |
-  **1.** Les multiples de $3$ sont $3$ et $6$ : $P = \dfrac{2}{6} = \dfrac{1}{3}$.
+  **1.** Le dé est équilibré : on est en situation d'équiprobabilité. Parmi les $6$ faces, les multiples de $3$ sont $3$ et $6$ : $P = \dfrac{2}{6} = \dfrac{1}{3}$.
 
-  **2.** Il y a $36$ couples et $6$ couples de somme $7$ : $(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)$. Donc $P = \dfrac{6}{36} = \dfrac{1}{6}$.
+  **2.** Il y a $6 \times 6 = 36$ couples de résultats équiprobables. Ceux de somme $7$ sont $(1,6)$, $(2,5)$, $(3,4)$, $(4,3)$, $(5,2)$ et $(6,1)$, soit $6$ couples. Donc $P = \dfrac{6}{36} = \dfrac{1}{6}$.
 
-  **3.** $3 \times 4 \times 2 = 24$ menus.
+  **3.** Un menu complet se construit en choisissant successivement une entrée, un plat et un dessert : il y a $3 \times 4 \times 2 = 24$ menus différents.
 
-  **4.** La probabilité de n’obtenir aucune « face » est $\left(\dfrac{1}{2}\right)^3 = \dfrac{1}{8}$. Donc $P = 1 - \dfrac{1}{8} = \dfrac{7}{8}$.
+  **4.** L'événement contraire de « au moins une fois face » est « aucune fois face », c'est-à-dire « trois fois pile ». Les lancers étant indépendants, sa probabilité est $\left(\dfrac{1}{2}\right)^3 = \dfrac{1}{8}$. Donc
+
+  $$
+  P = 1 - \frac{1}{8} = \frac{7}{8}.
+  $$
 ---

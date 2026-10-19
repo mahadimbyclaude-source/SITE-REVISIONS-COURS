@@ -27,26 +27,30 @@ indices:
     Pour la dernière question, ne te contente pas de résoudre : calcule les nombres obtenus après ajout et vérifie qu’ils forment bien une progression géométrique.
 
 correction: |
-  **1.** Les nombres sont $x_2 - r$, $x_2$ et $x_2 + r$. Leur somme vaut $3x_2 = 21$, donc $x_2 = 7$. Les nombres sont $7 - r$, $7$ et $7 + r$.
+  **1.** Les trois nombres sont des termes consécutifs d'une suite arithmétique de raison $r$ : ils s'écrivent $x_2 - r$, $x_2$ et $x_2 + r$. Leur somme vaut $(x_2 - r) + x_2 + (x_2 + r) = 3x_2$. Comme cette somme est égale à $21$, on a $3x_2 = 21$, donc $x_2 = 7$. Les nombres sont donc $7 - r$, $7$ et $7 + r$.
 
-  **2.** Si $b = qa$ et $c = qb$, alors $ac = a \times q^2 a = (qa)^2 = b^2$.
-
-  **3.** Après ajout, on obtient $7 - r$, $8$ et $13 + r$. D’après la question 2 :
+  **2.** Soient $a$, $b$, $c$ des termes consécutifs non nuls d'une suite géométrique de raison $q$. Alors $b = qa$ et $c = qb = q^2a$. Donc
 
   $$
-  8^2 = (7 - r)(13 + r) = 91 - 6r - r^2,
+  ac = a \times q^2 a = (qa)^2 = b^2.
   $$
 
-  soit $64 = 91 - 6r - r^2$, c’est-à-dire $r^2 + 6r - 27 = 0$.
+  **3.** Après ajout de $0$, $1$ et $6$, on obtient $7 - r$, $8$ et $13 + r$. Ce sont des termes consécutifs d'une suite géométrique, donc d'après la question 2 :
 
-  **4.** $\Delta = 36 + 108 = 144$ et $\sqrt{\Delta} = 12$, donc
+  $$
+  8^2 = (7 - r)(13 + r) = 91 + 7r - 13r - r^2 = 91 - 6r - r^2.
+  $$
+
+  Ainsi $64 = 91 - 6r - r^2$, c'est-à-dire $r^2 + 6r - 27 = 0$.
+
+  **4.** Le discriminant est $\Delta = 36 + 108 = 144 > 0$ et $\sqrt{\Delta} = 12$. Les solutions sont
 
   $$
   r_1 = \frac{-6 - 12}{2} = -9 \qquad\text{et}\qquad r_2 = \frac{-6 + 12}{2} = 3.
   $$
 
-  - Pour $r = 3$ : les nombres sont $4$, $7$, $10$. Après ajout : $4$, $8$, $16$, suite géométrique de raison $2$.
-  - Pour $r = -9$ : les nombres sont $16$, $7$, $-2$. Après ajout : $16$, $8$, $4$, suite géométrique de raison $\dfrac{1}{2}$.
+  - Pour $r = 3$ : les nombres sont $4$, $7$, $10$ (somme $21$). Après ajout : $4$, $8$, $16$, qui forment une suite géométrique de raison $2$.
+  - Pour $r = -9$ : les nombres sont $16$, $7$, $-2$ (somme $21$). Après ajout : $16$, $8$, $4$, qui forment une suite géométrique de raison $\dfrac{1}{2}$.
 
-  Il y a donc deux solutions : $(4\,;\,7\,;\,10)$ et $(16\,;\,7\,;\,-2)$.
+  **Conclusion.** Il y a deux solutions : $(4\,;\,7\,;\,10)$ et $(16\,;\,7\,;\,-2)$.
 ---

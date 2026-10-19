@@ -28,7 +28,7 @@ indices:
     La condition est $u \leq 100$, et dans la boucle on applique la relation de récurrence. Calcule ensuite les termes à la main : $1$, $3$, $7$, $\ldots$
 
 correction: |
-  **1.** On continue tant que $u \leq 100$ :
+  **1.** On veut s'arrêter dès que $u$ dépasse strictement $100$ : la boucle continue donc **tant que** $u \leq 100$. À chaque tour, on applique la relation de récurrence $u_{n+1} = 2u_n + 1$ puis on augmente $n$ :
 
   ```python
   n = 0
@@ -39,5 +39,7 @@ correction: |
   print(n)
   ```
 
-  **2.** Les termes successifs sont $1$, $3$, $7$, $15$, $31$, $63$, $127$. Le premier terme supérieur à $100$ est $u_6 = 127$ : le programme affiche $6$ (et $u_6 = 127$).
+  **2.** Les termes successifs sont $u_0 = 1$, $u_1 = 3$, $u_2 = 7$, $u_3 = 15$, $u_4 = 31$, $u_5 = 63$ et $u_6 = 127$. Les termes $u_0$ à $u_5$ sont inférieurs ou égaux à $100$ et $u_6 = 127 > 100$.
+
+  **Conclusion.** Le programme affiche $6$, et alors $u_6 = 127$.
 ---

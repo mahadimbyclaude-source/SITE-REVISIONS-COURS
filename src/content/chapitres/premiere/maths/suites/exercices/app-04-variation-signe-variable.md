@@ -24,19 +24,23 @@ correction: |
   u_{n+1} - u_n = (n+1)^2 - 6(n+1) - n^2 + 6n = n^2 + 2n + 1 - 6n - 6 - n^2 + 6n = 2n - 5.
   $$
 
-  **1.b.** $2n - 5 < 0$ pour $n \leq 2$ et $2n - 5 > 0$ pour $n \geq 3$.
+  **1.b.** Le signe de $u_{n+1} - u_n = 2n - 5$ dépend de $n$ :
 
-  Donc $u_0 > u_1 > u_2 > u_3$ puis $u_3 < u_4 < u_5 < \cdots$ : la suite est décroissante jusqu’au rang $3$, puis croissante à partir du rang $3$. Elle n’est **pas monotone** sur $\N$.
+  - $2n - 5 < 0$ équivaut à $n < 2,5$, donc pour $n \in \{0\,;\,1\,;\,2\}$ ;
+  - $2n - 5 > 0$ équivaut à $n > 2,5$, donc pour $n \geq 3$.
 
-  Vérification : $u_0 = 0$, $u_1 = -5$, $u_2 = -8$, $u_3 = -9$, $u_4 = -8$.
+  Ainsi $u_0 > u_1 > u_2 > u_3$, puis $u_3 < u_4 < u_5 < \cdots$ : la suite est décroissante jusqu'au rang $3$, puis croissante à partir du rang $3$. Comme la différence change de signe, la suite n'est **pas monotone** sur $\N$.
 
-  **2.** Pour tout $n \in \N$ :
+  Vérification : $u_0 = 0$, $u_1 = -5$, $u_2 = -8$, $u_3 = -9$ et $u_4 = -8$.
+
+  **2.** Pour tout $n \in \N$, on réduit au même dénominateur :
 
   $$
   w_{n+1} - w_n = \frac{n+1}{n+2} - \frac{n}{n+1}
   = \frac{(n+1)^2 - n(n+2)}{(n+1)(n+2)}
-  = \frac{1}{(n+1)(n+2)} > 0.
+  = \frac{n^2 + 2n + 1 - n^2 - 2n}{(n+1)(n+2)}
+  = \frac{1}{(n+1)(n+2)}.
   $$
 
-  La suite $(w_n)$ est strictement croissante.
+  Pour tout $n \in \N$, $(n+1)(n+2) > 0$, donc $w_{n+1} - w_n > 0$ : la suite $(w_n)$ est **strictement croissante**.
 ---

@@ -16,17 +16,21 @@ indices:
     $u_1 = 2u_0 - 5$, puis $u_2 = 2u_1 - 5$, etc. Pour la deuxième suite, garde des fractions.
 
 correction: |
-  **1.**
+  La suite est définie par récurrence : chaque terme se calcule à partir du précédent.
+
+  **1.** On a $u_0 = 3$ et $u_{n+1} = 2u_n - 5$.
 
   $$
   u_1 = 2 \times 3 - 5 = 1, \qquad u_2 = 2 \times 1 - 5 = -3, \qquad u_3 = 2 \times (-3) - 5 = -11.
   $$
 
-  **2.**
+  **2.** On a $v_0 = 1$ et $v_{n+1} = \dfrac{1}{1 + v_n}$.
 
   $$
   v_1 = \frac{1}{1 + 1} = \frac{1}{2}, \qquad
-  v_2 = \frac{1}{1 + \frac{1}{2}} = \frac{2}{3}, \qquad
-  v_3 = \frac{1}{1 + \frac{2}{3}} = \frac{3}{5}.
+  v_2 = \frac{1}{1 + \frac{1}{2}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}, \qquad
+  v_3 = \frac{1}{1 + \frac{2}{3}} = \frac{1}{\frac{5}{3}} = \frac{3}{5}.
   $$
+
+  **Conclusion.** $u_1 = 1$, $u_2 = -3$, $u_3 = -11$ et $v_1 = \dfrac{1}{2}$, $v_2 = \dfrac{2}{3}$, $v_3 = \dfrac{3}{5}$.
 ---

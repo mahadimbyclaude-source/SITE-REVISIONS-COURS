@@ -20,11 +20,21 @@ indices:
     Plus précis : $f'(x) = -4x + 8$ s’annule en $x = 2$. Le coefficient directeur $-4$ est négatif.
 
 correction: |
-  **1.** $f'(x) = -4x + 8$.
+  **1.** La fonction $f$ est dérivable sur $\R$ (fonction polynôme) et, pour tout réel $x$ :
 
-  **2.** $-4x + 8 > 0$ équivaut à $x < 2$. Donc $f'(x) > 0$ sur $\interof{-\infty}{2}$, $f'(2) = 0$ et $f'(x) < 0$ sur $\interoo{2}{+\infty}$.
+  $$
+  f'(x) = -2 \times 2x + 8 = -4x + 8.
+  $$
 
-  **3.** On calcule $f(2) = -8 + 16 - 3 = 5$.
+  **2.** La dérivée est une fonction affine de coefficient directeur $-4 < 0$, qui s'annule en $x = 2$ :
+
+  $$
+  -4x + 8 > 0 \iff x < 2.
+  $$
+
+  Donc $f'(x) > 0$ sur $\interoo{-\infty}{2}$, $f'(2) = 0$ et $f'(x) < 0$ sur $\interoo{2}{+\infty}$.
+
+  **3.** On en déduit que $f$ est strictement croissante sur $\interof{-\infty}{2}$ puis strictement décroissante sur $\interfo{2}{+\infty}$. On calcule $f(2) = -2 \times 4 + 16 - 3 = 5$.
 
   $$
   \begin{array}{c|ccccc}
@@ -34,5 +44,5 @@ correction: |
   \end{array}
   $$
 
-  **4.** Le maximum de $f$ est $5$, atteint en $x = 2$.
+  **4.** D'après le tableau, le maximum de $f$ sur $\R$ est $5$, atteint en $x = 2$.
 ---

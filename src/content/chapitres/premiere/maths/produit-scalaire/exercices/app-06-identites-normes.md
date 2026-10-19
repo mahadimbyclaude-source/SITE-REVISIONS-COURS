@@ -19,9 +19,15 @@ indices:
     Plus précis : pour la 3, développe avec la bilinéarité : $(\vec{u} + \vec{v}) \cdot (\vec{u} - \vec{v}) = \|\vec{u}\|^2 - \|\vec{v}\|^2$.
 
 correction: |
-  **1.** $\|\vec{u} + \vec{v}\|^2 = 9 + 2 \times (-5) + 16 = 15$.
+  On utilise les identités $\|\vec{u} \pm \vec{v}\|^2 = \|\vec{u}\|^2 \pm 2\,\vec{u} \cdot \vec{v} + \|\vec{v}\|^2$.
 
-  **2.** $\|\vec{u} - \vec{v}\|^2 = 9 - 2 \times (-5) + 16 = 35$.
+  **1.** $\|\vec{u} + \vec{v}\|^2 = 3^2 + 2 \times (-5) + 4^2 = 9 - 10 + 16 = 15$.
 
-  **3.** $(\vec{u} + \vec{v}) \cdot (\vec{u} - \vec{v}) = \|\vec{u}\|^2 - \|\vec{v}\|^2 = 9 - 16 = -7$.
+  **2.** $\|\vec{u} - \vec{v}\|^2 = 3^2 - 2 \times (-5) + 4^2 = 9 + 10 + 16 = 35$.
+
+  **3.** Par bilinéarité du produit scalaire, les termes croisés se compensent :
+
+  $$
+  (\vec{u} + \vec{v}) \cdot (\vec{u} - \vec{v}) = \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} + \vec{v} \cdot \vec{u} - \vec{v} \cdot \vec{v} = \|\vec{u}\|^2 - \|\vec{v}\|^2 = 9 - 16 = -7.
+  $$
 ---

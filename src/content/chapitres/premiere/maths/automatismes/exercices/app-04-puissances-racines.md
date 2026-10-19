@@ -22,15 +22,19 @@ indices:
     Plus précis : pour les racines, cherche le plus grand carré parfait qui divise le nombre : $50 = 25 \times 2$, $12 = 4 \times 3$, $27 = 9 \times 3$.
 
 correction: |
-  **1.** $2^{5 + (-3)} = 2^2 = 4$.
+  **1.** On utilise $a^m \times a^n = a^{m+n}$ : $2^5 \times 2^{-3} = 2^{5 + (-3)} = 2^2 = 4$.
 
-  **2.** $\dfrac{3^6}{3^4} = 3^2 = 9$.
+  **2.** On utilise $\left(a^m\right)^n = a^{mn}$ puis $\dfrac{a^m}{a^n} = a^{m-n}$ :
 
-  **3.** $\sqrt{50} = \sqrt{25 \times 2} = 5\sqrt{2}$.
+  $$
+  \frac{\left(3^2\right)^3}{3^4} = \frac{3^6}{3^4} = 3^2 = 9.
+  $$
 
-  **4.** $\sqrt{12} + \sqrt{27} = 2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.
+  **3.** Le plus grand carré parfait qui divise $50$ est $25$ : $\sqrt{50} = \sqrt{25 \times 2} = 5\sqrt{2}$.
 
-  **5.** $\left(2\sqrt{3}\right)^2 = 4 \times 3 = 12$.
+  **4.** On simplifie chaque racine : $\sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3}$ et $\sqrt{27} = \sqrt{9 \times 3} = 3\sqrt{3}$. Donc $\sqrt{12} + \sqrt{27} = 2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$.
 
-  **6.** $10^{-3 + 5} = 10^2 = 100$.
+  **5.** $\left(2\sqrt{3}\right)^2 = 2^2 \times \left(\sqrt{3}\right)^2 = 4 \times 3 = 12$.
+
+  **6.** $10^{-3} \times 10^5 = 10^{-3 + 5} = 10^2 = 100$.
 ---

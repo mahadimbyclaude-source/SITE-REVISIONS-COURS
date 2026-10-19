@@ -19,13 +19,17 @@ indices:
     Plus précis : $\mathrm{e}^{2(n+1)} = \mathrm{e}^{2n} \times \mathrm{e}^{2}$. Une suite géométrique de raison $q > 1$ et de premier terme positif est croissante, de raison $0 < q < 1$ elle est décroissante.
 
 correction: |
-  **1.**
+  **1.** Pour montrer qu'une suite est géométrique, on exprime le terme suivant en fonction du terme précédent.
 
-  - $u_{n+1} = \mathrm{e}^{2n + 2} = \mathrm{e}^{2} \times \mathrm{e}^{2n} = \mathrm{e}^{2}\,u_n$ : géométrique de raison $\mathrm{e}^{2}$, $u_0 = 1$.
-  - $v_{n+1} = 3\mathrm{e}^{-n-1} = \mathrm{e}^{-1} \times 3\mathrm{e}^{-n} = \mathrm{e}^{-1}\,v_n$ : géométrique de raison $\mathrm{e}^{-1} = \dfrac{1}{\mathrm{e}}$, $v_0 = 3$.
-  - $w_{n+1} = \mathrm{e}^{n + 2} = \mathrm{e} \times \mathrm{e}^{n+1} = \mathrm{e}\,w_n$ : géométrique de raison $\mathrm{e}$, $w_0 = \mathrm{e}$.
+  - Pour tout $n$, $u_{n+1} = \mathrm{e}^{2(n+1)} = \mathrm{e}^{2n + 2} = \mathrm{e}^{2} \times \mathrm{e}^{2n} = \mathrm{e}^{2}\,u_n$. La suite $(u_n)$ est géométrique de raison $\mathrm{e}^{2}$ et de premier terme $u_0 = \mathrm{e}^{0} = 1$.
+  - Pour tout $n$, $v_{n+1} = 3\mathrm{e}^{-(n+1)} = \mathrm{e}^{-1} \times 3\mathrm{e}^{-n} = \mathrm{e}^{-1}\,v_n$. La suite $(v_n)$ est géométrique de raison $\mathrm{e}^{-1} = \dfrac{1}{\mathrm{e}}$ et de premier terme $v_0 = 3$.
+  - Pour tout $n$, $w_{n+1} = \mathrm{e}^{n+2} = \mathrm{e} \times \mathrm{e}^{n+1} = \mathrm{e}\,w_n$. La suite $(w_n)$ est géométrique de raison $\mathrm{e}$ et de premier terme $w_0 = \mathrm{e}$.
 
-  **2.** $(u_n)$ est croissante car $\mathrm{e}^{2} > 1$ et $u_0 > 0$. $(v_n)$ est décroissante car $0 < \dfrac{1}{\mathrm{e}} < 1$ et $v_0 > 0$. $(w_n)$ est croissante car $\mathrm{e} > 1$ et $w_0 > 0$.
+  **2.** Les trois premiers termes sont strictement positifs, donc le sens de variation dépend de la raison $q$ :
 
-  **3.** $u_0 + u_1 + u_2 = 1 + \mathrm{e}^{2} + \mathrm{e}^{4}$.
+  - $(u_n)$ : $q = \mathrm{e}^{2} > 1$, la suite est strictement croissante ;
+  - $(v_n)$ : $0 < q = \dfrac{1}{\mathrm{e}} < 1$, la suite est strictement décroissante ;
+  - $(w_n)$ : $q = \mathrm{e} > 1$, la suite est strictement croissante.
+
+  **3.** $u_0 + u_1 + u_2 = \mathrm{e}^{0} + \mathrm{e}^{2} + \mathrm{e}^{4} = 1 + \mathrm{e}^{2} + \mathrm{e}^{4}$.
 ---

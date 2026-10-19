@@ -19,13 +19,21 @@ indices:
     Plus précis : $P(D) = P(M_1) \, P_{M_1}(D) + P(M_2) \, P_{M_2}(D) + P(M_3) \, P_{M_3}(D)$ et $P_D(M_i) = \dfrac{P(M_i \cap D)}{P(D)}$.
 
 correction: |
-  **1.** $M_1$, $M_2$, $M_3$ forment une partition, donc
+  **1.** Les événements $M_1$, $M_2$ et $M_3$ sont incompatibles et leur réunion est l'univers : ils forment une partition. D'après la formule des probabilités totales,
 
   $$
-  P(D) = 0{,}5 \times 0{,}02 + 0{,}3 \times 0{,}03 + 0{,}2 \times 0{,}05 = 0{,}010 + 0{,}009 + 0{,}010 = 0{,}029.
+  P(D) = P(M_1)\,P_{M_1}(D) + P(M_2)\,P_{M_2}(D) + P(M_3)\,P_{M_3}(D) = 0{,}5 \times 0{,}02 + 0{,}3 \times 0{,}03 + 0{,}2 \times 0{,}05.
   $$
 
-  **2.** $P_D(M_1) = \dfrac{P(M_1 \cap D)}{P(D)} = \dfrac{0{,}010}{0{,}029} = \dfrac{10}{29} \approx 0{,}34$.
+  Donc $P(D) = 0{,}010 + 0{,}009 + 0{,}010 = 0{,}029$.
 
-  **3.** $P_D(M_2) = \dfrac{0{,}009}{0{,}029} = \dfrac{9}{29}$ et $P_D(M_3) = \dfrac{0{,}010}{0{,}029} = \dfrac{10}{29}$. Les machines $M_1$ et $M_3$ sont à égalité, avec $\dfrac{10}{29}$ chacune, et $M_2$ est moins probable. Le total vaut bien $\dfrac{10 + 9 + 10}{29} = 1$.
+  **2.** On cherche $P_D(M_1)$ :
+
+  $$
+  P_D(M_1) = \frac{P(M_1 \cap D)}{P(D)} = \frac{0{,}5 \times 0{,}02}{0{,}029} = \frac{0{,}010}{0{,}029} = \frac{10}{29} \approx 0{,}34.
+  $$
+
+  **3.** On calcule de même $P_D(M_2) = \dfrac{0{,}009}{0{,}029} = \dfrac{9}{29}$ et $P_D(M_3) = \dfrac{0{,}010}{0{,}029} = \dfrac{10}{29}$. On vérifie que $\dfrac{10}{29} + \dfrac{9}{29} + \dfrac{10}{29} = 1$.
+
+  Les machines $M_1$ et $M_3$ sont à égalité, avec la probabilité $\dfrac{10}{29}$ chacune, et $M_2$ est moins probable ($\dfrac{9}{29}$). Il n'y a donc pas de machine unique la plus probable. Remarque : $M_3$ ne produit que $20\ \%$ des pièces, mais ses pièces sont plus souvent défectueuses.
 ---

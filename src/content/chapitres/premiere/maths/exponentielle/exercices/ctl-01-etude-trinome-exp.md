@@ -27,9 +27,19 @@ indices:
     Pour la dernière question, utilise le tableau : sur $\interff{-1}{2}$, $f$ décroît de $\dfrac{5}{\mathrm{e}}$ à $-\mathrm{e}^{2}$ ; sur $\interfo{2}{+\infty}$, elle croît de $-\mathrm{e}^{2}$ vers $+\infty$. Regarde aussi le signe de $f$ sur $\interof{-\infty}{-1}$.
 
 correction: |
-  **1.** $f'(x) = (2x - 3)\mathrm{e}^{x} + (x^2 - 3x + 1)\mathrm{e}^{x} = (x^2 - x - 2)\mathrm{e}^{x} = (x - 2)(x + 1)\mathrm{e}^{x}$.
+  **1.** La fonction $f$ est dérivable sur $\R$. On pose $u(x) = x^2 - 3x + 1$ et $v(x) = \mathrm{e}^{x}$, donc $u'(x) = 2x - 3$ et $v'(x) = \mathrm{e}^{x}$. Alors
 
-  **2.** $\mathrm{e}^{x} > 0$, donc $f'(x)$ a le signe du trinôme $(x - 2)(x + 1)$ : positif à l’extérieur de $[-1\,;\,2]$, négatif entre. On a $f(-1) = (1 + 3 + 1)\mathrm{e}^{-1} = \dfrac{5}{\mathrm{e}}$ et $f(2) = (4 - 6 + 1)\mathrm{e}^{2} = -\mathrm{e}^{2}$.
+  $$
+  f'(x) = (2x - 3)\,\mathrm{e}^{x} + (x^2 - 3x + 1)\,\mathrm{e}^{x} = (x^2 - x - 2)\,\mathrm{e}^{x}.
+  $$
+
+  Or $x^2 - x - 2 = (x - 2)(x + 1)$ (racines $2$ et $-1$), d'où $f'(x) = (x - 2)(x + 1)\,\mathrm{e}^{x}$.
+
+  **2.** Comme $\mathrm{e}^{x} > 0$, $f'(x)$ a le signe du trinôme $(x - 2)(x + 1)$, de coefficient dominant positif : positif pour $x < -1$ ou $x > 2$, négatif entre $-1$ et $2$. Les extremums sont
+
+  $$
+  f(-1) = (1 + 3 + 1)\,\mathrm{e}^{-1} = \frac{5}{\mathrm{e}} \qquad\text{et}\qquad f(2) = (4 - 6 + 1)\,\mathrm{e}^{2} = -\mathrm{e}^{2}.
+  $$
 
   $$
   \begin{array}{c|ccccccc}
@@ -39,15 +49,25 @@ correction: |
   \end{array}
   $$
 
-  **3.** $f(0) = 1$ et $f'(0) = (-2)(1)\mathrm{e}^{0} = -2$. La tangente a pour équation $y = -2x + 1$.
+  **3.** On a $f(0) = 1 \times \mathrm{e}^{0} = 1$ et $f'(0) = (0 - 2)(0 + 1)\mathrm{e}^{0} = -2$. La tangente au point d'abscisse $0$ a pour équation
 
-  **4.** $\mathrm{e}^{x} > 0$, donc $f(x) = 0$ équivaut à $x^2 - 3x + 1 = 0$. On a $\Delta = 9 - 4 = 5$ et les racines sont $\dfrac{3 - \sqrt{5}}{2}$ et $\dfrac{3 + \sqrt{5}}{2}$. Le signe de $f(x)$ est celui du trinôme : positif à l’extérieur des racines, négatif entre.
+  $$
+  y = f'(0)(x - 0) + f(0) = -2x + 1.
+  $$
 
-  **5.** On regarde chaque intervalle de monotonie :
+  **4.** Comme $\mathrm{e}^{x} > 0$, on a $f(x) = 0$ si et seulement si $x^2 - 3x + 1 = 0$. Le discriminant est $\Delta = 9 - 4 = 5 > 0$, et les racines sont
 
-  - sur $\interof{-\infty}{-1}$, on a $x < \dfrac{3 - \sqrt{5}}{2} \approx 0{,}38$, donc $x^2 - 3x + 1 > 0$ et $f(x) > 0 > -1$ : aucune solution ;
-  - sur $\interff{-1}{2}$, $f$ est strictement décroissante de $\dfrac{5}{\mathrm{e}}$ à $-\mathrm{e}^{2}$, et $-\mathrm{e}^{2} < -1 < \dfrac{5}{\mathrm{e}}$ : une solution ;
-  - sur $\interfo{2}{+\infty}$, $f$ est strictement croissante de $-\mathrm{e}^{2}$ à $+\infty$ et $-1 > -\mathrm{e}^{2}$ : une solution.
+  $$
+  x_1 = \frac{3 - \sqrt{5}}{2} \qquad\text{et}\qquad x_2 = \frac{3 + \sqrt{5}}{2}.
+  $$
 
-  Il y a **2 solutions**.
+  Le signe de $f(x)$ est celui de $x^2 - 3x + 1$, de coefficient dominant positif : $f(x) > 0$ pour $x < x_1$ ou $x > x_2$, $f(x) < 0$ pour $x_1 < x < x_2$ et $f(x) = 0$ en $x_1$ et $x_2$.
+
+  **5.** On cherche le nombre de solutions de $f(x) = -1$ en raisonnant sur chaque intervalle de monotonie.
+
+  - Sur $\interof{-\infty}{-1}$ : on a $x < x_1 \approx 0,38$, donc $f(x) > 0 > -1$. Il n'y a pas de solution.
+  - Sur $\interff{-1}{2}$ : $f$ est continue et strictement décroissante de $\dfrac{5}{\mathrm{e}} > 0$ à $-\mathrm{e}^{2} < -1$. Comme $-1$ est compris entre ces deux valeurs, il y a exactement une solution (théorème des valeurs intermédiaires pour une fonction strictement monotone).
+  - Sur $\interfo{2}{+\infty}$ : $f$ est continue et strictement croissante de $-\mathrm{e}^{2}$ vers $+\infty$, et $-1 > -\mathrm{e}^{2}$. Il y a exactement une solution.
+
+  L'équation $f(x) = -1$ possède donc **2 solutions**.
 ---

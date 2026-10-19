@@ -27,13 +27,23 @@ indices:
     Pour la question 5, résous $f_m'(1) = 0$ puis étudie le signe de $f_m'$ pour cette valeur de $m$.
 
 correction: |
-  **1.** $f_m'(x) = 3x^2 + m$.
+  **1.** Pour tout réel $m$, $f_m$ est dérivable sur $\R$ et
 
-  **2.** Si $m \geq 0$, alors $3x^2 + m \geq 0$ pour tout $x$. Donc $f_m$ est croissante sur $\R$.
+  $$
+  f_m'(x) = 3x^2 + m.
+  $$
 
-  **3.** Si $m < 0$, alors $-\dfrac{m}{3} > 0$. On pose $\alpha = \sqrt{-\dfrac{m}{3}}$. Alors $f_m'(x) = 3(x^2 - \alpha^2) = 3(x - \alpha)(x + \alpha)$ s’annule en $-\alpha$ et en $\alpha$, et elle est positive à l’extérieur de $[-\alpha\,;\,\alpha]$.
+  **2.** Si $m \geq 0$, alors pour tout réel $x$, $3x^2 \geq 0$ donc $f_m'(x) = 3x^2 + m \geq 0$. La dérivée est positive ou nulle sur $\R$ (et ne s'annule qu'en un point au plus) : $f_m$ est **croissante** sur $\R$.
 
-  On calcule $f_m(-\alpha) = -\alpha^3 - m\alpha = \alpha(-\alpha^2 - m) = \alpha(\dfrac{m}{3} - m) = -\dfrac{2m\alpha}{3}$ et $f_m(\alpha) = \dfrac{2m\alpha}{3}$ (valeur négative car $m < 0$ et $\alpha > 0$).
+  **3.** Si $m < 0$, alors $-\dfrac{m}{3} > 0$. On pose $\alpha = \sqrt{-\dfrac{m}{3}}$, de sorte que $\alpha^2 = -\dfrac{m}{3}$ et $m = -3\alpha^2$. Alors
+
+  $$
+  f_m'(x) = 3x^2 - 3\alpha^2 = 3(x - \alpha)(x + \alpha),
+  $$
+
+  qui s'annule en $-\alpha$ et en $\alpha$. Comme le coefficient dominant est positif, $f_m'$ est positive à l'extérieur de $[-\alpha\,;\,\alpha]$ et négative entre.
+
+  On calcule les images : $f_m(\alpha) = \alpha^3 + m\alpha = \alpha(\alpha^2 + m) = \alpha\left(-\dfrac{m}{3} + m\right) = \dfrac{2m\alpha}{3}$, qui est négatif car $m < 0$ et $\alpha > 0$. Par imparité de $f_m$, $f_m(-\alpha) = -\dfrac{2m\alpha}{3}$.
 
   $$
   \begin{array}{c|ccccccc}
@@ -43,9 +53,21 @@ correction: |
   \end{array}
   $$
 
-  **4.** Pour $m = -12$, $\alpha = \sqrt{4} = 2$ : $f_{-12}(-2) = -8 + 24 = 16$ (maximum local) et $f_{-12}(2) = 8 - 24 = -16$ (minimum local).
+  **4.** Pour $m = -12$, on a $\alpha = \sqrt{\dfrac{12}{3}} = 2$. Les extremums locaux sont
 
-  $f_{-12}(x) = x^3 - 12x = x(x^2 - 12) = x(x - 2\sqrt{3})(x + 2\sqrt{3})$. Les solutions sont $-2\sqrt{3}$, $0$ et $2\sqrt{3}$ : **trois solutions**, ce qui est cohérent avec le tableau puisque $0$ est strictement compris entre $-16$ et $16$.
+  $$
+  f_{-12}(-2) = -8 + 24 = 16 \quad\text{(maximum local)} \qquad\text{et}\qquad f_{-12}(2) = 8 - 24 = -16 \quad\text{(minimum local).}
+  $$
 
-  **5.** $f_m'(1) = 3 + m = 0$ équivaut à $m = -3$. Pour $m = -3$, $f_{-3}'(x) = 3(x - 1)(x + 1)$ change de signe en $x = 1$ (de $-$ à $+$) : $f_{-3}$ admet donc un minimum local en $x = 1$, égal à $f_{-3}(1) = 1 - 3 = -2$.
+  On résout $f_{-12}(x) = 0$ : $x^3 - 12x = x(x^2 - 12) = x\left(x - 2\sqrt{3}\right)\left(x + 2\sqrt{3}\right) = 0$, donc
+
+  $$
+  S = \left\{-2\sqrt{3}\,;\,0\,;\,2\sqrt{3}\right\}.
+  $$
+
+  On obtient **trois solutions**, ce qui est cohérent avec le tableau de variations : $0$ est strictement compris entre le minimum local $-16$ et le maximum local $16$.
+
+  **5.** La tangente en $x = 1$ est horizontale si et seulement si $f_m'(1) = 0$, c'est-à-dire $3 + m = 0$, soit $m = -3$.
+
+  Pour cette valeur, $f_{-3}'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$ s'annule en $x = 1$ **en changeant de signe** (négative avant $1$, positive après). Donc $f_{-3}$ admet en $x = 1$ un minimum local, égal à $f_{-3}(1) = 1 - 3 = -2$.
 ---

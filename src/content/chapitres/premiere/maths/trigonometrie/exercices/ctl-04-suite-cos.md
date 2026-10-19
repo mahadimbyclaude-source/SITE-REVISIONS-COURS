@@ -26,15 +26,31 @@ indices:
     Pour la question 5, découpe la somme en paquets de $6$ termes consécutifs : $2025 = 6 \times 337 + 3$.
 
 correction: |
-  **1.** $u_0 = 1$, $u_1 = \dfrac{1}{2}$, $u_2 = \cos\dfrac{2\pi}{3} = -\dfrac{1}{2}$, $u_3 = \cos\pi = -1$, $u_4 = \cos\dfrac{4\pi}{3} = -\dfrac{1}{2}$ et $u_5 = \cos\dfrac{5\pi}{3} = \dfrac{1}{2}$.
+  **1.** On utilise les valeurs remarquables et les angles associés :
 
-  **2.** $u_{n+6} = \cos\left(\dfrac{n\pi}{3} + 2\pi\right) = \cos\left(\dfrac{n\pi}{3}\right) = u_n$ par $2\pi$-périodicité du cosinus.
+  $$
+  u_0 = 1, \quad u_1 = \cos\frac{\pi}{3} = \frac{1}{2}, \quad u_2 = \cos\frac{2\pi}{3} = -\frac{1}{2}, \quad u_3 = \cos\pi = -1, \quad u_4 = \cos\frac{4\pi}{3} = -\frac{1}{2}, \quad u_5 = \cos\frac{5\pi}{3} = \frac{1}{2}.
+  $$
 
-  **3.** $u_1 - u_0 = -\dfrac{1}{2}$ et $u_2 - u_1 = -1$ : pas de différence constante, la suite n’est pas arithmétique. $\dfrac{u_1}{u_0} = \dfrac{1}{2}$ et $\dfrac{u_2}{u_1} = -1$ : pas de quotient constant, elle n’est pas géométrique. Elle est croissante entre $u_5$ et $u_6 = u_0$ mais décroissante entre $u_0$ et $u_3$ : elle n’est pas monotone.
+  **2.** Pour tout $n \in \N$, par $2\pi$-périodicité du cosinus :
 
-  **4.** $2024 = 6 \times 337 + 2$ donc $u_{2024} = u_2 = -\dfrac{1}{2}$.
+  $$
+  u_{n+6} = \cos\left(\frac{(n+6)\pi}{3}\right) = \cos\left(\frac{n\pi}{3} + 2\pi\right) = \cos\left(\frac{n\pi}{3}\right) = u_n.
+  $$
 
-  **5.** $u_0 + \cdots + u_5 = 1 + \dfrac{1}{2} - \dfrac{1}{2} - 1 - \dfrac{1}{2} + \dfrac{1}{2} = 0$.
+  **3.** - $u_1 - u_0 = -\dfrac{1}{2}$ et $u_2 - u_1 = -1$ : les différences consécutives ne sont pas égales, la suite n'est **pas arithmétique**.
+  - $\dfrac{u_1}{u_0} = \dfrac{1}{2}$ et $\dfrac{u_2}{u_1} = -1$ : les quotients ne sont pas égaux, la suite n'est **pas géométrique**.
+  - $u_0 > u_3$ avec $u_3 < u_4$ : la suite décroît puis croît, elle n'est **pas monotone**.
 
-  La somme $u_0 + \cdots + u_{2024}$ compte $2025$ termes, soit $337$ paquets de $6$ termes (de somme nulle chacun) puis $3$ termes restants $u_{2022} + u_{2023} + u_{2024} = u_0 + u_1 + u_2 = 1 + \dfrac{1}{2} - \dfrac{1}{2} = 1$. La somme vaut donc $1$.
+  **4.** On effectue la division euclidienne : $2024 = 6 \times 337 + 2$. D'après la question 2 (période $6$), $u_{2024} = u_2 = -\dfrac{1}{2}$.
+
+  **5.** $u_0 + u_1 + \cdots + u_5 = 1 + \dfrac{1}{2} - \dfrac{1}{2} - 1 - \dfrac{1}{2} + \dfrac{1}{2} = 0$.
+
+  La somme $u_0 + \cdots + u_{2024}$ comporte $2025$ termes, et $2025 = 6 \times 337 + 3$. On la découpe en $337$ paquets de $6$ termes consécutifs, chacun de somme nulle d'après ce qui précède (la suite est $6$-périodique), plus les $3$ derniers termes :
+
+  $$
+  u_{2022} + u_{2023} + u_{2024} = u_0 + u_1 + u_2 = 1 + \frac{1}{2} - \frac{1}{2} = 1.
+  $$
+
+  La somme vaut donc $1$.
 ---

@@ -19,9 +19,23 @@ indices:
     Plus précis : pour montrer que $T$ est une période, vérifie que $f(x + T) = f(x)$ pour tout $x$.
 
 correction: |
-  **1.** $f(-x) = \sin(-2x) = -\sin(2x) = -f(x)$ : $f$ est impaire. Et $f(x + \pi) = \sin(2x + 2\pi) = \sin(2x) = f(x)$ : $\pi$ est une période.
+  Une fonction $f$ définie sur $\R$ est paire si $f(-x) = f(x)$ pour tout $x$, impaire si $f(-x) = -f(x)$ pour tout $x$ ; $T$ est une période si $f(x + T) = f(x)$ pour tout $x$.
 
-  **2.** $g(-x) = \cos(-x) + \cos(-2x) = \cos x + \cos(2x) = g(x)$ : $g$ est paire. Et $g(x + 2\pi) = \cos(x + 2\pi) + \cos(2x + 4\pi) = \cos x + \cos(2x) = g(x)$ : $2\pi$ est une période.
+  **1.** Pour tout $x \in \R$, $f(-x) = \sin(-2x) = -\sin(2x) = -f(x)$ : $f$ est **impaire**. De plus,
 
-  **3.** $h(-x) = (-x)\cos(-x) = -x\cos x = -h(x)$ : $h$ est impaire.
+  $$
+  f(x + \pi) = \sin(2x + 2\pi) = \sin(2x) = f(x),
+  $$
+
+  donc $\pi$ est une période de $f$.
+
+  **2.** Pour tout $x \in \R$, $g(-x) = \cos(-x) + \cos(-2x) = \cos x + \cos(2x) = g(x)$ : $g$ est **paire**. De plus,
+
+  $$
+  g(x + 2\pi) = \cos(x + 2\pi) + \cos(2x + 4\pi) = \cos x + \cos(2x) = g(x),
+  $$
+
+  donc $2\pi$ est une période de $g$.
+
+  **3.** Pour tout $x \in \R$, $h(-x) = (-x)\cos(-x) = -x\cos x = -h(x)$ : $h$ est **impaire**.
 ---

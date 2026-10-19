@@ -22,15 +22,26 @@ indices:
     Pour la dernière question, un trinôme de coefficient dominant positif est négatif entre ses racines.
 
 correction: |
-  **1.** $\mathrm{e}^{2x} = X^2$, donc $X^2 - (\mathrm{e} + 1)X + \mathrm{e} = 0$.
-
-  **2.** $\Delta = (\mathrm{e} + 1)^2 - 4\mathrm{e} = \mathrm{e}^2 + 2\mathrm{e} + 1 - 4\mathrm{e} = (\mathrm{e} - 1)^2 > 0$. Les racines sont
+  **1.** Pour tout réel $x$, $\mathrm{e}^{2x} = \left(\mathrm{e}^{x}\right)^2 = X^2$. L'équation $(E)$ devient
 
   $$
-  X_1 = \frac{(\mathrm{e} + 1) - (\mathrm{e} - 1)}{2} = 1 \qquad \text{et} \qquad X_2 = \frac{(\mathrm{e} + 1) + (\mathrm{e} - 1)}{2} = \mathrm{e}.
+  X^2 - (\mathrm{e} + 1)X + \mathrm{e} = 0.
   $$
 
-  **3.** Les deux valeurs sont strictement positives, on les garde. $\mathrm{e}^{x} = 1 = \mathrm{e}^{0}$ donne $x = 0$ et $\mathrm{e}^{x} = \mathrm{e} = \mathrm{e}^{1}$ donne $x = 1$. L’ensemble des solutions est $\{0\,;\,1\}$.
+  **2.** Le discriminant est $\Delta = (\mathrm{e} + 1)^2 - 4\mathrm{e} = \mathrm{e}^2 + 2\mathrm{e} + 1 - 4\mathrm{e} = (\mathrm{e} - 1)^2 > 0$, donc $\sqrt{\Delta} = \mathrm{e} - 1$. Les deux racines sont
 
-  **4.** Le trinôme $X^2 - (\mathrm{e} + 1)X + \mathrm{e}$ est négatif ou nul pour $1 \leq X \leq \mathrm{e}$, soit $\mathrm{e}^{0} \leq \mathrm{e}^{x} \leq \mathrm{e}^{1}$, c’est-à-dire $0 \leq x \leq 1$. Solutions : $\interff{0}{1}$.
+  $$
+  X_1 = \frac{(\mathrm{e} + 1) - (\mathrm{e} - 1)}{2} = 1 \qquad\text{et}\qquad X_2 = \frac{(\mathrm{e} + 1) + (\mathrm{e} - 1)}{2} = \mathrm{e}.
+  $$
+
+  **3.** Comme $X = \mathrm{e}^{x}$, on résout $\mathrm{e}^{x} = 1$ et $\mathrm{e}^{x} = \mathrm{e}$ (les deux valeurs sont strictement positives, donc possibles) :
+
+  - $\mathrm{e}^{x} = 1 = \mathrm{e}^{0}$ donne $x = 0$ ;
+  - $\mathrm{e}^{x} = \mathrm{e} = \mathrm{e}^{1}$ donne $x = 1$.
+
+  $S = \{0\,;\,1\}$.
+
+  **4.** Le trinôme $X^2 - (\mathrm{e} + 1)X + \mathrm{e}$ a un coefficient dominant positif : il est négatif ou nul entre ses racines, c'est-à-dire pour $1 \leq X \leq \mathrm{e}$. Cela s'écrit $\mathrm{e}^{0} \leq \mathrm{e}^{x} \leq \mathrm{e}^{1}$, soit $0 \leq x \leq 1$ par croissance de l'exponentielle.
+
+  $S = \interff{0}{1}$.
 ---

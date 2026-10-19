@@ -20,15 +20,23 @@ indices:
     Plus précis : pour $D(x)$, développe avec les identités remarquables et utilise $\mathrm{e}^{x} \times \mathrm{e}^{-x} = \mathrm{e}^0 = 1$.
 
 correction: |
+  On utilise, pour tous réels $a$, $b$ et tout entier $n$ : $\mathrm{e}^a \times \mathrm{e}^b = \mathrm{e}^{a+b}$, $\dfrac{\mathrm{e}^a}{\mathrm{e}^b} = \mathrm{e}^{a-b}$ et $\left(\mathrm{e}^a\right)^n = \mathrm{e}^{na}$.
+
   **1.** $A = \mathrm{e}^{3 + (-5)} = \mathrm{e}^{-2}$.
 
-  **2.** $B = \dfrac{\mathrm{e}^{6}}{\mathrm{e}^{4}} = \mathrm{e}^{2}$.
+  **2.** $B = \dfrac{\mathrm{e}^{3 \times 2}}{\mathrm{e}^{4}} = \dfrac{\mathrm{e}^{6}}{\mathrm{e}^{4}} = \mathrm{e}^{6 - 4} = \mathrm{e}^{2}$.
 
-  **3.** $C(x) = \mathrm{e}^{(x+1) - (x-2)} = \mathrm{e}^{3}$.
+  **3.** $C(x) = \mathrm{e}^{(x+1) - (x-2)} = \mathrm{e}^{3}$, qui ne dépend pas de $x$.
 
-  **4.** On développe : $\left(\mathrm{e}^{x} + \mathrm{e}^{-x}\right)^2 = \mathrm{e}^{2x} + 2 + \mathrm{e}^{-2x}$ et $\left(\mathrm{e}^{x} - \mathrm{e}^{-x}\right)^2 = \mathrm{e}^{2x} - 2 + \mathrm{e}^{-2x}$. La différence vaut $2 - (-2) = 4$ :
+  **4.** On développe avec les identités remarquables, en utilisant $\mathrm{e}^{x} \times \mathrm{e}^{-x} = \mathrm{e}^{0} = 1$ :
 
   $$
-  D(x) = 4.
+  \left(\mathrm{e}^{x} + \mathrm{e}^{-x}\right)^2 = \mathrm{e}^{2x} + 2 + \mathrm{e}^{-2x} \qquad\text{et}\qquad \left(\mathrm{e}^{x} - \mathrm{e}^{-x}\right)^2 = \mathrm{e}^{2x} - 2 + \mathrm{e}^{-2x}.
+  $$
+
+  En soustrayant, les termes $\mathrm{e}^{2x}$ et $\mathrm{e}^{-2x}$ disparaissent :
+
+  $$
+  D(x) = (2 + \mathrm{e}^{2x} + \mathrm{e}^{-2x}) - (-2 + \mathrm{e}^{2x} + \mathrm{e}^{-2x}) = 4.
   $$
 ---

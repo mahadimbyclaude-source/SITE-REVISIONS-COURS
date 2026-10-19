@@ -18,11 +18,13 @@ indices:
     Plus précis : pour des évolutions successives, on multiplie les coefficients. L’évolution réciproque correspond à l’inverse du coefficient multiplicateur.
 
 correction: |
-  **1.** $80 \times 1{,}15 = 92$ €.
+  Une hausse de $t\ \%$ revient à multiplier par $1 + \dfrac{t}{100}$ et une baisse de $t\ \%$ par $1 - \dfrac{t}{100}$.
 
-  **2.** $80 \times 0{,}70 = 56$ €.
+  **1.** Le coefficient multiplicateur est $1 + \dfrac{15}{100} = 1{,}15$. Le nouveau prix est $80 \times 1{,}15 = 92$ €.
 
-  **3.** $1{,}25 \times 0{,}80 = 1$ : le prix revient à sa valeur initiale, l’évolution globale est $0\ \%$.
+  **2.** Le coefficient multiplicateur est $1 - \dfrac{30}{100} = 0{,}70$. Le nouveau prix est $80 \times 0{,}70 = 56$ €.
 
-  **4.** Le coefficient réciproque est $\dfrac{1}{1{,}25} = 0{,}8$, soit une baisse de $20\ \%$.
+  **3.** Pour des évolutions successives, on multiplie les coefficients multiplicateurs : $1{,}25 \times 0{,}80 = 1$. Le prix final est égal au prix initial : l'évolution globale est de $0\ \%$.
+
+  **4.** Une hausse de $25\ \%$ a pour coefficient $1{,}25$. L'évolution réciproque a pour coefficient $\dfrac{1}{1{,}25} = 0{,}8$, ce qui correspond à une baisse de $20\ \%$ (et non de $25\ \%$).
 ---

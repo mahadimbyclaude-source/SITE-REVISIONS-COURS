@@ -27,32 +27,44 @@ indices:
     Pour la question 6, sépare la somme : $\sum u_k = \sum v_k - 3(n+1)$, puis utilise la somme d’une suite géométrique de raison $2$.
 
 correction: |
-  **1.** $u_1 = 2 \times 1 + 3 = 5$ et $u_2 = 2 \times 5 + 3 = 13$.
+  **1.** On applique la relation de récurrence : $u_1 = 2u_0 + 3 = 2 \times 1 + 3 = 5$, puis $u_2 = 2u_1 + 3 = 2 \times 5 + 3 = 13$.
 
-  **2.** Pour tout $n \in \N$ :
+  **2.** Pour tout $n \in \N$, on exprime $v_{n+1}$ à l'aide de $v_n$ :
 
   $$
-  v_{n+1} = u_{n+1} + 3 = 2u_n + 6 = 2(u_n + 3) = 2v_n.
+  v_{n+1} = u_{n+1} + 3 = (2u_n + 3) + 3 = 2u_n + 6 = 2(u_n + 3) = 2v_n.
   $$
 
-  La suite $(v_n)$ est géométrique de raison $2$ et de premier terme $v_0 = u_0 + 3 = 4$.
+  Donc $(v_n)$ est une suite **géométrique** de raison $2$ et de premier terme $v_0 = u_0 + 3 = 4$.
 
-  **3.** $v_n = 4 \times 2^n = 2^{n+2}$, donc $u_n = v_n - 3 = 2^{n+2} - 3$.
+  **3.** Le terme général d'une suite géométrique donne $v_n = v_0 \times 2^n = 4 \times 2^n = 2^{n+2}$. Comme $v_n = u_n + 3$, on obtient pour tout $n \in \N$ :
+
+  $$
+  u_n = v_n - 3 = 2^{n+2} - 3.
+  $$
 
   **4.** Pour tout $n \in \N$ :
 
   $$
-  u_{n+1} - u_n = 2^{n+3} - 2^{n+2} = 2^{n+2}(2 - 1) = 2^{n+2} > 0.
+  u_{n+1} - u_n = (2^{n+3} - 3) - (2^{n+2} - 3) = 2^{n+3} - 2^{n+2} = 2^{n+2}(2 - 1) = 2^{n+2}.
   $$
 
-  La suite $(u_n)$ est strictement croissante.
+  Cette quantité est strictement positive : la suite $(u_n)$ est **strictement croissante**.
 
-  **5.** $u_n > 1000$ équivaut à $2^{n+2} > 1003$. Comme $2^9 = 512 < 1003 < 1024 = 2^{10}$, il faut $n + 2 \geq 10$, soit $n \geq 8$. Le plus petit entier est $n = 8$ (avec $u_7 = 509$ et $u_8 = 1021$).
+  **5.** On résout $u_n > 1000$, c'est-à-dire $2^{n+2} > 1003$. Or $2^9 = 512 < 1003 < 1024 = 2^{10}$. La suite $\left(2^{n+2}\right)$ étant croissante, la condition est vérifiée si et seulement si $n + 2 \geq 10$, soit $n \geq 8$. Le plus petit entier est donc $n = 8$.
 
-  **6.** Notons $S_n = u_0 + \cdots + u_n$. Comme $u_k = v_k - 3$ :
+  Vérification : $u_7 = 2^9 - 3 = 509 \leq 1000$ et $u_8 = 2^{10} - 3 = 1021 > 1000$.
+
+  **6.** Notons $S_n = u_0 + \cdots + u_n$. Comme $u_k = v_k - 3$ pour tout $k$ :
 
   $$
-  S_n = (v_0 + \cdots + v_n) - 3(n+1) = 4 \times \frac{1 - 2^{n+1}}{1 - 2} - 3(n+1) = 4(2^{n+1} - 1) - 3n - 3.
+  S_n = (v_0 + \cdots + v_n) - 3(n+1).
+  $$
+
+  La somme des $v_k$ est celle de $n + 1$ termes d'une suite géométrique de raison $2$ et de premier terme $4$ :
+
+  $$
+  v_0 + \cdots + v_n = 4 \times \frac{1 - 2^{n+1}}{1 - 2} = 4\left(2^{n+1} - 1\right) = 2^{n+3} - 4.
   $$
 
   Donc $S_n = 2^{n+3} - 4 - 3n - 3 = 2^{n+3} - 3n - 7$.

@@ -16,7 +16,15 @@ indices:
     Plus précis : $f'(x) = \dfrac{x^2 - 1}{x^2}$ et $g'(x) = 3(x - 1)(x + 1)$. Dans les deux cas, le minimum est atteint en $x = 1$.
 
 correction: |
-  **1.** $f'(x) = 1 - \dfrac{1}{x^2} = \dfrac{(x - 1)(x + 1)}{x^2}$. Sur $\interoo{0}{+\infty}$, le signe de $f'(x)$ est celui de $x - 1$. Donc $f$ est décroissante sur $\interof{0}{1}$ puis croissante sur $\interfo{1}{+\infty}$, avec $f(1) = 2$.
+  Pour démontrer une inégalité du type $h(x) \geq m$ sur un intervalle, on dresse le tableau de variations de $h$ et on détermine son minimum.
+
+  **1.** La fonction $f$ est dérivable sur $\interoo{0}{+\infty}$ et
+
+  $$
+  f'(x) = 1 - \frac{1}{x^2} = \frac{x^2 - 1}{x^2} = \frac{(x - 1)(x + 1)}{x^2}.
+  $$
+
+  Sur $\interoo{0}{+\infty}$, $x + 1 > 0$ et $x^2 > 0$, donc $f'(x)$ a le signe de $x - 1$. La fonction $f$ est décroissante sur $\interof{0}{1}$ puis croissante sur $\interfo{1}{+\infty}$, avec $f(1) = 1 + 1 = 2$.
 
   $$
   \begin{array}{c|ccccc}
@@ -26,9 +34,13 @@ correction: |
   \end{array}
   $$
 
-  Le minimum est $2$, donc $x + \dfrac{1}{x} \geq 2$ pour tout $x > 0$.
+  Le minimum de $f$ est $2$, donc pour tout $x > 0$, $x + \dfrac{1}{x} \geq 2$.
 
-  **2.** $g'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$. Sur $\interfo{0}{+\infty}$, $x + 1 > 0$, donc $g'(x)$ a le signe de $x - 1$ : $g$ est décroissante sur $\interff{0}{1}$ puis croissante sur $\interfo{1}{+\infty}$. Son minimum est $g(1) = 1 - 3 + 2 = 0$.
+  **2.** La fonction $g$ est dérivable sur $\interfo{0}{+\infty}$ et $g'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$. Sur $\interfo{0}{+\infty}$, $x + 1 > 0$, donc $g'(x)$ a le signe de $x - 1$. La fonction $g$ est décroissante sur $\interff{0}{1}$ puis croissante sur $\interfo{1}{+\infty}$. Son minimum est $g(1) = 1 - 3 + 2 = 0$.
 
-  Donc $g(x) \geq 0$, soit $x^3 - 3x + 2 \geq 0$, c’est-à-dire $x^3 \geq 3x - 2$ pour tout $x \geq 0$.
+  Ainsi $g(x) \geq 0$ pour tout $x \geq 0$, c'est-à-dire $x^3 - 3x + 2 \geq 0$, soit
+
+  $$
+  x^3 \geq 3x - 2.
+  $$
 ---

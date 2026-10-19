@@ -27,19 +27,27 @@ indices:
     Pour la conclusion, écris une phrase complète avec l’unité (cm³).
 
 correction: |
-  **1.** On découpe deux carrés de côté $x$ sur chaque côté de $30$ cm : il faut $2x \leq 30$, donc $0 \leq x \leq 15$.
+  **1.** On découpe un carré de côté $x$ dans chaque coin. Sur chaque côté de la feuille, qui mesure $30$ cm, on retire deux longueurs $x$ : il faut donc $2x \leq 30$. De plus $x \geq 0$. Ainsi $x \in \interff{0}{15}$.
 
-  **2.** La base est un carré de côté $30 - 2x$ et la hauteur vaut $x$ : $V(x) = x(30 - 2x)^2$.
-
-  **3.** Avec $u(x) = x$ et $v(x) = (30 - 2x)^2$, on a $u'(x) = 1$ et $v'(x) = 2 \times (-2)(30 - 2x) = -4(30 - 2x)$. Donc
+  **2.** Une fois les coins découpés et les bords repliés, la boîte a pour hauteur $x$ et pour base un carré de côté $30 - 2x$. Son volume (en cm³) est donc
 
   $$
-  V'(x) = (30 - 2x)^2 - 4x(30 - 2x) = (30 - 2x)(30 - 2x - 4x) = (30 - 2x)(30 - 6x).
+  V(x) = x \times (30 - 2x)^2.
   $$
 
-  Comme $30 - 2x = -2(x - 15)$ et $30 - 6x = -6(x - 5)$, on obtient $V'(x) = 12(x - 5)(x - 15)$.
+  **3.** La fonction $V$ est dérivable sur $\interff{0}{15}$. On pose $u(x) = x$ et $v(x) = (30 - 2x)^2$, donc $u'(x) = 1$ et $v'(x) = 2 \times (-2)(30 - 2x) = -4(30 - 2x)$. Alors
 
-  **4.** $V'$ est un trinôme de coefficient dominant positif, de racines $5$ et $15$ : il est positif sur $\interff{0}{5}$ et négatif sur $\interff{5}{15}$. On a $V(0) = 0$, $V(5) = 5 \times 20^2 = 2000$ et $V(15) = 0$.
+  $$
+  V'(x) = (30 - 2x)^2 - 4x(30 - 2x) = (30 - 2x)\left[(30 - 2x) - 4x\right] = (30 - 2x)(30 - 6x).
+  $$
+
+  Comme $30 - 2x = -2(x - 15)$ et $30 - 6x = -6(x - 5)$, on obtient
+
+  $$
+  V'(x) = 12(x - 5)(x - 15).
+  $$
+
+  **4.** Le trinôme $V'$ a un coefficient dominant positif et pour racines $5$ et $15$ : il est strictement positif sur $\interfo{0}{5}$ et strictement négatif sur $\interoo{5}{15}$. On calcule $V(0) = 0$, $V(5) = 5 \times 20^2 = 2000$ et $V(15) = 15 \times 0^2 = 0$.
 
   $$
   \begin{array}{c|ccccc}
@@ -49,5 +57,5 @@ correction: |
   \end{array}
   $$
 
-  **5.** Le volume est maximal pour $x = 5$ cm et vaut alors $2000$ cm³.
+  **5.** D'après le tableau de variations, le volume est maximal pour $x = 5$. **Conclusion :** en découpant des carrés de $5$ cm de côté, on obtient une boîte de volume maximal, égal à $2000$ cm³.
 ---

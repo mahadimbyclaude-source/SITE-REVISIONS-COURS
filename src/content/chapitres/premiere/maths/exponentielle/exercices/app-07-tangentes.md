@@ -16,11 +16,17 @@ indices:
     Plus précis : $f'(x) = 2\mathrm{e}^{2x}$ et $g'(x) = (x + 2)\mathrm{e}^{x}$. Pense à $\mathrm{e}^{0} = 1$.
 
 correction: |
-  **1.** $f(1) = \mathrm{e}^{2}$ et $f'(x) = 2\mathrm{e}^{2x}$ donc $f'(1) = 2\mathrm{e}^{2}$. La tangente a pour équation
+  La tangente à la courbe d'une fonction $f$ dérivable en $a$ a pour équation $y = f'(a)(x - a) + f(a)$.
+
+  **1.** On a $f(1) = \mathrm{e}^{2}$. La dérivée est $f'(x) = 2\mathrm{e}^{2x}$, donc $f'(1) = 2\mathrm{e}^{2}$. La tangente au point d'abscisse $1$ a pour équation
 
   $$
-  y = 2\mathrm{e}^{2}(x - 1) + \mathrm{e}^{2} = 2\mathrm{e}^{2}x - \mathrm{e}^{2}.
+  y = 2\mathrm{e}^{2}(x - 1) + \mathrm{e}^{2} = 2\mathrm{e}^{2}x - 2\mathrm{e}^{2} + \mathrm{e}^{2} = 2\mathrm{e}^{2}x - \mathrm{e}^{2}.
   $$
 
-  **2.** $g(0) = 1 \times \mathrm{e}^{0} = 1$ et $g'(x) = \mathrm{e}^{x} + (x + 1)\mathrm{e}^{x} = (x + 2)\mathrm{e}^{x}$ donc $g'(0) = 2$. La tangente a pour équation $y = 2(x - 0) + 1 = 2x + 1$.
+  **2.** On a $g(0) = (0 + 1)\mathrm{e}^{0} = 1$. La dérivée est $g'(x) = 1 \times \mathrm{e}^{x} + (x + 1)\mathrm{e}^{x} = (x + 2)\mathrm{e}^{x}$, donc $g'(0) = 2\mathrm{e}^{0} = 2$. La tangente au point d'abscisse $0$ a pour équation
+
+  $$
+  y = 2(x - 0) + 1 = 2x + 1.
+  $$
 ---

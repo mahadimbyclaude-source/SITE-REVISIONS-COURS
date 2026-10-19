@@ -19,9 +19,13 @@ indices:
     Plus précis : $f'(x) = \mathrm{e}^{-x} - x\,\mathrm{e}^{-x}$. Factorise par $\mathrm{e}^{-x}$.
 
 correction: |
-  **1.** $f'(x) = 1 \times \mathrm{e}^{-x} + x \times \left(-\mathrm{e}^{-x}\right) = (1 - x)\,\mathrm{e}^{-x}$.
+  **1.** On pose $u(x) = x$ et $v(x) = \mathrm{e}^{-x}$, donc $u'(x) = 1$ et $v'(x) = -\mathrm{e}^{-x}$. Alors
 
-  **2.** Comme $\mathrm{e}^{-x} > 0$, $f'(x)$ a le signe de $1 - x$. On a $f(1) = \mathrm{e}^{-1} = \dfrac{1}{\mathrm{e}}$.
+  $$
+  f'(x) = 1 \times \mathrm{e}^{-x} + x \times \left(-\mathrm{e}^{-x}\right) = \mathrm{e}^{-x}(1 - x) = (1 - x)\,\mathrm{e}^{-x}.
+  $$
+
+  **2.** Pour tout $x$, $\mathrm{e}^{-x} > 0$, donc $f'(x)$ a le signe de $1 - x$ : positif pour $x < 1$, nul en $1$, négatif pour $x > 1$. De plus $f(1) = \mathrm{e}^{-1} = \dfrac{1}{\mathrm{e}}$.
 
   $$
   \begin{array}{c|ccccc}
@@ -31,5 +35,5 @@ correction: |
   \end{array}
   $$
 
-  **3.** Le maximum de $f$ est $f(1) = \dfrac{1}{\mathrm{e}}$ (environ $0{,}37$).
+  **3.** D'après le tableau, le maximum de $f$ sur $\R$ est atteint en $x = 1$ et vaut $f(1) = \dfrac{1}{\mathrm{e}}$ (environ $0,37$).
 ---

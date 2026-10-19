@@ -16,7 +16,7 @@ indices:
     Plus précis : pour la question 2, cherche un nombre $c$ tel que $c^2 = 1{,}21$. Pense à $1{,}1^2$.
 
 correction: |
-  **1.** Le coefficient global est $1{,}1^3 = 1{,}331$, soit une hausse de $33{,}1\ \%$.
+  **1.** Une hausse de $10\ \%$ a pour coefficient multiplicateur $1{,}1$. Trois hausses successives ont pour coefficient global $1{,}1^3 = 1{,}331$. Le prix est multiplié par $1{,}331$, ce qui correspond à une hausse globale de $33{,}1\ \%$ (et non de $30\ \%$).
 
-  **2.** On cherche $c$ avec $c^2 = 1{,}21$. Comme $1{,}1^2 = 1{,}21$, on a $c = 1{,}1$ : le taux annuel est de $10\ \%$.
+  **2.** Notons $c$ le coefficient multiplicateur annuel. Deux évolutions identiques ont pour coefficient global $c^2$, et une hausse de $21\ \%$ correspond à $1{,}21$. On cherche donc $c > 0$ tel que $c^2 = 1{,}21$. Comme $1{,}1^2 = 1{,}21$, on a $c = 1{,}1$ : le taux annuel est de $10\ \%$.
 ---

@@ -26,17 +26,34 @@ indices:
     Pour la question 5, comme $0{,}8p + 0{,}1 > 0$, tu peux multiplier les deux membres de l’inéquation par ce dénominateur sans changer le sens.
 
 correction: |
-  **1.** Premier niveau : $M$ ($p$) et $\overline{M}$ ($1 - p$). Après $M$ : $T$ ($0{,}9$) et $\overline{T}$ ($0{,}1$). Après $\overline{M}$ : $T$ ($0{,}1$) et $\overline{T}$ ($0{,}9$).
+  **1.** *Arbre pondéré.* Premier niveau : $M$ avec la probabilité $p$ et $\overline{M}$ avec $1 - p$. Deuxième niveau :
 
-  **2.** Par les probabilités totales : $P(T) = p \times 0{,}9 + (1 - p) \times 0{,}1 = 0{,}9p + 0{,}1 - 0{,}1p = 0{,}8p + 0{,}1$.
+  - après $M$ : $T$ avec $0{,}9$ et $\overline{T}$ avec $0{,}1$ ;
+  - après $\overline{M}$ : $T$ avec $0{,}1$ et $\overline{T}$ avec $0{,}9$.
 
-  **3.** $P_T(M) = \dfrac{P(M \cap T)}{P(T)} = \dfrac{0{,}9p}{0{,}8p + 0{,}1}$.
+  **2.** Les événements $M$ et $\overline{M}$ forment une partition de l'univers. D'après la formule des probabilités totales,
 
-  **4.** Pour $p = 0{,}01$ : $P_T(M) = \dfrac{0{,}009}{0{,}108} = \dfrac{1}{12} \approx 0{,}08$. Pour $p = 0{,}1$ : $P_T(M) = \dfrac{0{,}09}{0{,}18} = \dfrac{1}{2}$.
+  $$
+  P(T) = P(M) \times P_M(T) + P(\overline{M}) \times P_{\overline{M}}(T) = 0{,}9p + 0{,}1(1 - p) = 0{,}9p + 0{,}1 - 0{,}1p = 0{,}8p + 0{,}1.
+  $$
 
-  Quand la maladie est rare ($1\ \%$), un test positif ne signifie que $8\ \%$ de chances d’être malade. Quand elle est plus fréquente ($10\ \%$), la probabilité monte à $50\ \%$.
+  **3.** Par définition de la probabilité conditionnelle, avec $P(M \cap T) = P(M) \times P_M(T) = 0{,}9p$ :
 
-  **5.** Comme $0{,}8p + 0{,}1 > 0$, l’inéquation $\dfrac{0{,}9p}{0{,}8p + 0{,}1} \geq 0{,}5$ équivaut à $0{,}9p \geq 0{,}4p + 0{,}05$, soit $0{,}5p \geq 0{,}05$, donc $p \geq 0{,}1$.
+  $$
+  P_T(M) = \frac{P(M \cap T)}{P(T)} = \frac{0{,}9p}{0{,}8p + 0{,}1}.
+  $$
 
-  Il faut qu’au moins $10\ \%$ de la population soit malade pour qu’un test positif donne au moins une chance sur deux d’être réellement malade.
+  **4.** Pour $p = 0{,}01$ : $P_T(M) = \dfrac{0{,}009}{0{,}008 + 0{,}1} = \dfrac{0{,}009}{0{,}108} = \dfrac{1}{12} \approx 0{,}08$.
+
+  Pour $p = 0{,}1$ : $P_T(M) = \dfrac{0{,}09}{0{,}08 + 0{,}1} = \dfrac{0{,}09}{0{,}18} = \dfrac{1}{2}$.
+
+  *Commentaire.* Quand la maladie est rare ($1\ \%$ de la population), un test positif ne correspond qu'à environ $8\ \%$ de chances d'être malade. Quand elle est plus fréquente ($10\ \%$), cette probabilité monte à $50\ \%$.
+
+  **5.** Comme $0{,}8p + 0{,}1 > 0$, on peut multiplier les deux membres par ce dénominateur sans changer le sens de l'inégalité :
+
+  $$
+  \frac{0{,}9p}{0{,}8p + 0{,}1} \geq 0{,}5 \iff 0{,}9p \geq 0{,}5(0{,}8p + 0{,}1) = 0{,}4p + 0{,}05 \iff 0{,}5p \geq 0{,}05 \iff p \geq 0{,}1.
+  $$
+
+  *Interprétation.* Il faut qu'au moins $10\ \%$ de la population soit malade pour qu'une personne testée positive ait au moins une chance sur deux d'être réellement malade.
 ---

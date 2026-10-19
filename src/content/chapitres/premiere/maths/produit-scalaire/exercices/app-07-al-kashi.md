@@ -16,13 +16,21 @@ indices:
     Plus précis : pour la 2, isole le cosinus : $\cos\widehat{BAC} = \dfrac{AB^2 + AC^2 - BC^2}{2 \times AB \times AC}$.
 
 correction: |
-  **1.** $BC^2 = 5^2 + 7^2 - 2 \times 5 \times 7 \times \cos 60^\circ = 25 + 49 - 35 = 39$, donc $BC = \sqrt{39} \approx 6{,}24$.
+  Le théorème d'Al-Kashi donne $BC^2 = AB^2 + AC^2 - 2\,AB \times AC \times \cos\widehat{BAC}$.
 
-  **2.**
+  **1.**
 
   $$
-  \cos\widehat{BAC} = \frac{3^2 + 5^2 - 7^2}{2 \times 3 \times 5} = \frac{9 + 25 - 49}{30} = \frac{-15}{30} = -\frac{1}{2}.
+  BC^2 = 5^2 + 7^2 - 2 \times 5 \times 7 \times \cos 60^\circ = 25 + 49 - 70 \times \frac{1}{2} = 74 - 35 = 39.
   $$
 
-  Donc $\widehat{BAC} = 120^\circ$.
+  Donc $BC = \sqrt{39} \approx 6,24$.
+
+  **2.** On isole le cosinus dans la formule d'Al-Kashi :
+
+  $$
+  \cos\widehat{BAC} = \frac{AB^2 + AC^2 - BC^2}{2 \times AB \times AC} = \frac{9 + 25 - 49}{2 \times 3 \times 5} = \frac{-15}{30} = -\frac{1}{2}.
+  $$
+
+  Comme l'angle appartient à $[0^\circ\,;\,180^\circ]$ et que $\cos 120^\circ = -\dfrac{1}{2}$, on obtient $\widehat{BAC} = 120^\circ$.
 ---

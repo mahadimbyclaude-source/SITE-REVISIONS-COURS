@@ -19,9 +19,11 @@ indices:
     Plus précis : $\|\vec{u}\| = \sqrt{x^2 + y^2}$, ce qui s’obtient aussi avec $\|\vec{u}\|^2 = \vec{u} \cdot \vec{u}$.
 
 correction: |
+  Dans un repère orthonormé, si $\vec{u}(x\,;\,y)$ et $\vec{v}(x'\,;\,y')$, alors $\vec{u} \cdot \vec{v} = xx' + yy'$ et $\|\vec{u}\| = \sqrt{x^2 + y^2}$.
+
   **1.** $\vec{u} \cdot \vec{v} = 3 \times 4 + (-2) \times 5 = 12 - 10 = 2$.
 
-  **2.** $\vec{w} \cdot \vec{t} = 1 \times (-2) + 2 \times 1 = 0$. Le produit scalaire est nul : les vecteurs $\vec{w}$ et $\vec{t}$ sont orthogonaux.
+  **2.** $\vec{w} \cdot \vec{t} = 1 \times (-2) + 2 \times 1 = -2 + 2 = 0$. Le produit scalaire est nul, donc les vecteurs $\vec{w}$ et $\vec{t}$ sont **orthogonaux**.
 
   **3.** $\|\vec{u}\| = \sqrt{3^2 + (-2)^2} = \sqrt{13}$ et $\|\vec{w}\| = \sqrt{1^2 + 2^2} = \sqrt{5}$.
 ---

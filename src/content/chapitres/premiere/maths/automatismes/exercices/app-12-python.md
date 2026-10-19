@@ -35,9 +35,15 @@ indices:
     Plus précis : `range(1, 5)` donne $1$, $2$, $3$, $4$ (la borne $5$ est exclue). Dans la boucle `while`, on s’arrête quand la condition devient fausse.
 
 correction: |
-  **1.** $k$ prend les valeurs $1$, $2$, $3$, $4$ : $s = 1 + 4 + 9 + 16 = 30$. Le programme affiche $30$.
+  **1.** `range(1, 5)` fait prendre à `k` les valeurs $1$, $2$, $3$, $4$ (la borne $5$ est exclue). À chaque tour on ajoute $k^2$ à `s` :
 
-  **2.** Tableau de suivi :
+  $$
+  s = 0 + 1 + 4 + 9 + 16 = 30.
+  $$
+
+  Le programme affiche **30**.
+
+  **2.** On suit les variables tour par tour. La boucle continue tant que $u \leq 50$ :
 
   | Tour | $u$ | $n$ |
   | --- | --- | --- |
@@ -49,7 +55,7 @@ correction: |
   | 5 | $32$ | $5$ |
   | 6 | $64$ | $6$ |
 
-  À la fin, $u = 64 > 50$, la boucle s’arrête : le programme affiche $6$.
+  Après le tour 5, $u = 32 \leq 50$ : on continue. Après le tour 6, $u = 64 > 50$ : la condition devient fausse et la boucle s'arrête. Le programme affiche **6**.
 
-  **3.** `f(4)` renvoie $2 \times 16 - 3 = 29$.
+  **3.** `f(4)` renvoie $2 \times 4^2 - 3 = 2 \times 16 - 3 = 29$.
 ---

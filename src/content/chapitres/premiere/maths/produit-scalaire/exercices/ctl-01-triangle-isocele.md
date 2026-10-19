@@ -26,19 +26,45 @@ indices:
     Pour l’aire avec $H$ : $H$ milieu de $[BC]$, $\text{aire} = \dfrac{1}{2} \times BC \times AH$ car $(AH)$ est une hauteur dans un triangle isocèle en $A$.
 
 correction: |
-  **1.** $AB = \sqrt{16 + 1} = \sqrt{17}$, $AC = \sqrt{1 + 16} = \sqrt{17}$ et $BC = \sqrt{9 + 9} = \sqrt{18} = 3\sqrt{2}$. On a $AB = AC$ : le triangle est isocèle en $A$ (et pas équilatéral).
-
-  **2.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 4 \times 1 + 1 \times 4 = 8$. Or $\overrightarrow{AB} \cdot \overrightarrow{AC} = AB \times AC \times \cos\widehat{BAC} = 17\cos\widehat{BAC}$, donc $\cos\widehat{BAC} = \dfrac{8}{17}$.
-
-  **3.** Al-Kashi : $BC^2 = AB^2 + AC^2 - 2\,AB \times AC \times \cos\widehat{BAC} = 17 + 17 - 2 \times 17 \times \dfrac{8}{17} = 34 - 16 = 18$. On retrouve bien $BC^2 = 18$.
-
-  **4.** La hauteur issue de $A$ passe par $A(1\,;\,1)$ et a pour vecteur normal $\overrightarrow{BC}(-3\,;\,3)$ : $-3(x - 1) + 3(y - 1) = 0$, soit $-3x + 3y = 0$, c’est-à-dire $y = x$.
-
-  **5.** Le milieu de $[BC]$ est $H\left(\dfrac{7}{2}\,;\,\dfrac{7}{2}\right)$, qui est bien sur la droite $y = x$. Alors $\overrightarrow{AH}\left(\dfrac{5}{2}\,;\,\dfrac{5}{2}\right)$ et $AH = \dfrac{5\sqrt{2}}{2}$. L’aire vaut
+  **1.** On a $\overrightarrow{AB}(4\,;\,1)$, $\overrightarrow{AC}(1\,;\,4)$ et $\overrightarrow{BC}(-3\,;\,3)$. Donc
 
   $$
-  \frac{1}{2} \times BC \times AH = \frac{1}{2} \times 3\sqrt{2} \times \frac{5\sqrt{2}}{2} = \frac{1}{2} \times \frac{30}{2} = \frac{15}{2}.
+  AB = \sqrt{16 + 1} = \sqrt{17}, \qquad AC = \sqrt{1 + 16} = \sqrt{17}, \qquad BC = \sqrt{9 + 9} = \sqrt{18} = 3\sqrt{2}.
   $$
 
-  Avec les coordonnées : $\dfrac{1}{2}\left|4 \times 4 - 1 \times 1\right| = \dfrac{15}{2}$. Les deux méthodes donnent $7{,}5$.
+  Comme $AB = AC$ et $BC \neq AB$, le triangle $ABC$ est **isocèle en $A$** (mais pas équilatéral).
+
+  **2.** $\overrightarrow{AB} \cdot \overrightarrow{AC} = 4 \times 1 + 1 \times 4 = 8$. D'autre part, $\overrightarrow{AB} \cdot \overrightarrow{AC} = AB \times AC \times \cos\widehat{BAC} = 17\cos\widehat{BAC}$. On en déduit
+
+  $$
+  \cos\widehat{BAC} = \frac{8}{17}.
+  $$
+
+  **3.** Par le théorème d'Al-Kashi :
+
+  $$
+  BC^2 = AB^2 + AC^2 - 2\,AB \times AC \times \cos\widehat{BAC} = 17 + 17 - 2 \times 17 \times \frac{8}{17} = 34 - 16 = 18.
+  $$
+
+  On retrouve $BC^2 = 18$, ce qui confirme le résultat.
+
+  **4.** La hauteur issue de $A$ est la droite passant par $A(1\,;\,1)$ et perpendiculaire à $(BC)$ : elle a pour vecteur normal $\overrightarrow{BC}(-3\,;\,3)$. Un point $M(x\,;\,y)$ lui appartient si et seulement si $\overrightarrow{AM} \cdot \overrightarrow{BC} = 0$ :
+
+  $$
+  -3(x - 1) + 3(y - 1) = 0 \iff -3x + 3y = 0 \iff y = x.
+  $$
+
+  **5.** *Première méthode.* Le milieu de $[BC]$ est $H\left(\dfrac{5 + 2}{2}\,;\,\dfrac{2 + 5}{2}\right) = H\left(\dfrac{7}{2}\,;\,\dfrac{7}{2}\right)$. Il appartient bien à la droite $y = x$. Comme le triangle est isocèle en $A$, la médiane $(AH)$ est aussi la hauteur issue de $A$. On a $\overrightarrow{AH}\left(\dfrac{5}{2}\,;\,\dfrac{5}{2}\right)$ donc $AH = \dfrac{5\sqrt{2}}{2}$, et
+
+  $$
+  \mathcal{A} = \frac{1}{2} \times BC \times AH = \frac{1}{2} \times 3\sqrt{2} \times \frac{5\sqrt{2}}{2} = \frac{1}{2} \times \frac{30}{2} = \frac{15}{2}.
+  $$
+
+  *Deuxième méthode.* Avec la formule du déterminant :
+
+  $$
+  \mathcal{A} = \frac{1}{2}\left|x_{\overrightarrow{AB}}\,y_{\overrightarrow{AC}} - y_{\overrightarrow{AB}}\,x_{\overrightarrow{AC}}\right| = \frac{1}{2}\left|4 \times 4 - 1 \times 1\right| = \frac{15}{2}.
+  $$
+
+  Les deux méthodes donnent la même aire : $\dfrac{15}{2} = 7,5$ unités d'aire.
 ---

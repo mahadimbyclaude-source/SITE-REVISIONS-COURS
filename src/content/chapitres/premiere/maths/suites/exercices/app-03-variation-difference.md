@@ -18,19 +18,21 @@ indices:
     Développe $(n+1)^2 + 3(n+1)$ avec soin, puis simplifie la différence. Pour la deuxième suite, la différence est une constante.
 
 correction: |
+  Pour étudier le sens de variation d'une suite, on calcule $u_{n+1} - u_n$ pour tout $n \in \N$ et on étudie son signe.
+
   **1.** Pour tout $n \in \N$ :
 
   $$
-  u_{n+1} - u_n = (n+1)^2 + 3(n+1) - n^2 - 3n = 2n + 1 + 3 = 2n + 4 > 0.
+  u_{n+1} - u_n = (n+1)^2 + 3(n+1) - n^2 - 3n = n^2 + 2n + 1 + 3n + 3 - n^2 - 3n = 2n + 4.
   $$
 
-  La suite $(u_n)$ est strictement croissante.
+  Or $n \geq 0$, donc $2n + 4 > 0$. Ainsi $u_{n+1} - u_n > 0$ pour tout $n \in \N$ : la suite $(u_n)$ est **strictement croissante**.
 
   **2.** Pour tout $n \in \N$ :
 
   $$
-  v_{n+1} - v_n = 5 - 2(n + 1) - (5 - 2n) = -2 < 0.
+  v_{n+1} - v_n = 5 - 2(n + 1) - (5 - 2n) = 5 - 2n - 2 - 5 + 2n = -2.
   $$
 
-  La suite $(v_n)$ est strictement décroissante (c’est une suite arithmétique de raison $-2$).
+  Cette différence est strictement négative pour tout $n$ : la suite $(v_n)$ est **strictement décroissante**. (C'est d'ailleurs une suite arithmétique de raison $-2$.)
 ---

@@ -26,23 +26,38 @@ indices:
     Pour la question 6, passe par l’événement contraire : « aucun des deux n’est en retard ». Les choix étant indépendants, on multiplie les probabilités.
 
 correction: |
-  **1.** Premier niveau : $B$ ($0{,}55$) et $\overline{B}$ ($0{,}45$). Après $B$ : $R$ ($0{,}20$) et $\overline{R}$ ($0{,}80$). Après $\overline{B}$ : $R$ ($0{,}05$) et $\overline{R}$ ($0{,}95$).
+  **1.** *Arbre pondéré.* Premier niveau : $B$ avec $0{,}55$ et $\overline{B}$ avec $1 - 0{,}55 = 0{,}45$. Deuxième niveau :
 
-  **2.** $P(B \cap R) = 0{,}55 \times 0{,}20 = 0{,}11$.
+  - après $B$ : $R$ avec $0{,}20$ et $\overline{R}$ avec $0{,}80$ ;
+  - après $\overline{B}$ : $R$ avec $0{,}05$ et $\overline{R}$ avec $0{,}95$.
 
-  **3.** $B$ et $\overline{B}$ forment une partition, donc
+  **2.** D'après la formule des probabilités composées :
+
+  $$
+  P(B \cap R) = P(B) \times P_B(R) = 0{,}55 \times 0{,}20 = 0{,}11.
+  $$
+
+  **3.** Les événements $B$ et $\overline{B}$ forment une partition de l'univers. D'après la formule des probabilités totales,
 
   $$
   P(R) = P(B \cap R) + P(\overline{B} \cap R) = 0{,}11 + 0{,}45 \times 0{,}05 = 0{,}11 + 0{,}0225 = 0{,}1325.
   $$
 
-  **4.**
+  **4.** On cherche $P_R(B)$ :
 
   $$
   P_R(B) = \frac{P(B \cap R)}{P(R)} = \frac{0{,}11}{0{,}1325} = \frac{1100}{1325} = \frac{44}{53} \approx 0{,}83.
   $$
 
-  **5.** $P_B(R) = 0{,}20 \neq 0{,}1325 = P(R)$, donc $B$ et $R$ ne sont pas indépendants. (On peut aussi comparer $P(B) \times P(R) = 0{,}55 \times 0{,}1325 \approx 0{,}0729$ avec $P(B \cap R) = 0{,}11$.)
+  (On simplifie $\dfrac{1100}{1325}$ par $25$.) Parmi les élèves en retard, environ $83\ \%$ sont venus en bus.
 
-  **6.** L’événement contraire est « aucun des deux n’est en retard », de probabilité $(1 - 0{,}1325)^2 = 0{,}8675^2 = 0{,}75255625$. La probabilité cherchée est donc $1 - 0{,}75255625 = 0{,}24744375$, soit environ $0{,}25$.
+  **5.** On compare $P_B(R) = 0{,}20$ et $P(R) = 0{,}1325$. Ces deux valeurs sont différentes, donc $B$ et $R$ ne sont **pas** indépendants. (On peut aussi remarquer que $P(B) \times P(R) = 0{,}55 \times 0{,}1325 \approx 0{,}0729 \neq 0{,}11 = P(B \cap R)$.)
+
+  **6.** Les deux élèves sont choisis de manière indépendante. Soit $E$ l'événement « au moins un des deux est en retard ». Son contraire est « aucun des deux n'est en retard », de probabilité
+
+  $$
+  P(\overline{E}) = \left(1 - P(R)\right)^2 = 0{,}8675^2 = 0{,}75255625.
+  $$
+
+  Donc $P(E) = 1 - 0{,}75255625 = 0{,}24744375$, soit environ $0{,}25$.
 ---

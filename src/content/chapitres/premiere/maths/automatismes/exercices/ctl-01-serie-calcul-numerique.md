@@ -28,23 +28,23 @@ indices:
     Plus précis : pour les racines, cherche le plus grand carré parfait qui divise. Pour la 10, c’est une identité remarquable.
 
 correction: |
-  **1.** $\dfrac{9}{12} + \dfrac{10}{12} = \dfrac{19}{12}$.
+  **1.** On réduit au même dénominateur $12$ : $\dfrac{3}{4} + \dfrac{5}{6} = \dfrac{9}{12} + \dfrac{10}{12} = \dfrac{19}{12}$.
 
-  **2.** $\dfrac{2}{5} \times \dfrac{15}{4} = \dfrac{30}{20} = \dfrac{3}{2}$.
+  **2.** Diviser par une fraction revient à multiplier par son inverse : $\dfrac{2}{5} \div \dfrac{4}{15} = \dfrac{2}{5} \times \dfrac{15}{4} = \dfrac{30}{20} = \dfrac{3}{2}$.
 
-  **3.** $2^{7-4} = 2^3 = 8$.
+  **3.** $\dfrac{2^7}{2^4} = 2^{7-4} = 2^3 = 8$.
 
-  **4.** $\sqrt{72} = \sqrt{36 \times 2} = 6\sqrt{2}$.
+  **4.** Le plus grand carré parfait qui divise $72$ est $36$ : $\sqrt{72} = \sqrt{36 \times 2} = 6\sqrt{2}$.
 
-  **5.** $0{,}15 \times 240 = 36$.
+  **5.** $15\ \%$ de $240$ : $0{,}15 \times 240 = 36$.
 
-  **6.** $120 \times 0{,}7 = 84$ €.
+  **6.** Une baisse de $30\ \%$ a pour coefficient $0{,}7$ : $120 \times 0{,}7 = 84$ €.
 
-  **7.** $1{,}2 \times 1{,}5 = 1{,}8$ : hausse globale de $80\ \%$.
+  **7.** Les coefficients se multiplient : $1{,}2 \times 1{,}5 = 1{,}8$. La hausse globale est de $80\ \%$ (et non de $70\ \%$).
 
-  **8.** $\dfrac{1}{0{,}8} = 1{,}25$ : une hausse de $25\ \%$.
+  **8.** Une baisse de $20\ \%$ a pour coefficient $0{,}8$. L'évolution qui l'annule a pour coefficient $\dfrac{1}{0{,}8} = 1{,}25$ : c'est une hausse de $25\ \%$.
 
-  **9.** $0{,}00045 \times 2\,000\,000 = 900 = 9 \times 10^2$.
+  **9.** $0{,}00045 \times 2\,000\,000 = 4{,}5 \times 10^{-4} \times 2 \times 10^{6} = 9 \times 10^{2}$.
 
-  **10.** $\left(\sqrt{5}\right)^2 - 1^2 = 5 - 1 = 4$.
+  **10.** C'est l'identité remarquable $(a + b)(a - b) = a^2 - b^2$ : $\left(\sqrt{5} + 1\right)\left(\sqrt{5} - 1\right) = \left(\sqrt{5}\right)^2 - 1^2 = 5 - 1 = 4$.
 ---

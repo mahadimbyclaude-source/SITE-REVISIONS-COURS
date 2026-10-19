@@ -36,13 +36,17 @@ indices:
     Pour la question 5, utilise la formule de la somme d’une suite géométrique avec $5$ termes : $v_0 \times \dfrac{1 - q^5}{1 - q}$.
 
 correction: |
-  **1.** Une baisse de $20\,\%$ revient à multiplier par $1 - 0,2 = 0,8$, donc $v_{n+1} = 0,8\,v_n$ : la suite $(v_n)$ est géométrique de raison $0,8$ et de premier terme $10\,000$.
+  **1.** Une baisse de $20\,\%$ revient à multiplier par $1 - \dfrac{20}{100} = 0,8$. Donc, pour tout $n \in \N$, $v_{n+1} = 0,8\,v_n$ : on passe d'un terme au suivant en multipliant toujours par $0,8$. La suite $(v_n)$ est **géométrique** de raison $0,8$ et de premier terme $v_0 = 10\,000$.
 
-  **2.** $v_n = 10\,000 \times 0,8^n$. Alors $v_2 = 10\,000 \times 0,64 = 6400$ et $v_3 = 10\,000 \times 0,512 = 5120$.
+  **2.** Pour tout $n \in \N$, $v_n = v_0\,q^n = 10\,000 \times 0,8^n$. Alors
 
-  **3.** $v_0 > 0$ et $0 < q < 1$ : la suite $(v_n)$ est strictement décroissante.
+  $$
+  v_2 = 10\,000 \times 0,8^2 = 10\,000 \times 0,64 = 6400 \qquad\text{et}\qquad v_3 = 10\,000 \times 0,512 = 5120.
+  $$
 
-  **4.**
+  **3.** On a $v_0 > 0$ et $0 < q = 0,8 < 1$ : la suite $(v_n)$ est strictement décroissante. La valeur du véhicule baisse chaque année.
+
+  **4.** On continue tant que la valeur est supérieure ou égale à $4000$ euros, et à chaque tour on multiplie par $0,8$ :
 
   ```python
   n = 0
@@ -53,11 +57,11 @@ correction: |
   print(n)
   ```
 
-  On a $v_4 = 4096 \geq 4000$ et $v_5 = 3276,8 < 4000$ : le programme affiche $5$.
+  On calcule $v_4 = 10\,000 \times 0,8^4 = 4096 \geq 4000$ et $v_5 = 3276,8 < 4000$. Le programme affiche donc $5$ : c'est au bout de $5$ ans que la valeur passe sous $4000$ euros.
 
-  **5.** C’est une somme de $5$ termes d’une suite géométrique de raison $0,8$ :
+  **5.** La somme $v_0 + \cdots + v_4$ comporte $5$ termes d'une suite géométrique de raison $q = 0,8 \neq 1$ :
 
   $$
-  v_0 + \cdots + v_4 = 10\,000 \times \frac{1 - 0,8^5}{1 - 0,8} = 50\,000 \times (1 - 0,32768) = 33\,616.
+  v_0 + \cdots + v_4 = v_0 \times \frac{1 - q^5}{1 - q} = 10\,000 \times \frac{1 - 0,8^5}{0,2} = 50\,000 \times (1 - 0,32768) = 33\,616.
   $$
 ---

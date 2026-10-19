@@ -30,21 +30,25 @@ indices:
 correction: |
   **1.** $(x - 4)(2x + 1) = 2x^2 + x - 8x - 4 = 2x^2 - 7x - 4$.
 
-  **2.** $(3x - 2)^2 = 9x^2 - 12x + 4$.
+  **2.** Identité remarquable $(a - b)^2 = a^2 - 2ab + b^2$ : $(3x - 2)^2 = 9x^2 - 12x + 4$.
 
-  **3.** $x^2 - 49 = (x - 7)(x + 7)$.
+  **3.** Différence de deux carrés : $x^2 - 49 = x^2 - 7^2 = (x - 7)(x + 7)$.
 
-  **4.** $4x^2 - 12x + 9 = (2x - 3)^2$.
+  **4.** On reconnaît $(2x)^2 - 2 \times 2x \times 3 + 3^2$ : $4x^2 - 12x + 9 = (2x - 3)^2$.
 
-  **5.** Facteur commun $(x - 1)$ : $(x - 1)\left[(2x + 3) + (x - 5)\right] = (x - 1)(3x - 2)$.
+  **5.** Le facteur $(x - 1)$ est commun :
 
-  **6.** $3x = 12$ donc $x = 4$.
+  $$
+  (x - 1)(2x + 3) + (x - 1)(x - 5) = (x - 1)\left[(2x + 3) + (x - 5)\right] = (x - 1)(3x - 2).
+  $$
 
-  **7.** $x - 2 = 0$ ou $3x + 6 = 0$ : $x = 2$ ou $x = -2$.
+  **6.** $5x - 3 = 2x + 9 \iff 3x = 12 \iff x = 4$. $S = \{4\}$.
 
-  **8.** $x^2 - 3x - 10 = (x - 5)(x + 2)$ donc $x = 5$ ou $x = -2$.
+  **7.** Un produit est nul si et seulement si l'un de ses facteurs est nul : $x - 2 = 0$ ou $3x + 6 = 0$, soit $x = 2$ ou $x = -2$. $S = \{-2\,;\,2\}$.
 
-  **9.** $-2x \leq -6$ donc $x \geq 3$. Solutions : $\interfo{3}{+\infty}$.
+  **8.** On cherche deux nombres de somme $3$ et de produit $-10$ : ce sont $5$ et $-2$. Donc $x^2 - 3x - 10 = (x - 5)(x + 2)$, d'où $x = 5$ ou $x = -2$. $S = \{-2\,;\,5\}$.
 
-  **10.** En additionnant : $3x = 12$ donc $x = 4$ et $y = 6$. Solution : $(4\,;\,6)$.
+  **9.** $-2x + 6 \leq 0 \iff -2x \leq -6$. En divisant par $-2$ (négatif), on change le sens : $x \geq 3$. $S = \interfo{3}{+\infty}$.
+
+  **10.** On additionne les deux équations pour éliminer $y$ : $3x = 12$, donc $x = 4$. Puis $y = 10 - x = 6$. Vérification : $2 \times 4 - 6 = 2$. $S = \{(4\,;\,6)\}$.
 ---

@@ -19,9 +19,15 @@ indices:
     $u_5 = u_2 \times q^3$, donc $q^3 = \dfrac{96}{12}$. Quel réel a pour cube $8$ ?
 
 correction: |
-  **1.** $u_5 = u_2 \times q^{3}$ donne $q^3 = \dfrac{96}{12} = 8$, donc $q = 2$.
+  **1.** Pour une suite géométrique de raison $q$, on a $u_n = u_p \times q^{n-p}$. Avec $n = 5$ et $p = 2$ :
 
-  **2.** $u_2 = u_0 \times q^2$ donne $u_0 = \dfrac{12}{4} = 3$, donc $u_n = 3 \times 2^n$.
+  $$
+  u_5 = u_2 \times q^3 \quad\text{donc}\quad q^3 = \frac{96}{12} = 8.
+  $$
 
-  **3.** $u_7 = 3 \times 2^7 = 384$.
+  Le seul réel de cube $8$ est $2$ : la raison est $q = 2$.
+
+  **2.** On a $u_2 = u_0 \times q^2$, donc $u_0 = \dfrac{12}{2^2} = 3$. Pour tout $n \in \N$, $u_n = 3 \times 2^n$.
+
+  **3.** $u_7 = 3 \times 2^7 = 3 \times 128 = 384$.
 ---

@@ -16,9 +16,11 @@ indices:
     Le terme général d’une suite géométrique est $u_n = u_0 \times q^n$.
 
 correction: |
-  **1.** $u_n = 2 \times 3^n$ et $u_4 = 2 \times 81 = 162$.
+  Le terme général d'une suite géométrique de premier terme $u_0$ et de raison $q$ est $u_n = u_0 \times q^n$.
 
-  **2.**
+  **1.** Pour tout $n \in \N$, $u_n = 2 \times 3^n$. Donc $u_4 = 2 \times 3^4 = 2 \times 81 = 162$.
+
+  **2.** Pour tout $n \in \N$, $v_n = 12 \times \left(\dfrac{1}{2}\right)^n$. Donc
 
   $$
   v_3 = 12 \times \left(\frac{1}{2}\right)^3 = \frac{12}{8} = \frac{3}{2}.

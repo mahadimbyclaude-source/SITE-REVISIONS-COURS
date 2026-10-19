@@ -27,9 +27,17 @@ indices:
     Pour la question 5, $f_m(x) \geq -1$ pour tout $x$ équivaut à : le minimum $-\mathrm{e}^{-m-1}$ est supérieur ou égal à $-1$.
 
 correction: |
-  **1.** $f_m'(x) = 1 \times \mathrm{e}^{x} + (x + m)\mathrm{e}^{x} = (x + m + 1)\mathrm{e}^{x}$.
+  **1.** Pour tout réel $m$, $f_m$ est dérivable sur $\R$. On pose $u(x) = x + m$ et $v(x) = \mathrm{e}^{x}$, donc $u'(x) = 1$ et $v'(x) = \mathrm{e}^{x}$. Alors
 
-  **2.** Comme $\mathrm{e}^{x} > 0$, $f_m'(x)$ a le signe de $x + m + 1$ : négatif pour $x < -m - 1$, positif pour $x > -m - 1$. Le minimum est $f_m(-m-1) = -\mathrm{e}^{-m-1}$.
+  $$
+  f_m'(x) = 1 \times \mathrm{e}^{x} + (x + m)\,\mathrm{e}^{x} = (x + m + 1)\,\mathrm{e}^{x}.
+  $$
+
+  **2.** Comme $\mathrm{e}^{x} > 0$, $f_m'(x)$ a le signe de $x + m + 1$ : négatif pour $x < -m - 1$, nul en $-m - 1$, positif pour $x > -m - 1$. Le minimum est
+
+  $$
+  f_m(-m - 1) = (-m - 1 + m)\,\mathrm{e}^{-m-1} = -\mathrm{e}^{-m-1}.
+  $$
 
   $$
   \begin{array}{c|ccccc}
@@ -39,9 +47,19 @@ correction: |
   \end{array}
   $$
 
-  **3.** $f_m(0) = m$ et $f_m'(0) = m + 1$. La tangente a pour équation $y = (m + 1)x + m$.
+  **3.** On a $f_m(0) = m\,\mathrm{e}^{0} = m$ et $f_m'(0) = m + 1$. La tangente au point d'abscisse $0$ a pour équation
 
-  **4.** Elle est horizontale si $m + 1 = 0$, soit $m = -1$ (équation $y = -1$).
+  $$
+  y = (m + 1)(x - 0) + m = (m + 1)x + m.
+  $$
 
-  **5.** $f_m(x) \geq -1$ pour tout $x$ équivaut à $-\mathrm{e}^{-m-1} \geq -1$, soit $\mathrm{e}^{-m-1} \leq 1 = \mathrm{e}^{0}$, donc $-m - 1 \leq 0$, c’est-à-dire $m \geq -1$.
+  **4.** La tangente est horizontale si et seulement si son coefficient directeur est nul : $m + 1 = 0$, soit $m = -1$. Son équation est alors $y = -1$.
+
+  **5.** D'après le tableau de variations, le minimum de $f_m$ sur $\R$ est $-\mathrm{e}^{-m-1}$. L'inégalité $f_m(x) \geq -1$ est vraie pour tout réel $x$ si et seulement si ce minimum est supérieur ou égal à $-1$ :
+
+  $$
+  -\mathrm{e}^{-m-1} \geq -1 \iff \mathrm{e}^{-m-1} \leq 1 = \mathrm{e}^{0} \iff -m - 1 \leq 0 \iff m \geq -1.
+  $$
+
+  **Conclusion.** $f_m(x) \geq -1$ pour tout $x$ si et seulement si $m \geq -1$.
 ---

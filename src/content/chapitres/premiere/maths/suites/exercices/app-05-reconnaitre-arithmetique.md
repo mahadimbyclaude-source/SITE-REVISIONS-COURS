@@ -19,9 +19,17 @@ indices:
     Pour montrer qu’une suite n’est pas arithmétique, il suffit de trouver deux différences consécutives qui ne sont pas égales.
 
 correction: |
-  **1.** $u_{n+1} - u_n = 4(n+1) + 7 - (4n + 7) = 4$. La suite est arithmétique de raison $4$ et de premier terme $u_0 = 7$.
+  Une suite est arithmétique si la différence $u_{n+1} - u_n$ est la même constante pour tout $n$ ; cette constante est la raison.
 
-  **2.** $v_0 = 1$, $v_1 = 2$, $v_2 = 5$. Alors $v_1 - v_0 = 1$ et $v_2 - v_1 = 3$ : les différences ne sont pas égales, donc la suite n’est **pas** arithmétique.
+  **1.** Pour tout $n \in \N$ :
 
-  **3.** $w_{n+1} = w_n + (-3)$ : la suite est arithmétique de raison $-3$ et de premier terme $w_0 = 10$.
+  $$
+  u_{n+1} - u_n = 4(n+1) + 7 - (4n + 7) = 4.
+  $$
+
+  La différence est constante : $(u_n)$ est arithmétique de raison $4$ et de premier terme $u_0 = 7$.
+
+  **2.** On calcule les premiers termes : $v_0 = 1$, $v_1 = 2$ et $v_2 = 5$. Alors $v_1 - v_0 = 1$ et $v_2 - v_1 = 3$. Ces différences ne sont pas égales, donc $(v_n)$ n'est **pas** arithmétique.
+
+  **3.** La relation $w_{n+1} = w_n - 3$ s'écrit $w_{n+1} - w_n = -3$ pour tout $n$ : $(w_n)$ est arithmétique de raison $-3$ et de premier terme $w_0 = 10$.
 ---

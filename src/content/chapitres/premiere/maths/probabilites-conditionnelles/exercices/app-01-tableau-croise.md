@@ -26,11 +26,19 @@ indices:
     Plus précis : $P_F(D) = \dfrac{P(F \cap D)}{P(F)}$ revient à diviser les effectifs : parmi les filles, combien sont demi-pensionnaires.
 
 correction: |
-  **1.** $P(F) = \dfrac{240}{400} = \dfrac{3}{5}$, $P(D) = \dfrac{220}{400} = \dfrac{11}{20}$ et $P(F \cap D) = \dfrac{150}{400} = \dfrac{3}{8}$.
+  L'élève est choisi au hasard parmi $400$ : on est dans une situation d'équiprobabilité, donc la probabilité d'un événement est l'effectif correspondant divisé par $400$.
 
-  **2.** $P_F(D) = \dfrac{P(F \cap D)}{P(F)} = \dfrac{150}{240} = \dfrac{5}{8}$ : parmi les filles, $\dfrac{5}{8}$ sont demi-pensionnaires.
+  **1.** Il y a $240$ filles, $220$ demi-pensionnaires et $150$ filles demi-pensionnaires. Donc
 
-  $P_D(F) = \dfrac{P(F \cap D)}{P(D)} = \dfrac{150}{220} = \dfrac{15}{22}$ : parmi les demi-pensionnaires, $\dfrac{15}{22}$ sont des filles.
+  $$
+  P(F) = \frac{240}{400} = \frac{3}{5}, \qquad P(D) = \frac{220}{400} = \frac{11}{20}, \qquad P(F \cap D) = \frac{150}{400} = \frac{3}{8}.
+  $$
 
-  Les deux résultats sont différents : $P_F(D) \neq P_D(F)$.
+  **2.** Par définition de la probabilité conditionnelle :
+
+  $$
+  P_F(D) = \frac{P(F \cap D)}{P(F)} = \frac{150}{240} = \frac{5}{8}, \qquad P_D(F) = \frac{P(F \cap D)}{P(D)} = \frac{150}{220} = \frac{15}{22}.
+  $$
+
+  *Interprétation.* $P_F(D) = \dfrac{5}{8}$ : parmi les filles, $\dfrac{5}{8}$ sont demi-pensionnaires. $P_D(F) = \dfrac{15}{22}$ : parmi les demi-pensionnaires, $\dfrac{15}{22}$ sont des filles. Les deux résultats sont différents : en général, $P_F(D) \neq P_D(F)$.
 ---

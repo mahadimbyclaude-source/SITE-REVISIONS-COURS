@@ -19,9 +19,19 @@ indices:
     Plus précis : $P(A \cap B) = 0{,}30$ et $P(B) = 0{,}38$. Simplifie $\dfrac{30}{38}$.
 
 correction: |
-  **1.** $P_B(A) = \dfrac{P(A \cap B)}{P(B)} = \dfrac{0{,}30}{0{,}38} = \dfrac{30}{38} = \dfrac{15}{19} \approx 0{,}79$.
+  **1.** Par définition de la probabilité conditionnelle, avec $P(A \cap B) = 0{,}6 \times 0{,}5 = 0{,}30$ :
 
-  **2.** $P_B(\overline{A}) = \dfrac{P(\overline{A} \cap B)}{P(B)} = \dfrac{0{,}08}{0{,}38} = \dfrac{4}{19}$ et $\dfrac{15}{19} + \dfrac{4}{19} = 1$.
+  $$
+  P_B(A) = \frac{P(A \cap B)}{P(B)} = \frac{0{,}30}{0{,}38} = \frac{30}{38} = \frac{15}{19} \approx 0{,}79.
+  $$
 
-  **3.** Parmi les cas où $B$ est réalisé, environ $79\ \%$ sont aussi des cas où $A$ est réalisé.
+  **2.** De la même façon, avec $P(\overline{A} \cap B) = 0{,}4 \times 0{,}2 = 0{,}08$ :
+
+  $$
+  P_B(\overline{A}) = \frac{P(\overline{A} \cap B)}{P(B)} = \frac{0{,}08}{0{,}38} = \frac{8}{38} = \frac{4}{19}.
+  $$
+
+  On vérifie que $P_B(A) + P_B(\overline{A}) = \dfrac{15}{19} + \dfrac{4}{19} = 1$, ce qui est normal puisque $A$ et $\overline{A}$ sont contraires.
+
+  **3.** $P_B(A) \approx 0{,}79$ signifie que, parmi les cas où $B$ est réalisé, environ $79\ \%$ sont aussi des cas où $A$ est réalisé.
 ---

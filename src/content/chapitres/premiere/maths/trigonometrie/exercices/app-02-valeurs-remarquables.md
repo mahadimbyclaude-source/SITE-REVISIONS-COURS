@@ -20,11 +20,13 @@ indices:
     Plus précis : $\cos(\pi - x) = -\cos x$, $\sin(\pi - x) = \sin x$, $\cos(-x) = \cos x$ et $\sin(-x) = -\sin x$.
 
 correction: |
+  On se ramène à un angle de $\left[0\,;\,\dfrac{\pi}{2}\right]$ grâce aux angles associés.
+
   **1.** $\cos\dfrac{2\pi}{3} = \cos\left(\pi - \dfrac{\pi}{3}\right) = -\cos\dfrac{\pi}{3} = -\dfrac{1}{2}$.
 
   **2.** $\sin\dfrac{5\pi}{6} = \sin\left(\pi - \dfrac{\pi}{6}\right) = \sin\dfrac{\pi}{6} = \dfrac{1}{2}$.
 
-  **3.** $\cos\left(-\dfrac{\pi}{4}\right) = \cos\dfrac{\pi}{4} = \dfrac{\sqrt{2}}{2}$.
+  **3.** Le cosinus est pair : $\cos\left(-\dfrac{\pi}{4}\right) = \cos\dfrac{\pi}{4} = \dfrac{\sqrt{2}}{2}$.
 
-  **4.** $\sin\left(-\dfrac{\pi}{3}\right) = -\sin\dfrac{\pi}{3} = -\dfrac{\sqrt{3}}{2}$.
+  **4.** Le sinus est impair : $\sin\left(-\dfrac{\pi}{3}\right) = -\sin\dfrac{\pi}{3} = -\dfrac{\sqrt{3}}{2}$.
 ---

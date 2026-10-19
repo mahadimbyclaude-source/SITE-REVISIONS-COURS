@@ -19,11 +19,15 @@ indices:
     Plus précis : $f'(x)$ est un trinôme de coefficient dominant positif, donc positif à l’extérieur des racines $0$ et $2$.
 
 correction: |
-  **1.** $f'(x) = 3x^2 - 6x = 3x(x - 2)$.
+  **1.** La fonction $f$ est dérivable sur $\R$ et $f'(x) = 3x^2 - 6x$. En factorisant par $3x$ :
 
-  **2.** Les racines sont $0$ et $2$ et le coefficient de $x^2$ est positif : $f'(x) > 0$ pour $x < 0$ ou $x > 2$, et $f'(x) < 0$ pour $0 < x < 2$.
+  $$
+  f'(x) = 3x(x - 2).
+  $$
 
-  **3.** $f(0) = 0$ et $f(2) = 8 - 12 = -4$.
+  **2.** Le trinôme $f'(x) = 3x^2 - 6x$ a pour racines $0$ et $2$, et son coefficient dominant $3$ est positif. Il est donc positif à l'extérieur des racines et négatif entre elles : $f'(x) > 0$ pour $x < 0$ ou $x > 2$, et $f'(x) < 0$ pour $0 < x < 2$.
+
+  **3.** On en déduit les variations de $f$. On calcule $f(0) = 0$ et $f(2) = 8 - 12 = -4$.
 
   $$
   \begin{array}{c|ccccccc}

@@ -18,11 +18,19 @@ indices:
     Plus précis : $x^2 - 4x = (x - 2)^2 - 4$. Le discriminant est $\Delta = b^2 - 4ac$.
 
 correction: |
-  **1.** Somme $5$ et produit $6$ : les racines sont $2$ et $3$.
+  **1.** Pour $x^2 - 5x + 6$, la somme des racines vaut $-\dfrac{b}{a} = 5$ et leur produit vaut $\dfrac{c}{a} = 6$. Les nombres de somme $5$ et de produit $6$ sont $2$ et $3$.
 
-  **2.** $x^2 - 4x + 7 = (x - 2)^2 - 4 + 7 = (x - 2)^2 + 3$. Le minimum est $3$, atteint en $x = 2$.
+  $S = \{2\,;\,3\}$.
 
-  **3.** Somme $7$ et produit $10$ : les racines sont $2$ et $5$.
+  **2.** On met sous forme canonique : $x^2 - 4x = (x - 2)^2 - 4$, donc
 
-  **4.** $\Delta = 16 - 28 = -12 < 0$ : pas de racine réelle (cohérent avec le minimum $3 > 0$).
+  $$
+  x^2 - 4x + 7 = (x - 2)^2 - 4 + 7 = (x - 2)^2 + 3.
+  $$
+
+  Comme $(x - 2)^2 \geq 0$, le trinôme est supérieur ou égal à $3$, avec égalité pour $x = 2$ : son minimum est $3$.
+
+  **3.** Pour $x^2 - 7x + 10$, la somme des racines est $7$ et leur produit est $10$. Les nombres de somme $7$ et de produit $10$ sont $2$ et $5$ : ce sont les racines.
+
+  **4.** Le discriminant de $x^2 - 4x + 7$ est $\Delta = (-4)^2 - 4 \times 1 \times 7 = 16 - 28 = -12$. Comme $\Delta < 0$, le trinôme n'a **aucune racine réelle**. C'est cohérent avec la question 2 : son minimum est $3 > 0$, donc il ne s'annule jamais.
 ---

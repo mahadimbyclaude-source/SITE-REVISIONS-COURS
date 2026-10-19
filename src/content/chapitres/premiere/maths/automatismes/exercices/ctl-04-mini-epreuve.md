@@ -37,21 +37,21 @@ indices:
     Plus précis : pour la 8, factorise $f'(x) = 3(x - 1)(x + 1)$ et utilise le signe d’un trinôme de coefficient dominant positif.
 
 correction: |
-  **1.** $0{,}25 \times 2{,}4 = 0{,}6$.
+  **1.** $25\ \%$ de $2{,}4$ : $0{,}25 \times 2{,}4 = 0{,}6$.
 
-  **2.** $\dfrac{2}{6} + \dfrac{1}{6} = \dfrac{3}{6} = \dfrac{1}{2}$.
+  **2.** On met au même dénominateur $6$ : $\dfrac{1}{3} + \dfrac{1}{6} = \dfrac{2}{6} + \dfrac{1}{6} = \dfrac{3}{6} = \dfrac{1}{2}$.
 
-  **3.** $-8 + 9 = 1$.
+  **3.** $(-2)^3 = -8$ et $3^2 = 9$, donc $(-2)^3 + 3^2 = -8 + 9 = 1$.
 
-  **4.** $\sqrt{45} = 3\sqrt{5}$ et $\sqrt{20} = 2\sqrt{5}$ : la différence vaut $\sqrt{5}$.
+  **4.** On simplifie chaque racine : $\sqrt{45} = \sqrt{9 \times 5} = 3\sqrt{5}$ et $\sqrt{20} = \sqrt{4 \times 5} = 2\sqrt{5}$. Donc $\sqrt{45} - \sqrt{20} = 3\sqrt{5} - 2\sqrt{5} = \sqrt{5}$.
 
   **5.** $(x + 3)^2 - x^2 = x^2 + 6x + 9 - x^2 = 6x + 9$.
 
-  **6.** $2x^2 = 8$ donc $x^2 = 4$ et $x = 2$ ou $x = -2$.
+  **6.** $2x^2 - 8 = 0 \iff x^2 = 4 \iff x = 2$ ou $x = -2$. $S = \{-2\,;\,2\}$.
 
-  **7.** $f'(x) = 3x^2 - 3$.
+  **7.** La fonction $f$ est dérivable sur $\R$ et $f'(x) = 3x^2 - 3$.
 
-  **8.** $f'(x) = 3(x - 1)(x + 1)$, positive à l’extérieur de $[-1\,;\,1]$. On a $f(-1) = -1 + 3 = 2$ et $f(1) = 1 - 3 = -2$.
+  **8.** On factorise : $f'(x) = 3(x^2 - 1) = 3(x - 1)(x + 1)$. C'est un trinôme de coefficient dominant positif de racines $-1$ et $1$ : il est positif à l'extérieur de $[-1\,;\,1]$ et négatif entre. On calcule $f(-1) = -1 + 3 = 2$ et $f(1) = 1 - 3 = -2$.
 
   $$
   \begin{array}{c|ccccccc}
@@ -61,15 +61,15 @@ correction: |
   \end{array}
   $$
 
-  Maximum local $2$ en $-1$ et minimum local $-2$ en $1$.
+  La fonction $f$ admet un maximum local égal à $2$ en $x = -1$ et un minimum local égal à $-2$ en $x = 1$.
 
-  **9.** $u_6 = 64 \times \left(\dfrac{1}{2}\right)^6 = 64 \times \dfrac{1}{64} = 1$.
+  **9.** Pour une suite géométrique, $u_n = u_0 \times q^n$. Donc $u_6 = 64 \times \left(\dfrac{1}{2}\right)^6 = 64 \times \dfrac{1}{64} = 1$.
 
-  **10.** $P_A(B) = \dfrac{P(A \cap B)}{P(A)} = \dfrac{0{,}2}{0{,}5} = 0{,}4$.
+  **10.** Par définition de la probabilité conditionnelle : $P_A(B) = \dfrac{P(A \cap B)}{P(A)} = \dfrac{0{,}2}{0{,}5} = 0{,}4$.
 
-  **11.** $\vec{u} \cdot \vec{v} = 2 \times 1 + (-1) \times 2 = 0$ : les vecteurs sont orthogonaux.
+  **11.** On calcule le produit scalaire : $\vec{u} \cdot \vec{v} = 2 \times 1 + (-1) \times 2 = 0$. Le produit scalaire est nul, donc les vecteurs $\vec{u}$ et $\vec{v}$ sont **orthogonaux**.
 
-  **12.** $\cos\dfrac{\pi}{3} + \sin\dfrac{\pi}{6} = \dfrac{1}{2} + \dfrac{1}{2} = 1$.
+  **12.** $\cos\dfrac{\pi}{3} = \dfrac{1}{2}$ et $\sin\dfrac{\pi}{6} = \dfrac{1}{2}$, donc la somme vaut $1$.
 
-  **13.** $h'(x) = 3\mathrm{e}^{3x}$.
+  **13.** On utilise $\left(\mathrm{e}^{ax}\right)' = a\,\mathrm{e}^{ax}$ : $h'(x) = 3\,\mathrm{e}^{3x}$.
 ---

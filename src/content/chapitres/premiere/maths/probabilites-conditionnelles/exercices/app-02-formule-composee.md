@@ -19,9 +19,17 @@ indices:
     Plus précis : $P_A(\overline{B}) = 1 - P_A(B)$, car $B$ et $\overline{B}$ sont contraires, y compris quand on se place « sachant $A$ ».
 
 correction: |
-  **1.** $P(A \cap B) = P(A) \times P_A(B) = 0{,}4 \times 0{,}3 = 0{,}12$.
+  **1.** D'après la formule des probabilités composées :
 
-  **2.** $P_A(\overline{B}) = 1 - 0{,}3 = 0{,}7$ et $P(A \cap \overline{B}) = 0{,}4 \times 0{,}7 = 0{,}28$.
+  $$
+  P(A \cap B) = P(A) \times P_A(B) = 0{,}4 \times 0{,}3 = 0{,}12.
+  $$
 
-  **3.** $0{,}12 + 0{,}28 = 0{,}40 = P(A)$.
+  **2.** Les événements $B$ et $\overline{B}$ sont contraires, y compris lorsqu'on se place dans le cas où $A$ est réalisé. Donc
+
+  $$
+  P_A(\overline{B}) = 1 - P_A(B) = 1 - 0{,}3 = 0{,}7 \qquad\text{et}\qquad P(A \cap \overline{B}) = P(A) \times P_A(\overline{B}) = 0{,}4 \times 0{,}7 = 0{,}28.
+  $$
+
+  **3.** On calcule $P(A \cap B) + P(A \cap \overline{B}) = 0{,}12 + 0{,}28 = 0{,}40 = P(A)$. C'est cohérent : $A$ se réalise soit avec $B$, soit avec $\overline{B}$, et ces deux cas sont incompatibles.
 ---

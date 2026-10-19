@@ -28,23 +28,27 @@ indices:
     Plus précis : pour la 7, la probabilité de la première rouge est $\dfrac{3}{5}$ et il reste ensuite $4$ boules dont $2$ rouges.
 
 correction: |
-  **1.** $f(2) = -6 + 5 = -1$.
+  **1.** $f(2) = -3 \times 2 + 5 = -1$.
 
-  **2.** $-3x + 5 = 8$ donne $x = -1$.
+  **2.** L'antécédent de $8$ est la solution de $f(x) = 8$ : $-3x + 5 = 8 \iff -3x = 3 \iff x = -1$.
 
-  **3.** Coefficient directeur $\dfrac{-2 - 2}{4 - 0} = -1$ et ordonnée à l’origine $2$ : $y = -x + 2$.
+  **3.** Le coefficient directeur est $m = \dfrac{-2 - 2}{4 - 0} = -1$ et l'ordonnée à l'origine est $2$ (la droite passe par $(0\,;\,2)$). La fonction est $g(x) = -x + 2$. On vérifie : $g(4) = -2$.
 
-  **4.** $x^2 - 4x + 3 = (x - 1)(x - 3) = (x - 2)^2 - 1$.
+  **4.** Les racines de $x^2 - 4x + 3$ sont $1$ et $3$ (somme $4$, produit $3$), donc $x^2 - 4x + 3 = (x - 1)(x - 3)$. Pour la forme canonique, $x^2 - 4x + 3 = (x - 2)^2 - 4 + 3 = (x - 2)^2 - 1$.
 
-  **5.** $g'(x) = 6x - 5$.
+  **5.** $g'(x) = 3 \times 2x - 5 = 6x - 5$.
 
-  **6.** Moyenne $\dfrac{2 + 4 + 4 + 6 + 9}{5} = \dfrac{25}{5} = 5$. Médiane : la $3^{\text{e}}$ valeur, soit $4$.
+  **6.** La moyenne est $\dfrac{2 + 4 + 4 + 6 + 9}{5} = \dfrac{25}{5} = 5$. La série comporte $5$ valeurs rangées dans l'ordre croissant : la médiane est la $3^{\text{e}}$, soit $4$.
 
-  **7.** $\dfrac{3}{5} \times \dfrac{2}{4} = \dfrac{6}{20} = \dfrac{3}{10}$.
+  **7.** Au premier tirage, $P(\text{rouge}) = \dfrac{3}{5}$. Sans remise, il reste $4$ boules dont $2$ rouges, donc la probabilité d'une seconde rouge sachant la première est $\dfrac{2}{4}$. Ainsi
 
-  **8.** $P(A \cap B) = 0{,}3 \times 0{,}5 = 0{,}15$ et $P(A \cup B) = 0{,}3 + 0{,}5 - 0{,}15 = 0{,}65$.
+  $$
+  P = \frac{3}{5} \times \frac{2}{4} = \frac{6}{20} = \frac{3}{10}.
+  $$
 
-  **9.** $u_{10} = 4 + 10 \times 3 = 34$.
+  **8.** Les événements $A$ et $B$ sont indépendants, donc $P(A \cap B) = P(A) \times P(B) = 0{,}3 \times 0{,}5 = 0{,}15$. Puis $P(A \cup B) = P(A) + P(B) - P(A \cap B) = 0{,}3 + 0{,}5 - 0{,}15 = 0{,}65$.
 
-  **10.** $v_4 = 2 \times 3^4 = 162$.
+  **9.** Pour une suite arithmétique, $u_n = u_0 + nr$, donc $u_{10} = 4 + 10 \times 3 = 34$.
+
+  **10.** Pour une suite géométrique, $v_n = v_0 \times q^n$, donc $v_4 = 2 \times 3^4 = 2 \times 81 = 162$.
 ---

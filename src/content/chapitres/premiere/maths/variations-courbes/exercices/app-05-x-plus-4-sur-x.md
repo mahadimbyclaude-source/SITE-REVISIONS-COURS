@@ -19,9 +19,13 @@ indices:
     Plus précis : sur $\interoo{0}{+\infty}$, $x^2 > 0$ et $x + 2 > 0$. Le signe de $f'(x)$ est celui de $x - 2$.
 
 correction: |
-  **1.** $f'(x) = 1 - \dfrac{4}{x^2} = \dfrac{x^2 - 4}{x^2}$.
+  **1.** La fonction $f$ est dérivable sur $\interoo{0}{+\infty}$. La dérivée de $x \mapsto \dfrac{4}{x}$ est $x \mapsto -\dfrac{4}{x^2}$, donc
 
-  **2.** $x^2 - 4 = (x - 2)(x + 2)$ et, sur $\interoo{0}{+\infty}$, $x + 2 > 0$ et $x^2 > 0$. Le signe de $f'(x)$ est donc celui de $x - 2$. On a $f(2) = 2 + 2 = 4$.
+  $$
+  f'(x) = 1 - \frac{4}{x^2} = \frac{x^2 - 4}{x^2}.
+  $$
+
+  **2.** On factorise : $x^2 - 4 = (x - 2)(x + 2)$. Sur $\interoo{0}{+\infty}$, on a $x + 2 > 0$ et $x^2 > 0$, donc $f'(x)$ a le même signe que $x - 2$ : négatif pour $0 < x < 2$ et positif pour $x > 2$. On calcule $f(2) = 2 + \dfrac{4}{2} = 4$.
 
   $$
   \begin{array}{c|ccccc}
@@ -31,5 +35,9 @@ correction: |
   \end{array}
   $$
 
-  **3.** Le minimum de $f$ sur $\interoo{0}{+\infty}$ est $f(2) = 4$. Donc $f(x) \geq 4$ pour tout $x > 0$.
+  **3.** D'après le tableau, $f$ admet sur $\interoo{0}{+\infty}$ un minimum égal à $f(2) = 4$. Donc, pour tout $x > 0$,
+
+  $$
+  x + \frac{4}{x} \geq 4.
+  $$
 ---
